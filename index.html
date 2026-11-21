@@ -1,0 +1,1788 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>دورة الإسعافات الأولية | نحو حياة جامعية آمنة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F3F5F8; --paper:#FFFFFF; --ink:#16233A; --muted:#5B6678; --line:#DCE2EA; --line2:#C9D2DE;
+  --navy:#0D2B52; --navy-d:#081D3A; --navy-s:#E7EDF5; --gold:#C5A044; --gold-d:#8F7124;
+  --red:#C8102E; --red-s:#FBE9EC;
+  --ok:#17795A; --ok-s:#E6F3EE; --bad:#B42318; --bad-s:#FCEBEA;
+  --amber:#8A5300; --amber-s:#FBF1DF; --blue:#1D4E89; --blue-s:#E8EFF8;
+  --r:8px; --uc:var(--navy);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans Arabic",system-ui,sans-serif;font-size:17px;line-height:1.8;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:"Almarai","IBM Plex Sans Arabic",sans-serif;line-height:1.35;margin:0;font-weight:800;color:var(--navy)}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+img{max-width:100%}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+/* ---------- header (UoB) ---------- */
+.topbar{background:var(--navy-d);color:#C9D4E5;font-size:13px}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:34px;gap:12px}
+.topbar b{color:var(--gold);font-weight:600}
+@media(max-width:600px){.topbar .en{display:none}.stats,.mnem,.pills{grid-template-columns:1fr 1fr}.stat:nth-child(odd),.mn:nth-child(odd),.pill:nth-child(odd){border-inline-start:0}.scgrid{grid-template-columns:1fr}.sc{grid-template-columns:96px 1fr}}
+.topbar .en{font-family:"Almarai";letter-spacing:.14em;font-size:11px}
+.mast{background:#fff;border-bottom:3px solid var(--gold)}
+.mast .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:14px}
+.uob-brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--navy)}
+.uob-brand img,.uob-brand .crest{height:62px;width:auto}
+.uob-brand .crest{width:62px;border-radius:50%;background:var(--navy);display:grid;place-items:center;box-shadow:inset 0 0 0 3px var(--gold)}
+.uob-brand b{display:block;font-family:"Almarai";font-size:22px;font-weight:800;line-height:1.2}
+.uob-brand small{display:block;font-family:"Almarai";font-size:11.5px;letter-spacing:.2em;color:var(--gold-d);font-weight:700}
+.uob-brand i{display:block;width:1px;height:46px;background:var(--line);margin:0 4px}
+.uob-brand .dept{font-size:13.5px;color:#4A5B73;line-height:1.5}
+.mast-r{display:flex;align-items:center;gap:14px}
+.mast-r .course{font-family:"Almarai";font-weight:800;color:var(--navy);font-size:16px}
+.mast-r .tagl{font-size:13px;color:var(--gold-d);font-weight:600}
+.mast-r .sos{border:2px solid var(--red);color:var(--red);border-radius:6px;padding:4px 12px;font-family:"Almarai";font-weight:800;text-align:center;line-height:1.25}
+.mast-r .sos small{display:block;font-size:11px;font-weight:700}
+@media(max-width:760px){.uob-brand .dept,.uob-brand i,.mast-r .txt{display:none}.uob-brand b{font-size:18px}.uob-brand img,.uob-brand .crest{height:48px}.uob-brand .crest{width:48px}}
+.nav{position:sticky;top:0;z-index:20;background:var(--navy);box-shadow:0 6px 18px -12px rgba(8,29,58,.7)}
+.nav .wrap{display:flex;align-items:center;height:52px}
+.links{display:flex;overflow-x:auto;scrollbar-width:none}
+.links::-webkit-scrollbar{display:none}
+.links a{color:#DCE4F0;text-decoration:none;padding:14px 16px;position:relative;font-weight:600;font-size:15px;white-space:nowrap}
+.links a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.links a.on{color:#fff}
+.links a.on::after{content:"";position:absolute;inset-inline:12px;bottom:0;height:3px;background:var(--gold)}
+.crumb{background:#fff;border-bottom:1px solid var(--line);font-size:13.5px;color:var(--muted)}
+.crumb .wrap{height:40px;display:flex;align-items:center;gap:8px}
+.crumb a{color:var(--navy);text-decoration:none;font-weight:600}
+.crumb a:hover{text-decoration:underline}
+.crumb:empty{display:none}
+
+/* ---------- base pieces ---------- */
+.view{display:block}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:6px;font-weight:600;text-decoration:none;font-size:16px;border:1px solid transparent}
+.btn.primary{background:var(--navy);color:#fff}
+.btn.primary:hover{background:var(--navy-d)}
+.btn.ghost{background:#fff;border-color:var(--line2);color:var(--navy)}
+.btn.ghost:hover{border-color:var(--navy)}
+.btn.dark{background:var(--navy);color:#fff}
+.btn.dark:hover{background:var(--navy-d)}
+.sec{margin:64px 0 0}
+.sec-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:22px;border-bottom:1px solid var(--line);padding-bottom:14px}
+.sec-head h2{font-size:28px}
+.sec-head p{margin:4px 0 0;color:var(--muted);font-size:16px}
+.sec-head a{color:var(--navy);font-weight:600;text-decoration:none;font-size:15px;white-space:nowrap}
+.sec-head a:hover{text-decoration:underline}
+.page-title{padding:44px 0 6px}
+.page-title h1{font-size:38px}
+.page-title p{color:var(--muted);margin:6px 0 0;max-width:46em}
+
+/* ---------- home ---------- */
+.hero{background:#fff;border-bottom:1px solid var(--line)}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center;padding-top:52px;padding-bottom:52px}
+.hero h1{font-size:clamp(36px,5vw,58px);line-height:1.2}
+.hero .sub{font-family:"Almarai";font-weight:700;font-size:clamp(20px,2.4vw,26px);color:var(--gold-d);margin-top:10px}
+.hero p.lead{font-size:18px;color:var(--muted);max-width:32em;margin:18px 0 26px}
+.hero .cta{display:flex;gap:10px;flex-wrap:wrap}
+.hero figure{margin:0}
+.hero figure img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:6px;display:block}
+.hero figcaption{font-size:13px;color:var(--muted);margin-top:8px}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);margin-top:34px;border-top:1px solid var(--line)}
+.facts div{padding:14px 0 0;border-inline-start:1px solid var(--line);padding-inline-start:16px}
+.facts div:first-child{border-inline-start:0;padding-inline-start:0}
+.facts b{display:block;font-family:"Almarai";font-size:24px;color:var(--navy);font-weight:800}
+.facts span{font-size:14px;color:var(--muted)}
+@media(max-width:860px){.hero .wrap{grid-template-columns:1fr;gap:28px}.hero figure{order:-1}.facts{grid-template-columns:1fr 1fr;row-gap:14px}.facts div:nth-child(3){border-inline-start:0;padding-inline-start:0}}
+.rule{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;counter-reset:r}
+.rule::before{content:"";position:absolute;top:19px;inset-inline:40px;height:2px;background:var(--line2)}
+.rule div{position:relative;padding-inline-end:18px;counter-increment:r}
+.rule div::before{content:counter(r);display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--navy);color:#fff;font-family:"Almarai";font-weight:800;margin-bottom:14px;position:relative;box-shadow:0 0 0 6px var(--bg)}
+.rule h4{font-size:18px;margin-bottom:4px}
+.rule p{margin:0;color:var(--muted);font-size:15.5px;line-height:1.7}
+@media(max-width:760px){.rule{grid-template-columns:1fr;gap:18px}.rule::before{display:none}}
+.progress{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--muted)}
+.progress .bar{width:160px;height:6px;background:var(--line);border-radius:3px;overflow:hidden}
+.progress .bar i{display:block;height:100%;background:var(--ok)}
+
+/* lecture cards */
+.units{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.ucard{display:flex;flex-direction:column;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:border-color .15s}
+.ucard:hover{border-color:var(--navy)}
+.ucard img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;background:var(--navy-s)}
+.ucard .b{padding:14px 16px 16px;display:flex;flex-direction:column;gap:4px;flex:1}
+.ucard .k{font-size:13px;color:var(--muted);font-weight:600}
+.ucard h3{font-size:18px}
+.ucard p{margin:0;color:var(--muted);font-size:15px;line-height:1.6}
+.ucard .st{margin-top:auto;padding-top:10px;font-size:13.5px;color:var(--muted)}
+.ucard .st.done{color:var(--ok);font-weight:600}
+
+/* scenario cards */
+.scgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.sc{display:grid;grid-template-columns:120px 1fr;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:border-color .15s}
+.sc:hover{border-color:var(--navy)}
+.sc img{width:100%;height:100%;object-fit:cover;min-height:150px;background:var(--navy-s)}
+.sc .b{padding:14px 16px}
+.sc .place{font-size:13px;color:var(--gold-d);font-weight:700}
+.sc h3{font-size:18px;margin:2px 0 6px}
+.sc p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.65}
+.sc .foot{font-size:13px;color:var(--muted);margin-top:8px}
+.sc .foot b{color:var(--ok)}
+
+/* ---------- unit page ---------- */
+.uhead{background:var(--navy);color:#fff}
+.uhead .wrap{display:grid;grid-template-columns:1fr 400px;gap:40px;align-items:center;padding-top:40px;padding-bottom:40px}
+.uhead .k{color:var(--gold);font-weight:700;font-size:15px}
+.uhead h1{color:#fff;font-size:clamp(30px,4vw,44px);margin-top:6px}
+.uhead .hook{font-size:19px;color:#D3DDEB;margin-top:12px;max-width:30em}
+.uhead .meta{margin-top:18px;font-size:14px;color:#AFC0D8}
+.uhead img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:6px;display:block;border:4px solid rgba(255,255,255,.08)}
+@media(max-width:860px){.uhead .wrap{grid-template-columns:minmax(0,1fr)}.uhead img{order:-1;aspect-ratio:16/9}}
+.ubody{display:grid;grid-template-columns:240px minmax(0,1fr);gap:40px;align-items:start;padding-top:36px}
+.toc{position:sticky;top:68px;padding:8px 0;background:transparent;border:0}
+.toc .t{font-weight:700;font-size:14px;color:var(--navy);padding:0 12px 8px;border-bottom:1px solid var(--line);margin-bottom:6px}
+.toc a{display:block;padding:6px 12px;text-decoration:none;font-size:14.5px;color:var(--muted);border-inline-start:2px solid transparent;line-height:1.5}
+.toc a:hover{color:var(--navy);border-inline-start-color:var(--navy)}
+.toc a.q{color:var(--navy);font-weight:700}
+@media(max-width:900px){.ubody{grid-template-columns:minmax(0,1fr)}.toc{display:none}}
+.blk{margin-bottom:40px;scroll-margin-top:70px}
+.blk>h3{font-size:22px;margin:0 0 14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.blk>h3 .tag{font-family:"IBM Plex Sans Arabic";font-size:12.5px;font-weight:700;color:var(--gold-d);border:1px solid var(--gold);border-radius:4px;padding:1px 8px}
+.def{padding:22px 24px;font-size:19px;line-height:1.95;border-inline-start:4px solid var(--navy);border-radius:0 var(--r) var(--r) 0}
+[dir=rtl] .def{border-radius:var(--r) 0 0 var(--r)}
+.def b{color:var(--navy)}
+.pills{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));border:1px solid var(--line);border-radius:var(--r);background:#fff}
+.pill{padding:18px 20px;border-inline-start:1px solid var(--line)}
+.pill:first-child{border-inline-start:0}
+.pill b{display:block;font-family:"Almarai";font-size:18px;color:var(--navy)}
+.pill small{color:var(--muted);font-size:14.5px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:#fff;border:1px solid var(--line);padding:8px 14px;border-radius:6px;font-size:15.5px}
+.plist{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px 22px}
+.plist ul{margin:0;padding-inline-start:20px}
+.plist li{margin:5px 0}
+.steps{counter-reset:s}
+.step{display:grid;grid-template-columns:36px 1fr;gap:14px;position:relative;padding-bottom:14px}
+.step:not(:last-child)::after{content:"";position:absolute;inset-inline-start:17px;top:38px;bottom:2px;width:2px;background:var(--line2)}
+.step .dot{counter-increment:s;width:36px;height:36px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-family:"Almarai";font-weight:800;font-size:15px;margin-top:4px}
+.step .dot::before{content:counter(s)}
+.step .c{padding:6px 0 0}
+.step .c b{display:block;font-family:"Almarai";font-weight:700;color:var(--ink);font-size:17px}
+.step .c span{color:var(--muted);font-size:16px}
+.compare,.dodont{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.compare .side,.dodont .side{padding:18px 20px;background:#fff;border:1px solid var(--line);border-top-width:4px;border-radius:var(--r)}
+.compare h4,.dodont h4{font-size:18px;margin-bottom:8px}
+.compare ul{margin:0;padding-inline-start:20px}
+.compare li{margin:4px 0}
+.tone-red{border-top-color:var(--red)!important}.tone-red h4{color:var(--red)}
+.tone-blue{border-top-color:var(--blue)!important}.tone-blue h4{color:var(--blue)}
+.tone-amber{border-top-color:#C27A00!important}.tone-amber h4{color:var(--amber)}
+.tone-ok{border-top-color:var(--ok)!important}.tone-ok h4{color:var(--ok)}
+.dodont ul{list-style:none;margin:0;padding:0}
+.dodont li{display:flex;gap:10px;margin:8px 0;font-size:16px;line-height:1.6}
+.dodont li::before{flex:none;font-weight:800;width:18px;text-align:center}
+.do{border-top-color:var(--ok)!important}.do h4{color:var(--ok)}.do li::before{content:"✓";color:var(--ok)}
+.dont{border-top-color:var(--bad)!important}.dont h4{color:var(--bad)}.dont li::before{content:"✕";color:var(--bad)}
+@media(max-width:640px){.compare,.dodont{grid-template-columns:1fr}}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));background:#fff;border:1px solid var(--line);border-radius:var(--r)}
+.stat{padding:16px 18px;border-inline-start:1px solid var(--line)}
+.stat:first-child{border-inline-start:0}
+.stat .n{font-family:"Almarai";font-size:28px;font-weight:800;color:var(--navy);direction:ltr;text-align:end;white-space:nowrap}
+[dir=rtl] .stat .n{text-align:right}
+.stat .u{font-size:13.5px;color:var(--muted)}
+.stat .l{margin-top:4px;font-weight:600;font-size:15px}
+.note{padding:14px 18px;font-size:16px;line-height:1.75;background:#fff;border:1px solid var(--line);border-inline-start:4px solid var(--blue);border-radius:var(--r)}
+.note .nl{display:block;font-size:13px;font-weight:700;margin-bottom:2px}
+.note.tip{border-inline-start-color:var(--blue)}.note.tip .nl{color:var(--blue)}
+.note.warn{border-inline-start-color:var(--red);background:var(--red-s)}.note.warn .nl{color:var(--red)}
+.note.extra{border-inline-start-color:var(--gold)}.note.extra .nl{color:var(--gold-d)}
+.mnem{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));background:#fff;border:1px solid var(--line);border-radius:var(--r)}
+.mn{padding:16px 18px;border-inline-start:1px solid var(--line)}
+.mn:first-child{border-inline-start:0}
+.mn .k{font-family:"Almarai";font-size:34px;font-weight:800;color:var(--red);line-height:1}
+.mn b{display:block;margin-top:8px;font-family:"Almarai"}
+.mn small{color:var(--muted);font-size:14.5px}
+.flips{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.flip{perspective:900px;cursor:pointer;min-height:130px}
+.flip .in{position:relative;width:100%;height:100%;min-height:130px;transition:transform .45s;transform-style:preserve-3d}
+.flip.on .in{transform:rotateY(180deg)}
+.flip .f,.flip .b{position:absolute;inset:0;backface-visibility:hidden;border-radius:var(--r);padding:18px;display:flex;flex-direction:column;justify-content:center;text-align:center;border:1px solid var(--line)}
+.flip .f{background:#fff;font-family:"Almarai";font-weight:700;font-size:17px;color:var(--navy)}
+.flip .f small{font-family:"IBM Plex Sans Arabic";font-weight:400;color:var(--muted);font-size:12.5px;margin-top:6px}
+.flip .b{background:var(--navy);color:#fff;transform:rotateY(180deg);font-size:15.5px;line-height:1.65;border-color:var(--navy)}
+
+/* gallery + lightbox */
+.gal{display:flex;gap:12px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x mandatory}
+.gal figure{margin:0;flex:0 0 260px;scroll-snap-align:start;cursor:zoom-in}
+.gal img{width:100%;height:180px;object-fit:cover;display:block;border-radius:6px;background:var(--navy-s)}
+.gal figcaption{padding:8px 2px 0;font-size:14.5px;color:var(--muted);line-height:1.5}
+.lb{position:fixed;inset:0;background:rgba(8,18,34,.9);z-index:60;display:none;place-items:center;padding:24px;cursor:zoom-out}
+.lb.on{display:grid}
+.lb img{max-width:min(92vw,980px);max-height:78vh;border-radius:6px;background:#fff}
+.lb p{color:#fff;text-align:center;font-size:17px;margin:12px 0 0}
+
+/* video */
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
+.vid{display:block;text-align:start;width:100%;background:none;padding:0}
+.vid .th{position:relative;aspect-ratio:16/9;background:var(--navy);border-radius:6px;overflow:hidden;display:grid;place-items:center}
+.vid .th img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vid .pl{position:relative;width:58px;height:58px;border-radius:50%;background:rgba(200,16,46,.95);display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+.vid:hover .pl{background:var(--red)}
+.vid .dur{position:absolute;bottom:8px;inset-inline-start:8px;background:rgba(0,0,0,.72);color:#fff;font-size:12px;padding:1px 7px;border-radius:4px}
+.vid b{display:block;font-family:"Almarai";font-weight:700;font-size:16px;margin-top:10px;color:var(--ink)}
+.vid span{font-size:13.5px;color:var(--muted)}
+.vm{position:fixed;inset:0;background:rgba(8,18,34,.92);z-index:70;display:none;place-items:center;padding:20px}
+.vm.on{display:grid}
+.vm .box{width:min(960px,96vw)}
+.vm .frame{position:relative;aspect-ratio:16/9;background:#000;border-radius:6px;overflow:hidden}
+.vm iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vm .bar{display:flex;justify-content:space-between;align-items:center;color:#fff;margin-bottom:10px;gap:12px}
+.vm .bar b{font-family:"Almarai";font-size:18px}
+.vm .x{color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:6px;padding:6px 14px;font-weight:600}
+.vm .x:hover{background:rgba(255,255,255,.1)}
+
+/* interactives */
+.ix{padding:20px 22px;background:#fff;border:1px solid var(--line);border-radius:var(--r)}
+.ix .prompt{font-weight:600;margin-bottom:10px}
+.ix .msg{min-height:28px;margin-top:10px;font-size:15.5px;font-weight:500}
+.ix .msg.ok{color:var(--ok)}.ix .msg.no{color:var(--bad)}
+.ixgrid{display:grid;grid-template-columns:210px 1fr;gap:26px;align-items:center}
+@media(max-width:640px){.ixgrid{grid-template-columns:1fr}}
+.fig{width:100%;max-width:200px;margin:auto;display:block}
+.fig .bd{fill:#E9DFD7;stroke:#A99486;stroke-width:1.4}
+.fig .shirt{fill:#DCE5F0;stroke:#8EA3BE;stroke-width:1.4}
+.fig .preg{fill:#F1E5DB;stroke:#A99486;stroke-width:1.4;stroke-dasharray:4 3}
+.hz{fill:rgba(13,43,82,.06);stroke:var(--navy);stroke-width:1.6;stroke-dasharray:3 3;cursor:pointer}
+.hz:hover{fill:rgba(13,43,82,.2)}
+.hz.good{fill:var(--ok);stroke:var(--ok);stroke-dasharray:0}
+.hz.bad{fill:var(--bad);stroke:var(--bad);stroke-dasharray:0;opacity:.8}
+.hzl{font-size:12px;fill:#fff;text-anchor:middle;pointer-events:none;font-weight:700}
+.found{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.found span{background:var(--ok-s);color:var(--ok);font-weight:600;font-size:13.5px;padding:2px 10px;border-radius:4px}
+.sortl{display:grid;gap:0;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.srow{display:flex;align-items:center;gap:10px;padding:10px 14px;border-top:1px solid var(--line);background:#fff}
+.srow:first-child{border-top:0}
+.srow .t{flex:1;font-size:16px}
+.srow button{padding:5px 12px;border-radius:4px;border:1px solid var(--line2);font-size:14px;font-weight:600;color:var(--navy);background:#fff}
+.srow button:hover{border-color:var(--navy)}
+.srow.ok{background:var(--ok-s)}.srow.no{background:var(--bad-s)}
+.srow.ok button,.srow.no button{pointer-events:none;opacity:.4}
+.srow .why{display:block;font-size:13.5px;color:var(--bad);margin-top:2px}
+.ord .pool{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.ord .pool button{background:#fff;border:1px solid var(--line2);border-radius:6px;padding:8px 14px;font-size:15px;color:var(--navy);font-weight:500}
+.ord .pool button:hover{border-color:var(--navy)}
+.ord .pool button.shake{animation:shake .35s;border-color:var(--bad)}
+@keyframes shake{25%{transform:translateX(5px)}75%{transform:translateX(-5px)}}
+.ord ol{margin:6px 0 0;padding:0;list-style:none;counter-reset:o;display:grid;gap:6px}
+.ord li{counter-increment:o;display:flex;gap:10px;align-items:center;border-bottom:1px solid var(--line);padding:6px 2px;font-weight:500}
+.ord li::before{content:counter(o);width:26px;height:26px;border-radius:50%;background:var(--ok);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:700;flex:none}
+.slider-ui{display:flex;align-items:center;gap:12px;margin-top:8px;color:var(--muted);font-size:14px}
+.slider-ui input{flex:1;accent-color:var(--navy)}
+.slider-ui b{font-family:"Almarai";font-size:22px;min-width:76px;text-align:center;color:var(--navy)}
+.seg{display:inline-flex;border:1px solid var(--line2);border-radius:6px;overflow:hidden}
+.seg button{padding:8px 16px;font-weight:600;font-size:15px;color:var(--navy)}
+.seg button+button{border-inline-start:1px solid var(--line2)}
+.seg button.on{background:var(--navy);color:#fff}
+.flow{stroke-dasharray:6 8;animation:flow 1s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-28}}
+.spurt{animation:spurt .9s ease-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes spurt{0%{transform:translate(0,0) scale(.4);opacity:0}15%{opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(1);opacity:0}}
+.ooze{animation:ooze 2.4s ease-in infinite}
+@keyframes ooze{0%{transform:translateY(0);opacity:0}20%{opacity:1}100%{transform:translateY(46px);opacity:0}}
+.pulse-v{animation:pv .9s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pv{0%,100%{transform:scaleY(1)}12%{transform:scaleY(1.35)}}
+.bleed2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.bleed2>div{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px;text-align:center}
+.bleed2 svg{width:100%;height:auto}
+.bleed2 b{font-family:"Almarai"}
+.bleed2 small{display:block;color:var(--muted);font-size:13.5px}
+
+/* quiz */
+.quiz{padding:24px}
+.qhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;color:var(--muted);font-size:14px}
+.qbar{height:4px;background:var(--line);border-radius:2px;overflow:hidden;margin-bottom:18px}
+.qbar i{display:block;height:100%;background:var(--navy);transition:width .3s}
+.qunit{font-size:13.5px;color:var(--gold-d);font-weight:700;margin-bottom:4px}
+.qq{font-family:"Almarai";font-size:20px;font-weight:700;margin-bottom:16px;color:var(--ink)}
+.opts{display:grid;gap:8px}
+.opt{text-align:start;padding:12px 16px;border:1px solid var(--line2);border-radius:6px;background:#fff;font-size:16.5px;display:flex;gap:12px;align-items:center}
+.opt:hover:not([disabled]){border-color:var(--navy)}
+.opt .l{flex:none;width:28px;height:28px;border-radius:4px;background:var(--bg);display:grid;place-items:center;font-weight:700;font-size:14px;color:var(--navy)}
+.opt.right{border-color:var(--ok);background:var(--ok-s)}.opt.right .l{background:var(--ok);color:#fff}
+.opt.wrong{border-color:var(--bad);background:var(--bad-s)}.opt.wrong .l{background:var(--bad);color:#fff}
+.opt[disabled]{cursor:default}
+.fb{margin-top:14px;padding:12px 16px;border-radius:6px;font-size:15.5px;display:none}
+.fb.show{display:block}
+.fb.ok{background:var(--ok-s);color:#0E4F3B}.fb.no{background:var(--bad-s);color:#7A1A12}
+.qnav{display:flex;justify-content:flex-end;margin-top:16px}
+.result{text-align:center;padding:24px 10px}
+.result .big{font-family:"Almarai";font-size:52px;font-weight:800;color:var(--navy)}
+.wrong-list{text-align:start;margin-top:22px}
+.wrong-list .card{padding:12px 16px;margin-bottom:8px}
+.wrong-list b{display:block;margin-bottom:2px}
+.wrong-list span{color:var(--ok);font-size:15px}
+.unav{display:flex;justify-content:space-between;gap:12px;margin:10px 0 64px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:24px}
+
+/* scenario play */
+.stage{max-width:780px;margin:0 auto;padding:32px 0 70px}
+.story{overflow:hidden;margin-bottom:16px}
+.story img{width:100%;aspect-ratio:21/9;object-fit:cover;display:block}
+.story .b{padding:20px 24px}
+.story .place{font-size:14px;color:var(--gold-d);font-weight:700}
+.story h1{font-size:28px;margin:2px 0 10px}
+.story .txt{font-size:18px;line-height:1.95}
+.timeline{display:flex;gap:6px;margin:16px 0}
+.timeline i{flex:1;height:5px;border-radius:3px;background:var(--line)}
+.timeline i.done{background:var(--ok)}.timeline i.miss{background:#E39A92}.timeline i.cur{background:var(--navy)}
+.ask{font-family:"Almarai";font-weight:700;font-size:20px;margin:6px 0 14px}
+.scend{text-align:center;padding:30px 20px}
+.scend .score{font-family:"Almarai";font-size:44px;font-weight:800;color:var(--navy)}
+
+/* trainer */
+.trainer{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:820px){.trainer{grid-template-columns:1fr}}
+.tpanel{padding:24px;text-align:center}
+.tpanel h3{font-size:20px}
+.heart{margin:4px auto;display:grid;place-items:center}
+.heart svg{width:44px;height:44px;fill:var(--red);transition:transform .08s}
+.heart.beat svg{transform:scale(.8)}
+.count{font-family:"Almarai";font-size:50px;font-weight:800;line-height:1;color:var(--navy)}
+.count small{font-size:20px;color:var(--muted)}
+.phase{min-height:30px;font-weight:600;color:var(--muted);margin:8px 0 14px}
+.bpm{display:flex;align-items:center;gap:10px;justify-content:center;margin:12px 0;font-size:15px;color:var(--muted)}
+.bpm input{accent-color:var(--navy);width:160px}
+.tap{width:170px;height:170px;border-radius:50%;margin:14px auto;display:grid;place-items:center;background:var(--navy);color:#fff;font-family:"Almarai";font-weight:700;font-size:19px;user-select:none;-webkit-user-select:none;touch-action:manipulation;box-shadow:0 8px 0 var(--navy-d);transition:transform .06s,box-shadow .06s}
+.tap:active,.tap.hit{transform:translateY(5px);box-shadow:0 3px 0 var(--navy-d)}
+.gauge{height:12px;border-radius:6px;background:linear-gradient(90deg,#E8B4AD 0 30%,#A9D8C6 30% 70%,#E8B4AD 70%);position:relative;margin:16px 6px 6px;direction:ltr}
+.gauge i{position:absolute;top:-6px;width:4px;height:24px;background:var(--navy);border-radius:2px;transition:left .3s}
+.glbl{display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted);direction:ltr;padding:0 6px}
+.cprfig .hands{transition:transform .07s}
+.cprfig.push .hands{transform:translateY(9px)}
+.cprfig .chest{transition:transform .07s;transform-box:fill-box;transform-origin:bottom}
+.cprfig.push .chest{transform:scaleY(.72)}
+
+/* review/exam */
+.center{max-width:780px;margin:0 auto;padding:0 0 70px}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin:18px 0}
+.filters button{padding:6px 12px;border-radius:4px;border:1px solid var(--line2);background:#fff;font-size:14px;color:var(--navy)}
+.filters button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+footer{background:var(--navy-d);color:#AFC0D8;border-top:3px solid var(--gold);padding:28px 0 36px;font-size:14px;margin-top:40px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer b{color:#fff}
+.confetti{display:none}
+
+
+.note.why{border-inline-start-color:var(--navy)}.note.why .nl{color:var(--navy)}
+.note.diff{border-inline-start-color:var(--gold);background:#FBF7EC}.note.diff .nl{color:var(--gold-d)}
+.callbox{background:#fff;border:1px solid #F1C3CB;border-inline-start:4px solid var(--red);border-radius:var(--r);padding:16px 20px}
+.callbox h4{color:var(--red);font-size:18px;margin-bottom:6px}
+.callbox ul{margin:0;padding-inline-start:20px}.callbox li{margin:4px 0}
+.feature{display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:center}
+.feature .vid .th{aspect-ratio:16/9}
+.feature p{color:var(--muted);margin:8px 0 0}
+@media(max-width:760px){.feature{grid-template-columns:1fr}}
+
+.ecg{display:block;width:100%;height:80px;margin-top:26px}
+.ecg path{fill:none;stroke:var(--red);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 3.2s linear infinite}
+@keyframes draw{to{stroke-dashoffset:0}}
+.hero .facts{margin-top:10px}
+
+.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.tri .side{padding:18px 20px;background:#fff;border:1px solid var(--line);border-top-width:4px;border-radius:var(--r)}
+.tri h4{font-size:17px;margin-bottom:4px}
+.tri .lay{font-size:13.5px;color:var(--muted);margin-bottom:8px;font-weight:600}
+.tri ul{margin:0;padding-inline-start:20px}.tri li{margin:4px 0;font-size:15.5px}
+.tone-ink{border-top-color:#2A2320!important}.tone-ink h4{color:#2A2320}
+@media(max-width:760px){.tri{grid-template-columns:1fr}}
+.s3 .srow{flex-wrap:wrap}
+
+/* infographics + types */
+.infog{margin:0;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:10px;max-width:760px;margin-inline:auto;cursor:zoom-in}
+.infog img{width:100%;height:auto;display:block;border-radius:6px}
+.infog figcaption{padding:10px 6px 4px;font-size:14.5px;color:var(--muted);line-height:1.6;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.infog figcaption b{color:var(--navy);font-weight:700}
+.types{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.types .side{padding:18px 20px;background:#fff;border:1px solid var(--line);border-top-width:4px;border-radius:var(--r)}
+.types h4{font-size:17px;margin-bottom:4px}
+.types .lay{font-size:13.5px;color:var(--muted);margin-bottom:8px;font-weight:600}
+.types ul{margin:0;padding-inline-start:20px}.types li{margin:4px 0;font-size:15.5px}
+@media(max-width:700px){.types{grid-template-columns:1fr}}
+.lb img{max-height:86vh}
+
+.tsteps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--line2);border-radius:var(--r);overflow:hidden;background:#fff;margin-bottom:18px;scroll-margin-top:64px}
+.tsteps button{padding:12px 10px;font-weight:600;font-size:14.5px;color:var(--navy);display:flex;align-items:center;gap:8px;justify-content:center;border-inline-start:1px solid var(--line)}
+.tsteps button:first-child{border-inline-start:0}
+.tsteps button span{width:24px;height:24px;border-radius:50%;border:1.5px solid var(--navy);display:grid;place-items:center;font-size:12.5px;flex:none}
+.tsteps button.on{background:var(--navy);color:#fff}.tsteps button.on span{border-color:var(--gold);background:var(--gold);color:var(--navy)}
+@media(max-width:760px){.tsteps{grid-template-columns:1fr 1fr}.tsteps button{border-top:1px solid var(--line)}}
+.tcard{padding:24px}
+.tcard h2{font-size:26px}
+.lead2{color:var(--muted);font-size:17px;margin:6px 0 18px;max-width:46em}
+.sub3{font-size:18px;margin:0 0 10px}
+.tgrid{display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:start}
+@media(max-width:820px){.tgrid{grid-template-columns:1fr}}
+.scene{width:100%;border:1px solid var(--line);border-radius:6px;display:block}
+.hz2{cursor:pointer}
+.hz2:hover{filter:brightness(1.08) drop-shadow(0 0 4px rgba(200,16,46,.5))}
+.hz2.got{filter:drop-shadow(0 0 6px rgba(200,16,46,.9))}
+.found2{background:var(--bg);border-radius:6px;padding:12px 16px}
+.found2 ul{margin:8px 0 0;padding-inline-start:20px}.found2 li{margin:4px 0;font-size:15px}
+.ctl{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.ctl label{display:flex;flex-direction:column;gap:4px;width:100%;font-weight:600;color:var(--navy)}
+.ctl input[type=range]{accent-color:var(--navy)}
+.btn.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.astat{margin-top:14px;font-family:"Almarai";font-weight:800;font-size:18px}
+.astat .ok{color:var(--ok)}.astat .no{color:var(--bad)}
+.cyc-btns{display:flex;gap:16px;justify-content:center;align-items:center;flex-wrap:wrap}
+.cyc-btns .tap{margin:8px 0}
+.stats2{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:6px;margin-top:16px}
+.stats2 div{padding:8px;border-inline-start:1px solid var(--line)}.stats2 div:first-child{border-inline-start:0}
+.stats2 b{display:block;font-family:"Almarai";font-size:20px;color:var(--navy)}.stats2 span{font-size:12px;color:var(--muted)}
+.clog{list-style:none;margin:10px 0 0;padding:0;text-align:start;font-size:14px;max-height:160px;overflow:auto}
+.clog li{border-top:1px solid var(--line);padding:6px 2px}
+.tnext{display:flex;justify-content:flex-end;margin-top:16px}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="wrap"><span>كلية العلوم الصحية والرياضية · <b>قسم التمريض</b></span><span class="en">UNIVERSITY OF BAHRAIN</span></div></div>
+<div class="mast"><div class="wrap">
+  <a class="uob-brand" href="#home">
+    <img src="uob-logo.png" alt="جامعة البحرين" onerror="this.outerHTML='<div class=&quot;crest&quot;><svg width=&quot;30&quot; height=&quot;30&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;#C5A044&quot;><path d=&quot;M12 21s-7.5-4.6-9.6-9.2C.8 8.3 2.9 4.5 6.6 4.5c2.1 0 3.6 1.2 4.4 2.5.8-1.3 2.3-2.5 4.4-2.5 3.7 0 5.8 3.8 4.2 7.3C19.5 16.4 12 21 12 21z&quot;/></svg></div>'">
+    <div><b>جامعة البحرين</b><small>UNIVERSITY OF BAHRAIN</small></div>
+    <i></i><div class="dept">كلية العلوم الصحية والرياضية<br>قسم التمريض</div>
+  </a>
+  <div class="mast-r"><div class="txt"><div class="course">دورة الإسعافات الأولية</div><div class="tagl">نحو حياة جامعية آمنة</div></div><div class="sos">999<small>طوارئ</small></div></div>
+</div></div>
+<nav class="nav"><div class="wrap"><div class="links" id="links">
+    <a href="#home" data-v="home">الرئيسية</a>
+    <a href="#units" data-v="units">الدروس</a>
+    <a href="#scenarios" data-v="scenarios">المواقف</a>
+    <a href="#trainer" data-v="trainer">مدرّب CPR</a>
+    <a href="#review" data-v="review">مراجعة سريعة</a>
+    <a href="#exam" data-v="exam">الاختبار</a>
+  </div>
+</div></div></nav>
+<div class="crumb" id="crumb"></div>
+
+<main id="app"></main>
+
+<footer><div class="wrap"><div><b>جامعة البحرين</b> — كلية العلوم الصحية والرياضية، قسم التمريض<br>دورة الإسعافات الأولية: نحو حياة جامعية آمنة</div><div>في حالة الطوارئ اتصل بـ <b>999</b><br>هذا الموقع للمذاكرة ولا يغني عن التدريب العملي.</div></div></footer>
+<div class="vm" id="vm" role="dialog" aria-modal="true"><div class="box"><div class="bar"><b id="vmt"></b><button class="x" id="vmx">إغلاق</button></div><div class="frame" id="vmf"></div><p id="vmalt" style="color:#AFC0D8;font-size:14px;margin:10px 0 0"></p></div></div>
+
+
+<div class="lb" id="lb" onclick="this.classList.remove('on')"><div><img id="lbimg" alt=""><p id="lbcap"></p></div></div>
+
+<script>
+/* ============================== CONTENT ============================== */
+const UNITS = [
+{ id:"basics", title:"أساسيات الإسعافات الأولية", short:"ما الإسعافات الأولية، وكيف تتصرف في أول دقيقة",
+  hook:"أغلب الأخطاء تحدث في أول دقيقة: الاندفاع قبل تقييم المكان، أو التردد في طلب المساعدة.",
+  blocks:[
+   {type:"def", h:"ما المقصود بالإسعافات الأولية؟", html:"هي <b>الرعاية الفورية</b> التي يقدّمها شخص عادي لمصاب أو مريض <b>إلى أن تصل المساعدة الطبية</b>. هدفها ليس العلاج الكامل، بل أن تُبقي المصاب حياً، وتمنع تدهور حالته، وتساعده على التعافي."},
+   {type:"pills", h:"أهدافها الثلاثة", items:[["","الحفاظ على الحياة","إبقاء مجرى الهواء والتنفس والدورة الدموية تعمل"],["","منع التدهور","مثل إيقاف نزيف أو تثبيت كسر قبل أن يسوء"],["","تسريع التعافي","تخفيف الألم والخوف، وتجنّب الإعاقة لاحقاً"]]},
+   {type:"steps", h:"خطة التصرف: DRSABCD", items:[
+     ["D — الخطر (Danger)","هل المكان آمن لك وللمصاب وللآخرين؟ كهرباء، نار، سيارات، غاز. إذا لم يكن آمناً فلا تقترب واطلب المساعدة."],
+     ["R — الاستجابة (Response)","اقترب، ربّت على كتفيه وقل بصوت عالٍ: «هل أنت بخير؟» إذا لم يرد فاعتبره فاقداً للوعي."],
+     ["S — اطلب المساعدة (Send for help)","اتصل بـ 999 أو اطلب من شخص محدد أن يتصل: «أنت، اتصل بالإسعاف وارجع لي». الطلب العام «أحد يتصل!» غالباً لا يُنفَّذ."],
+     ["A — مجرى الهواء (Airway)","أمِل الرأس للخلف وارفع الذقن لفتح مجرى الهواء."],
+     ["B — التنفس (Breathing)","انظر واستمع وتحسس لمدة لا تزيد عن 10 ثوانٍ. الشهقات المتقطعة ليست تنفساً طبيعياً."],
+     ["C — الإنعاش (CPR)","إن لم يكن يتنفس طبيعياً فابدأ الضغطات الصدرية فوراً."],
+     ["D — جهاز الصدمات (Defibrillation)","استخدم جهاز AED في أقرب وقت واتبع تعليماته الصوتية."]]},
+   {type:"note", tone:"diff", text:"شرائح المحاضرة تذكر ترتيب الأولوية <b>ABC</b> (مجرى الهواء ← التنفس ← الدورة الدموية). خطة DRSABCD تحتويه، لكنها تضيف قبله خطوات الأمان وطلب المساعدة، وهي الخطة المعتمدة في أغلب دورات الإسعاف اليوم."},
+   {type:"order", h:"رتّب أولوية الإسعاف", prompt:"اضغط على الكلمات بالترتيب الصحيح كما في المحاضرة:", items:["المجرى الهوائي (A)","التنفس (B)","الدورة الدموية (C)"]},
+   {type:"list", h:"ماذا تقول لموظف الطوارئ عند الاتصال بـ 999؟", items:["<b>المكان بدقة:</b> المبنى، الطابق، القاعة، أو علامة قريبة","<b>ماذا حدث:</b> سقط، اختنق، نزيف، حرق…","<b>عدد المصابين</b> وحالتهم: هل يتنفس؟ هل هو واعٍ؟","<b>رقمك</b>، ولا تُنهِ المكالمة حتى يطلب منك الموظف ذلك. ضع الهاتف على مكبر الصوت لتتابع الإسعاف وأنت تسمع التعليمات"]},
+   {type:"dodont", h:"قواعد عامة لا تتغير", do:["احمِ نفسك أولاً: قفازات أو أي حاجز بينك وبين الدم","عرّف بنفسك واطلب الإذن إن كان المصاب واعياً","اشرح للمصاب ما تفعله، وطمئنه هو وأهله","ابقَ معه حتى يصل من هو أكثر خبرة"], dont:["لا تحرّك المصاب إلا إذا كان المكان خطراً عليه","لا تعطه طعاماً أو شراباً إذا كان شبه واعٍ أو قد يحتاج جراحة","لا تفعل شيئاً لست متأكداً منه: الأفضل أن تتصل وتتبع تعليمات موظف الطوارئ"]},
+   {type:"note", tone:"warn", text:"رقم الطوارئ في البحرين: <b>999</b>."}
+  ],
+  quiz:[
+   {q:"ما أول شيء تفعله عند الوصول لمكان إصابة؟", o:["تبدأ الضغطات الصدرية فوراً","تتأكد أن المكان آمن لك وللمصاب","تتصل بأهل المصاب","تعطي المصاب ماء"], a:1, w:"الخطوة الأولى دائماً هي الخطر (Danger): مسعف مصاب لا يستطيع إنقاذ أحد."},
+   {q:"ما ترتيب أولوية الإسعاف (ABC)؟", o:["الدورة الدموية ← التنفس ← المجرى الهوائي","التنفس ← المجرى الهوائي ← الدورة الدموية","المجرى الهوائي ← التنفس ← الدورة الدموية","النزيف ← الكسور ← التنفس"], a:2, w:"بدون مجرى هواء مفتوح لا يصل الهواء، وبدون تنفس لا يفيد الدوران."},
+   {q:"أي طريقة لطلب المساعدة أكثر فعالية؟", o:["تصرخ «أحد يتصل بالإسعاف!»","تشير لشخص محدد: «أنت، اتصل بـ 999 وارجع لي»","تنتظر حتى ينتهي الإسعاف ثم تتصل","ترسل رسالة في مجموعة الطلاب"], a:1, w:"عند تكليف شخص بعينه يتحمّل المسؤولية وينفّذ. الطلب العام يجعل كل واحد يظن أن غيره اتصل."},
+   {q:"الإسعافات الأولية هي الرعاية التي تُقدَّم…", o:["بعد الخروج من المستشفى","حتى تصل المساعدة الطبية","فقط من الأطباء","فقط في الحالات البسيطة"], a:1, w:"هي الرعاية الفورية إلى أن تصل المساعدة الطبية."}
+  ]},
+
+{ id:"cpr", title:"الإنعاش القلبي الرئوي (CPR)", short:"متى تبدأ، وكيف تضغط، ودور جهاز الصدمات",
+  hook:"عندما يتوقف القلب، كل دقيقة بلا ضغطات تقلل فرصة النجاة. يداك تقومان بعمل القلب حتى يصل الإسعاف.",
+  blocks:[
+   {type:"def", h:"ماذا يحدث عند توقف القلب؟", html:"عند <b>السكتة القلبية</b> يتوقف القلب عن ضخ الدم، فلا يصل الأكسجين إلى الدماغ، ويبدأ تلفه خلال دقائق. الضغطات الصدرية <b>تدفع الدم يدوياً</b> إلى الدماغ والقلب، وجهاز الصدمات <b>AED</b> قد يعيد القلب إلى نظمه الطبيعي."},
+   {type:"note", tone:"why", text:"المصاب في السكتة القلبية <b>لا يستجيب ولا يتنفس طبيعياً</b>. قد تسمع شهقات متقطعة تشبه التنفس، وهي ليست تنفساً، بل علامة تؤكد أنك يجب أن تبدأ فوراً."},
+   {type:"infog", h:"ملخص مصوّر: خطوات الإنعاش القلبي الرئوي", src:"img/info-cpr.jpg", cap:"الإنعاش القلبي الرئوي (CPR): خطوات بسيطة تنقذ حياة", alt:"إنفوجرافيك بسبع خطوات للإنعاش القلبي الرئوي واستخدام جهاز AED، ورقم الطوارئ 999 في البحرين"},
+  {type:"hotspot", h:"أين تضع يديك؟", prompt:"اضغط على المكان الصحيح للضغطات الصدرية:", zones:[[100,142,"✓",1,"صحيح: منتصف الصدر، على النصف السفلي من عظمة القص."],[124,118,"",0,"ليس على جانب الصدر فوق القلب، بل في المنتصف تماماً."],[100,205,"",0,"البطن ليس مكان الضغطات، الضغط عليه لا يحرّك الدم."],[100,74,"",0,"الرقبة ليست مكان الضغط. ابحث عن منتصف الصدر."]]},
+   {type:"stats", h:"أرقام يجب أن تحفظها", items:[["100–120","ضغطة/دقيقة","سرعة الضغطات"],["5–6","سم","عمق الضغط للبالغ"],["30:2","ضغطات : أنفاس","نسبة الإنعاش"],["10","ثوانٍ كحد أقصى","فحص التنفس"],["2","دقيقة","بعدها يتبادل المسعفون الأدوار"]]},
+   {type:"order", h:"رتّب خطوات الإنعاش", prompt:"اضغط على الخطوات بالترتيب الصحيح:", items:["تأكد من سلامة المكان","تحقق من الاستجابة","افحص التنفس (10 ثوانٍ)","اتصل بـ 999 واطلب AED","30 ضغطة صدرية","نفَسا إنقاذ"]},
+   {type:"note", tone:"why", text:"<b>ليه يجب أن يرتد الصدر كاملاً؟</b> لأن القلب يمتلئ بالدم أثناء ارتداد الصدر. إذا لم تتركه يرتد، فإن الضغطة التالية تدفع دماً أقل.<br><b>ليه السرعة 100–120؟</b> أبطأ من ذلك لا يحرّك ما يكفي من الدم، وأسرع منه لا يعطي القلب وقتاً ليمتلئ."},
+   {type:"dodont", h:"افعل / لا تفعل", do:["اضغط بقوة وبسرعة، بذراعين مستقيمتين","قلّل التوقف إلى أقل من 10 ثوانٍ في كل مرة","بدّل مع شخص آخر كل دقيقتين، لأن التعب يقلل جودة الضغط","ابدأ حتى لو كان المصاب على سطح ليّن، ولا تضيّع وقتاً في نقله"], dont:["لا تقضِ أكثر من 10 ثوانٍ في فحص التنفس","لا تعتبر الشهقات المتقطعة تنفساً طبيعياً","لا تخف من كسر الضلوع: الضلع المكسور يُعالَج، أما توقف القلب فلا","لا تتوقف حتى يصل الإسعاف، أو يتحرك المصاب ويتنفس طبيعياً، أو تُنهك تماماً"]},
+   {type:"note", tone:"tip", text:"تدرّب على الإيقاع في صفحة <a href='#trainer'><b>مدرّب CPR</b></a>."}
+  ],
+  quiz:[
+   {q:"ما معدل الضغطات الصدرية الصحيح للبالغين؟", o:["60–80 ضغطة/دقيقة","80–100 ضغطة/دقيقة","100–120 ضغطة/دقيقة","140–160 ضغطة/دقيقة"], a:2, w:"100–120 ضغطة في الدقيقة: بهذه السرعة يتحرك الدم ويجد القلب وقتاً ليمتلئ."},
+   {q:"ما عمق الضغطات للبالغ؟", o:["2–3 سم","5–6 سم","8–10 سم","حسب قوة المسعف"], a:1, w:"العمق الصحيح 5–6 سم."},
+   {q:"أنت وحدك ومعك طفل لا يتنفس، وليس معك هاتف. ماذا تفعل؟", o:["تذهب للاتصال أولاً","تبدأ الإنعاش دقيقتين ثم تطلب المساعدة","تنتظر وصول أحد","تعطيه نفَسين فقط"], a:1, w:"توقف القلب عند الأطفال سببه غالباً مشكلة في التنفس، لذلك دقيقتان من الإنعاش أولاً قد تنقذه."},
+   {q:"المصاب لا يستجيب ويطلق شهقات متقطعة. ماذا تفعل؟", o:["تعتبره يتنفس وتنتظر","تبدأ الإنعاش فوراً","ترش عليه ماء","تضعه في وضعية الإفاقة"], a:1, w:"الشهقات المتقطعة ليست تنفساً طبيعياً، بل علامة على توقف القلب."},
+   {q:"لماذا يجب ترك الصدر يرتد كاملاً بين الضغطات؟", o:["لكي يرتاح المسعف","لأن القلب يمتلئ بالدم أثناء الارتداد","لتجنب كسر الضلوع فقط","لا يهم"], a:1, w:"الارتداد الكامل يسمح للقلب بأن يمتلئ، فتدفع الضغطة التالية دماً أكثر."}
+  ]},
+
+{ id:"choking", title:"انسداد المجرى الهوائي (الشَّرقة)", short:"كيف تفرّق بين الانسداد الجزئي والكلي، وماذا تفعل في كل منهما",
+  hook:"إذا كان يسعل فاتركه يسعل. إذا لم يستطع أن يسعل أو يتكلم فتصرّف فوراً.",
+  blocks:[
+   {type:"def", h:"ما الانسداد الهوائي؟", html:"دخول جسم غريب، غالباً قطعة طعام، إلى مجرى التنفس فيسدّه <b>جزئياً</b> أو <b>كلياً</b>. في الانسداد الكلي لا يصل الهواء إلى الرئتين، وقد يفقد المصاب وعيه خلال دقائق."},
+   {type:"compare", h:"جزئي أم كلي؟", a:{t:"انسداد جزئي (خفيف)", tone:"ok", items:["يستطيع السعال بقوة","يستطيع الكلام أو إصدار صوت","يتنفس رغم الصعوبة","<b>ماذا تفعل:</b> شجّعه على الاستمرار في السعال، وابقَ معه"]}, b:{t:"انسداد كلي (شديد)", tone:"red", items:["لا يستطيع السعال أو سعاله ضعيف بلا صوت","لا يستطيع الكلام","يمسك رقبته بيديه ووجهه يحمرّ ثم يزرقّ","<b>ماذا تفعل:</b> تدخّل فوراً"]}},
+   {type:"note", tone:"why", text:"<b>ليه لا نتدخل في الانسداد الجزئي؟</b> لأن السعال القوي أقوى من أي ضربة أو ضغطة. التدخل قد يحرّك الجسم ويحوّل الانسداد الجزئي إلى انسداد كلي."},
+   {type:"sort", h:"جزئي أم كلي؟", a:"جزئي", b:"كلي", items:[["يسعل بقوة","a"],["لا يستطيع الكلام","b"],["يتكلم بصعوبة","a"],["لا يستطيع السعال","b"],["يمسك رقبته بيديه ولا يخرج صوتاً","b"],["نشجعه على الاستمرار في السعال","a"]]},
+   {type:"steps", h:"إسعاف الانسداد الكلي عند البالغ الواعي", items:[
+     ["اسأله: «هل أنت مختنق؟»","إذا أومأ ولم يستطع الكلام فابدأ. اطلب من أحد الاتصال بـ 999."],
+     ["5 ضربات على الظهر","قف بجانبه وخلفه قليلاً، أمِل جسمه للأمام، واضرب بكعب يدك بقوة بين لوحي الكتف 5 مرات. افحص بعد كل ضربة إن خرج الجسم."],
+     ["5 ضغطات على البطن (مناورة هايمليك)","قف خلفه ولفّ ذراعيك حول خصره. ضع قبضتك فوق السرة وتحت عظمة القص، وأمسكها باليد الأخرى، واسحب بقوة للداخل وللأعلى 5 مرات."],
+     ["كرّر: 5 ضربات ثم 5 ضغطات","حتى يخرج الجسم أو يفقد المصاب وعيه."],
+     ["إذا فقد الوعي","أنزله على الأرض برفق، وتأكد أن الإسعاف في الطريق، وابدأ CPR. قبل نفَسَي الإنقاذ انظر في فمه، وأخرج الجسم فقط إذا كنت تراه بوضوح."]]},
+   {type:"note", tone:"diff", text:"شرائح المحاضرة تذكر <b>مناورة هايمليك</b> وحدها. إرشادات جمعية القلب الأمريكية الصادرة في أكتوبر 2025 أصبحت توصي بالتبديل بين <b>5 ضربات على الظهر و5 ضغطات على البطن</b>، وهو ما كان معتمداً من قبل في الإرشادات الأوروبية والبريطانية."},
+   {type:"hotspot", h:"أين تضع قبضتك؟", prompt:"الضغطات البطنية لبالغ عادي: اضغط على المكان الصحيح.", zones:[[100,196,"✓",1,"صحيح: فوق السرة مباشرة وتحت عظمة القص."],[100,140,"",0,"منتصف الصدر للحامل والبدين فقط."],[100,74,"",0,"لا نضغط على الحلق أبداً."],[100,242,"",0,"هذا منخفض جداً، المكان الصحيح فوق السرة مباشرة."]]},
+   {type:"hotspot", preg:1, h:"وإذا كانت المصابة حاملاً؟", prompt:"نفس الإسعاف لامرأة حامل: أين يكون الضغط الآن؟", zones:[[100,140,"✓",1,"صحيح: مع الحمل أو البدانة الشديدة تكون الضغطات على منتصف الصدر بدلاً من البطن."],[100,196,"",0,"مع الحمل لا نضغط على البطن، لأن ذلك قد يؤذي الجنين ولا يصل إلى الحجاب الحاجز."],[100,74,"",0,"لا نضغط على الحلق."]]},
+   {type:"chips", h:"الأسباب الشائعة", items:["الطعام، خاصة اللحم والمكسرات","السوائل","أجسام صغيرة: عملات، خرز، أغطية أقلام","سقوط اللسان للخلف عند فاقد الوعي","الغرق"]},
+   {type:"list", h:"الوقاية", items:["قطّع الطعام إلى أجزاء صغيرة","امضغ ببطء وجيداً، خاصة مع الأسنان الصناعية","تجنّب الضحك والكلام وأنت تمضغ أو تبلع","لا تأكل وأنت تجري أو تتمدد","انتبه لأغطية الأقلام والأجسام الصغيرة في الفم أثناء المذاكرة"]},
+   {type:"note", tone:"warn", text:"بعد أي ضغطات على البطن يجب أن يراجع المصاب الطبيب، حتى لو بدا بخير، لأن الضغطات قد تسبب إصابات داخلية."}
+  ],
+  quiz:[
+   {q:"زميلك يسعل بقوة ويتكلم بعد أن شَرِق. ماذا تفعل؟", o:["تبدأ مناورة هايمليك فوراً","تضربه على ظهره بقوة","تشجعه على الاستمرار في السعال وتبقى معه","تعطيه ماء ليشرب"], a:2, w:"يسعل ويتكلم = انسداد جزئي. السعال أقوى وسيلة لإخراج الجسم."},
+   {q:"أين تكون الضغطات لامرأة حامل مختنقة؟", o:["فوق السرة","منتصف الصدر","أسفل البطن","على الظهر فقط"], a:1, w:"في الحمل والبدانة نضغط على منتصف الصدر."},
+   {q:"أي علامة تعني انسداداً كلياً؟", o:["يسعل بصوت عالٍ","يتكلم بصعوبة","لا يستطيع السعال ولا الكلام","يشعر بحكة في الحلق"], a:2, w:"لا سعال ولا كلام = انسداد كلي، فتدخّل فوراً."},
+   {q:"حسب الإرشادات الحالية، كيف تسعف بالغاً واعياً بانسداد كلي؟", o:["ماء ثم انتظار","5 ضربات على الظهر ثم 5 ضغطات على البطن، بالتبديل","ضغطات صدرية فقط","تضع إصبعك في حلقه لإخراج الجسم"], a:1, w:"التبديل بين 5 ضربات و5 ضغطات حتى يخرج الجسم أو يفقد المصاب وعيه. لا تُدخل إصبعك دون أن ترى الجسم، فقد تدفعه للداخل."},
+   {q:"فقد المختنق وعيه. ماذا تفعل؟", o:["تستمر في الضغطات البطنية وهو واقف","تنزله للأرض، وتتأكد من الاتصال بالإسعاف، وتبدأ CPR","تضعه في وضعية الإفاقة وتنتظر","تعطيه ماء"], a:1, w:"الضغطات الصدرية في CPR قد تساعد أيضاً على إخراج الجسم."}
+  ]},
+
+{ id:"fainting", title:"الإغماء", short:"لماذا يحدث، وكيف تتعرّف عليه قبل أن يقع، وماذا تفعل بعده",
+  hook:"الإغماء البسيط ينتهي خلال دقيقة إذا مدّدت المصاب ورفعت قدميه، أما رش الماء فلا يفيد بشيء.",
+  blocks:[
+   {type:"def", h:"ما الإغماء؟", html:"فقدان مؤقت للوعي، يستمر عادة <b>أقل من دقيقة</b>، لأن كمية الدم الواصلة للدماغ قلّت فجأة. عندما يسقط الشخص ويصبح مستلقياً يعود الدم إلى الدماغ، ولهذا يستعيد وعيه عادة بسرعة."},
+   {type:"chips", h:"الأسباب الشائعة", items:["الوقوف فجأة بعد الجلوس أو النوم","الوقوف طويلاً في مكان حار أو مزدحم","انفعال شديد، خوف، أو رؤية دم","الجوع أو انخفاض سكر الدم","الجفاف وقلة شرب الماء","فقر الدم (الأنيميا)"]},
+   {type:"list", h:"علامات تسبق الإغماء", grid:true, items:["دوخة ورغبة في التقيؤ","زغللة في الرؤية","شحوب الوجه","عرق بارد غزير","برودة الأطراف","تنميل في الأطراف"]},
+   {type:"note", tone:"tip", text:"<b>إذا لاحظت هذه العلامات قبل أن يسقط:</b> اجعله يجلس ويضع رأسه بين ركبتيه، أو يستلقي فوراً. هذا يمنع السقوط والإصابة."},
+   {type:"note", tone:"extra", text:"الإرشادات الحديثة تنصح أيضاً بشدّ العضلات عند الإحساس بالدوخة: <b>تشبيك الساقين مع شدّ عضلات الفخذين والبطن</b>، أو شبك اليدين وشدّهما. هذا يرفع ضغط الدم ويؤخّر الإغماء أو يمنعه."},
+   {type:"infog", h:"إسعاف الإغماء", src:"img/info-fainting.jpg", cap:"إسعاف الإغماء: خطوات، افعل، لا تفعل", alt:"إنفوجرافيك: مدّده على ظهره وتأكد أنه يتنفس، ارفع قدميه 20–25 سم، فكّ الملابس الضيقة ووفّر هواء نقياً، انتظر حتى يفيق ولا تتركه يقف فجأة، وإذا لم يفق خلال دقيقة أو دقيقتين ضعه في وضعية الإفاقة واتصل بـ 999. افعل: ارفع القدمين، هوِّ المكان، أعطه ماء أو عصيراً بعد أن يفيق. لا تفعل: رش الماء، العطور والنشادر، صفع الوجه، إعطاء مشروب وهو فاقد الوعي، إجلاسه أو إيقافه فوراً."},
+   {type:"infog", h:"وضعية الإفاقة", src:"img/info-recovery.jpg", cap:"وضعية الإفاقة: لحماية المصاب ومنع انسداد مجرى الهواء", alt:"إنفوجرافيك وضعية الإفاقة في خمس خطوات: تجهيز الذراع القريبة بزاوية قائمة، تثبيت ظهر الكف الأخرى على الخد، ثني الساق البعيدة، لف المصاب على جانبه بسحب الركبة، ثم إمالة الرأس قليلاً للخلف لفتح مجرى الهواء ومراقبة التنفس."},
+      {type:"legs", h:"ارفع القدمين بالمقدار الصحيح", prompt:"حرّك المؤشر حتى تصل للارتفاع المطلوب:"},
+      {type:"call", h:"متى لا يكون إغماءً بسيطاً؟", items:["لم يستعد وعيه خلال دقيقة أو دقيقتين","أُغمي عليه أثناء مجهود بدني أو رياضة","يشكو من ألم في الصدر أو خفقان قبل الإغماء","أصيب في رأسه أثناء السقوط","امرأة حامل، أو مريض قلب أو سكري","تكرر الإغماء"]}
+  ],
+  quiz:[
+   {q:"كم سنتيمتراً ترفع قدمي المصاب المغمى عليه؟", o:["5–10 سم","20–25 سم","50 سم","لا نرفعهما"], a:1, w:"20–25 سم كما في المحاضرة، ليعود الدم إلى الدماغ."},
+   {q:"أيٌّ من التالي خطأ في إسعاف الإغماء؟", o:["فك الأحزمة","تهوية المكان","رش الماء على الوجه","رفع القدمين"], a:2, w:"رش الماء، والعطور والنشادر، وصفع الوجه كلها لا تفيد."},
+   {q:"السبب المباشر للإغماء هو…", o:["زيادة الأكسجين في الدماغ","نقص الدم الواصل إلى الدماغ مؤقتاً","ارتفاع ضغط الدم دائماً","التهاب في الأذن"], a:1, w:"قلّ تدفق الدم للدماغ فجأة، والاستلقاء يعيده."},
+   {q:"مغمى عليه لم يفِق بعد دقيقتين. ماذا تفعل؟", o:["ترش عليه ماء أكثر","تضعه في وضعية الإفاقة وتتصل بـ 999","تجلسه على كرسي","تنتظر نصف ساعة"], a:1, w:"الإغماء البسيط يزول خلال دقيقة تقريباً. استمرار فقدان الوعي يعني أن الحالة قد تكون أخطر."}
+  ]},
+
+{ id:"diabetes", title:"السكري وانخفاض السكر", short:"كيف تفرّق بين ارتفاع السكر وانخفاضه، ولماذا نعطي السكر عند الشك",
+  hook:"إذا كان مريض السكري واعياً ويستطيع البلع، فالسكر لن يضرّه، وقد ينقذه.",
+  blocks:[
+   {type:"def", h:"ما المشكلة عند مريض السكري؟", html:"مريض السكري قد يرتفع سكر دمه أو ينخفض بشدة. <b>الانخفاض</b> أخطر وأسرع: يحدث خلال دقائق، وقد يفقد المريض وعيه بسرعة. <b>الارتفاع</b> يتطوّر ببطء خلال ساعات أو أيام."},
+   {type:"list", h:"أسباب انخفاض السكر", items:["أخذ الإنسولين أو الدواء ثم عدم الأكل","جرعة إنسولين أكبر من اللازم","مجهود بدني أو رياضة دون أكل كافٍ","القيء أو عدم الأكل بسبب المرض"]},
+   {type:"compare", h:"ارتفاع أم انخفاض؟", a:{t:"انخفاض السكر: سريع", tone:"blue", items:["جوع وضعف عام","رعشة وعرق بارد وشحوب","تغيّر في السلوك: ارتباك، عصبية، كلام غير مفهوم، يبدو كأنه سكران","زغللة في الرؤية","نعاس ثم فقدان وعي سريع"]}, b:{t:"ارتفاع السكر: بطيء", tone:"amber", items:["عطش شديد","كثرة التبول","جفاف الجلد والفم","تنفس عميق وسريع، ورائحة نَفَس تشبه الفاكهة","غثيان وقيء","نعاس يتزايد تدريجياً ثم غيبوبة"]}},
+   {type:"note", tone:"diff", text:"شرائح المحاضرة تذكر <b>التعرّق والحرارة المرتفعة</b> ضمن علامات ارتفاع السكر. في المراجع الطبية، التعرق البارد من علامات <b>الانخفاض</b>، أما الارتفاع فيأتي معه جفاف الجلد والعطش وكثرة التبول. راجع ما سيعتمده الأستاذ في الامتحان."},
+   {type:"sort", h:"ارتفاع أم انخفاض؟", a:"ارتفاع", b:"انخفاض", items:[["العطش الشديد","a"],["رعشة بالأطراف","b"],["غيبوبة سريعة دون مقدمات","b"],["تنفس عميق ورائحة فاكهة","a"],["ارتباك وعصبية","b"],["غيبوبة بطيئة","a"],["جوع وضعف عام","b"],["كثرة التبول","a"]]},
+   {type:"steps", h:"إسعاف مريض السكري الواعي", items:[
+     ["أجلسه أو مدّده في مكان آمن","حتى لا يسقط."],
+     ["أعطه سكراً سريعاً إذا كان يستطيع البلع","كوب صغير من العصير (150–200 مل)، أو مشروب غازي عادي، أو 3–4 ملاعق صغيرة من السكر أو العسل. هذا يساوي تقريباً 15–20 غراماً من السكر."],
+     ["انتظر 10–15 دقيقة","إذا لم يتحسن فأعطه كمية أخرى."],
+     ["بعد أن يتحسن","أعطه وجبة خفيفة فيها نشويات، مثل ساندويتش أو بسكويت، حتى لا ينخفض السكر مرة أخرى."],
+     ["اتصل بـ 999","إذا لم يتحسن، أو ساءت حالته، أو كانت هذه أول مرة."]]},
+   {type:"note", tone:"why", text:"<b>ليه نعطي السكر حتى لو لم نكن متأكدين إن كان مرتفعاً أو منخفضاً؟</b> لأن الانخفاض خطير ويُتلف الدماغ بسرعة، بينما كمية صغيرة من السكر لن تضرّ من سكره مرتفع خلال الوقت القصير حتى يصل الإسعاف."},
+   {type:"note", tone:"warn", text:"إذا كان فاقداً للوعي أو لا يستطيع البلع: <b>لا تضع أي شيء في فمه</b>، لأنه قد يختنق. ضعه في وضعية الإفاقة، واتصل بـ 999، وراقب تنفسه."},
+   {type:"note", tone:"tip", text:"المشروب الغازي يجب أن يكون <b>عادياً</b> وليس «دايت» أو «زيرو»، فهذه لا تحتوي على سكر."}
+  ],
+  quiz:[
+   {q:"زميل مصاب بالسكري مرتبك ويرتجف ويتعرق، وهو واعٍ ويبلع. ماذا تعطيه؟", o:["ماء فقط","عصير فواكه أو عسل","جرعة إنسولين","لا شيء"], a:1, w:"هذه علامات انخفاض السكر، وهو واعٍ ويبلع، فأعطه سكراً سريعاً."},
+   {q:"أي من هذه علامات انخفاض السكر؟", o:["عطش وكثرة تبول","رعشة وعرق بارد وارتباك","تنفس عميق برائحة فاكهة","جفاف الجلد"], a:1, w:"الانخفاض: رعشة، وعرق بارد، وشحوب، وارتباك، وفقدان وعي سريع."},
+   {q:"مريض سكري فاقد الوعي. ما التصرف الصحيح؟", o:["تضع سكراً في فمه","تسقيه عصيراً ببطء","لا شيء بالفم، وضعية الإفاقة، والاتصال بـ 999","تعطيه إنسولين"], a:2, w:"لا تعطِ شيئاً بالفم لفاقد الوعي، فقد يختنق."},
+   {q:"لماذا نعطي السكر عند الشك بين الارتفاع والانخفاض؟", o:["لأنه يعالج الارتفاع","لأن الانخفاض أخطر وأسرع، والسكر لن يضرّ مرتفع السكر كثيراً على المدى القصير","لأنه يقلل العطش","لا نعطيه أبداً"], a:1, w:"خطر تأخير علاج الانخفاض أكبر بكثير من ضرر كمية صغيرة من السكر."}
+  ]},
+
+{ id:"burns", title:"الحروق", short:"أهمية الجلد، وأنواع الحروق ودرجاتها، وإسعاف كل نوع",
+  hook:"لكي تفهم الحرق افهم الجلد أولاً: كلما وصل الحرق إلى طبقة أعمق كان أخطر.",
+  blocks:[
+   {type:"def", h:"لماذا الجلد مهم؟", html:"الجلد <b>أكبر عضو في الجسم</b>، وهو الحاجز الذي يفصلنا عن العالم الخارجي. عندما يحترق الجلد لا نفقد «الشكل» فقط، بل نفقد وظائف تحمي حياتنا، ولهذا قد يكون الحرق الكبير خطيراً حتى لو لم يكن عميقاً."},
+   {type:"pills", h:"وظائف الجلد", items:[["","الحماية من العدوى","يمنع دخول الجراثيم. الحرق يفتح لها الباب"],["","حفظ السوائل","يمنع تبخر الماء من الجسم. الحروق الكبيرة تسبب جفافاً وصدمة"],["","تنظيم الحرارة","بالتعرق وتوسّع الأوعية. المحروق يفقد حرارته بسهولة"],["","الإحساس","فيه أعصاب اللمس والألم والحرارة"]]},
+   {type:"compare", h:"طبقات الجلد الثلاث", a:{t:"البشرة والأدمة", tone:"blue", items:["<b>البشرة:</b> الطبقة الخارجية الرقيقة، وهي الحاجز الواقي، ولا تحتوي أوعية دموية","<b>الأدمة:</b> تحتها، وفيها الأوعية الدموية والأعصاب وجذور الشعر والغدد العرقية والكولاجين"]}, b:{t:"الطبقة الدهنية (تحت الجلد)", tone:"amber", items:["دهون ونسيج ضام","تعزل الجسم وتحفظ حرارته","تحتها العضلات والعظام"]}},
+   {type:"skin", h:"شاهد كيف يختلف عمق الحرق"},
+   {type:"compare", h:"أنواع الحروق حسب السبب", a:{t:"حروق حرارية وشمسية", tone:"red", items:["<b>اللهب:</b> نار، ولاعة، موقد","<b>السوائل والبخار:</b> ماء مغلي، شاي، زيت، وهي أكثرها شيوعاً","<b>الأسطح الساخنة:</b> مكواة، فرن، شبك","<b>الشمس:</b> الأشعة فوق البنفسجية"]}, b:{t:"حروق كيميائية وكهربائية", tone:"blue", items:["<b>الكيميائية:</b> أحماض، قلويات، منظفات قوية، مواد المختبر","<b>الكهربائية:</b> تيار كهربائي أو صاعقة؛ الضرر الظاهر صغير لكن الداخلي قد يكون كبيراً","<b>الاستنشاق:</b> دخان أو هواء ساخن يحرق مجرى التنفس"]}},
+   {type:"tri", h:"درجات الحروق حسب العمق", items:[
+     {t:"الدرجة الأولى (سطحية)", tone:"amber", layer:"البشرة فقط", items:["احمرار وألم","لا فقاعات","مثل حروق الشمس الخفيفة","تلتئم خلال 3–7 أيام دون أثر"]},
+     {t:"الدرجة الثانية (جزئية)", tone:"red", layer:"البشرة وجزء من الأدمة", items:["<b>فقاعات</b> مليئة بسائل","ألم شديد جداً","الجلد أحمر ولامع ورطب","تلتئم خلال 2–3 أسابيع، وقد تترك أثراً"]},
+     {t:"الدرجة الثالثة (كاملة)", tone:"ink", layer:"كل طبقات الجلد وما تحتها", items:["الجلد أبيض أو بني أو أسود، أو قاسٍ كالجلد المدبوغ","<b>قد لا يؤلم</b> لأن الأعصاب احترقت","لا تلتئم وحدها","تحتاج مستشفى وغالباً ترقيع جلد"]}]},
+   {type:"note", tone:"why", text:"<b>ليه حرق الدرجة الثالثة قد لا يؤلم؟</b> لأن الأعصاب الموجودة في الأدمة احترقت. لهذا لا تحكم على خطورة الحرق من شدة الألم؛ الحرق الذي لا يؤلم قد يكون الأخطر."},
+   {type:"sort3", h:"ما درجة هذا الحرق؟", labels:["أولى","ثانية","ثالثة"], items:[["احمرار وألم دون فقاعات","0"],["فقاعات مليئة بسائل وألم شديد","1"],["جلد أبيض قاسٍ لا يؤلم","2"],["حرق شمس خفيف بعد البحر","0"],["جلد أسود متفحّم","2"],["جلد أحمر لامع ورطب مع فقاعات","1"]]},
+   {type:"note", tone:"tip", text:"<b>كيف تقدّر مساحة الحرق؟</b> كف يد المصاب مع أصابعه يساوي تقريباً <b>1%</b> من مساحة جسمه. أي حرق أكبر من كف اليد يحتاج تقييماً طبياً."},
+   {type:"infog", h:"ملخص مصوّر: إسعاف الحروق (افعل / لا تفعل)", src:"img/info-burns.jpg", cap:"الإسعافات الأولية للحروق: افعل / لا تفعل", alt:"إنفوجرافيك يوضح ما يجب فعله وما يجب تجنبه عند الحروق ومتى تتصل بـ 999"},
+   {type:"infog", h:"إسعاف الحروق الحرارية (اللهب، السوائل، الأسطح)", src:"img/info-burns-thermal.jpg", cap:"إسعاف الحروق الحرارية، وماذا تفعل إذا اشتعلت ملابس شخص", alt:"إنفوجرافيك: أوقف مصدر الحرارة، برّد الحرق 20 دقيقة تحت ماء جارٍ فاتر أو بارد، اخلع الخواتم والساعات، غطِّ الحرق بغلاف بلاستيكي أو ضمادة غير لاصقة، أبقِ الجسم دافئاً. وإذا اشتعلت الملابس: توقف، انبطح، تدحرج."},
+      {type:"note", tone:"diff", text:"شرائح المحاضرة تقول «برّد الحرق بالماء البارد» دون تحديد مدة. المراجع الحالية، مثل جمعيات الحروق والصليب الأحمر البريطاني، تحدد <b>20 دقيقة على الأقل</b> تحت ماء جارٍ."},
+      {type:"steps", h:"إسعاف الحروق الكيميائية", items:[
+     ["احمِ نفسك","قفازات، وابتعد عن الأبخرة. اعرف المادة من العبوة إن أمكن."],
+     ["أزل المسحوق الجاف أولاً","بفرشاة أو قطعة قماش وأنت تلبس القفاز، لأن بعض المساحيق تتفاعل مع الماء."],
+     ["اخلع الملابس والمجوهرات الملوثة",""],
+     ["اشطف بماء جارٍ كثير 20 دقيقة على الأقل","والقلويات، مثل منظفات الأفران، تحتاج وقتاً أطول."],
+     ["العين","اشطفها من جهة الأنف إلى الخارج 20 دقيقة، والجفن مفتوح، ثم إلى الطوارئ."],
+     ["اتصل بـ 999","كل حرق كيميائي يحتاج تقييماً طبياً."]]},
+   {type:"steps", h:"إسعاف الحروق الكهربائية", items:[
+     ["لا تلمسه وهو متصل بالكهرباء","الكهرباء ستنتقل إليك."],
+     ["افصل التيار","من المفتاح أو القاطع أو انزع القابس. إن لم تستطع فأبعد المصدر بأداة جافة عازلة كعصا خشبية وأنت تقف على شيء جاف."],
+     ["تحقق من التنفس","إن لم يكن يتنفس طبيعياً فابدأ CPR واطلب جهاز AED."],
+     ["اتصل بـ 999 دائماً","الكهرباء قد تؤذي القلب والأعضاء الداخلية، وغالباً تترك حرقاً عند مكان دخولها ومكان خروجها."],
+     ["برّد الحروق الظاهرة","بعد فصل التيار فقط، وغطّها."]]},
+   {type:"note", tone:"why", text:"<b>معنى «لا تستخدم الماء» في المحاضرة:</b> لا تصب الماء على المصاب أو على المصدر <b>والكهرباء ما زالت متصلة</b>، لأن الماء موصل للكهرباء. بعد فصل التيار يُبرَّد الحرق كأي حرق آخر."},
+   {type:"compare", h:"حروق الشمس واستنشاق الدخان", a:{t:"حروق الشمس", tone:"amber", items:["انتقل إلى الظل","دش أو كمادات باردة","اشرب ماء كثيراً","جل الألوفيرا أو مرطب خفيف","راجع الطبيب إذا ظهرت فقاعات كثيرة أو حرارة أو قشعريرة"]}, b:{t:"استنشاق الدخان", tone:"red", items:["علامات: سواد حول الفم والأنف، سعال، صوت مبحوح، شعر الأنف محروق","أخرجه إلى الهواء الطلق إذا كان آمناً","<b>اتصل بـ 999 فوراً</b>، فمجرى التنفس قد يتورم خلال ساعات","أجلسه في الوضع الذي يريحه في التنفس"]}},
+   {type:"call", h:"اتصل بـ 999 أو اذهب للطوارئ إذا", items:["الحرق أكبر من كف يد المصاب","أي حرق من الدرجة الثالثة","في الوجه أو اليدين أو القدمين أو المفاصل أو الأعضاء التناسلية","حرق كيميائي أو كهربائي","علامات استنشاق دخان أو صعوبة في التنفس","المصاب طفل أو كبير في السن أو مريض مزمن"]},
+   {type:"list", h:"نصائح للوقاية في السكن والجامعة", items:["أدر مقابض القدور إلى الداخل بعيداً عن حافة الموقد","لا تترك الزيت على النار وأنت بعيد، وإذا اشتعل فأطفئ النار وغطِّ القدر بغطاء ولا تستخدم الماء أبداً","افحص حرارة الماء قبل الاستحمام","لا تضع أكثر من جهاز في وصلة كهرباء واحدة، وافصل الأجهزة التالفة","في المختبر: البس النظارة والقفازات والمعطف، واعرف مكان دش الطوارئ وغسيل العين","استخدم واقي الشمس وتجنّب الشمس المباشرة وقت الظهيرة"]},
+   {type:"sort", h:"صح أم خطأ؟", a:"صح", b:"خطأ", items:[["تبريد الحرق بماء جارٍ 20 دقيقة","a"],["وضع الثلج على الحرق","b"],["سحب المصعوق بيدك والتيار متصل","b"],["تغطية الحرق بغلاف بلاستيكي للطعام","a"],["فقع الفقاعات لتجف أسرع","b"],["صب الماء على زيت مشتعل","b"],["إزالة المسحوق الكيميائي الجاف قبل الشطف","a"]]}
+  ],
+  quiz:[
+   {q:"أي وظيفة من وظائف الجلد تجعل الحرق الكبير يسبب جفافاً وصدمة؟", o:["الإحساس","حفظ السوائل في الجسم","إنتاج الشعر","اللون"], a:1, w:"الجلد يمنع تبخر السوائل؛ عند احتراقه يفقد الجسم سوائل كثيرة."},
+   {q:"حرق فيه فقاعات وألم شديد. ما درجته؟", o:["الأولى","الثانية","الثالثة","ليس حرقاً"], a:1, w:"الفقاعات علامة الدرجة الثانية، لأن الحرق وصل إلى جزء من الأدمة."},
+   {q:"لماذا قد لا يؤلم حرق الدرجة الثالثة؟", o:["لأنه بسيط","لأن الأعصاب احترقت","لأن الجسم تعوّد","لأنه بارد"], a:1, w:"الأعصاب في الأدمة احترقت، ولهذا لا نحكم على الخطورة من الألم."},
+   {q:"حرق صغير من ماء مغلي على اليد. ماذا تفعل؟", o:["معجون أسنان","ماء جارٍ فاتر أو بارد لمدة 20 دقيقة","ثلج مباشرة","تفقع الفقاعة"], a:1, w:"التبريد بالماء الجاري 20 دقيقة يوقف تعمّق الحرق ويخفف الألم."},
+   {q:"مسحوق كيميائي على ذراع زميلك. ما أول خطوة بعد لبس القفاز؟", o:["تصب الماء مباشرة","تزيل المسحوق الجاف بالفرشاة ثم تشطف","تضع كريم","تغطيه بضمادة"], a:1, w:"بعض المساحيق تتفاعل مع الماء، فنزيلها أولاً ثم نشطف 20 دقيقة."},
+   {q:"شخص ما زال ملامساً لسلك كهربائي. ماذا تفعل أولاً؟", o:["تسحبه بيدك فوراً","ترش عليه ماء","تفصل الكهرباء","تبدأ CPR وهو ملامس للسلك"], a:2, w:"افصل التيار أولاً، وإلا ستُصعق أنت أيضاً."},
+   {q:"اشتعلت ملابس زميلك. ما الأفضل؟", o:["يجري بسرعة","توقف، انبطح، تدحرج","يخلع ملابسه وهو يجري","ينتظر الإطفاء"], a:1, w:"الجري يزوّد النار بالأكسجين، والتدحرج يخنقها."}
+  ]},
+
+
+{ id:"seizure", title:"التشنج (النوبة)", short:"احمِه أثناء النوبة، وراقب الوقت، واعتنِ به بعدها",
+  hook:"لا تمسكه ولا تضع شيئاً في فمه. مهمتك أن تحميه من الأذى وتراقب الوقت.",
+  blocks:[
+   {type:"infog", h:"ملخص مصوّر: الإسعافات الأولية للتشنجات", src:"img/info-seizure.jpg", cap:"الإسعافات الأولية للتشنجات: تصرّف بهدوء وكن مستعداً للمساعدة", alt:"إنفوجرافيك بخمس خطوات لإسعاف التشنجات، وأخطاء يجب تجنبها، ومتى تتصل بـ 999 في البحرين"},
+   {type:"def", h:"ما التشنج؟", html:"نشاط <b>كهربائي غير طبيعي ومفاجئ في الدماغ</b>، يسبب حركات لا إرادية وفقداناً للوعي أحياناً. أغلب النوبات تتوقف وحدها خلال <b>1–3 دقائق</b>.<br><b>النوبة</b> حدث عارض، أما <b>الصرع</b> فهو ميل الدماغ لتكرار النوبات دون سبب مباشر. فليست كل نوبة صرعاً؛ فقد تحدث بسبب الحمى أو انخفاض السكر أو إصابة الرأس."},
+   {type:"chips", h:"الأسباب", items:["الصرع (أشهر سبب)","إصابة في الرأس","انخفاض سكر الدم","التسمم","ضربة الشمس والإجهاد الحراري","الحرارة المرتفعة عند الأطفال"]},
+   {type:"types", h:"أنواع النوبات", items:[
+     {t:"النوبة التشنجية الكبرى", tone:"red", tag:"تشمل الدماغ كله، وهي الأشهر", items:["فقدان الوعي وسقوط مفاجئ","تصلب الجسم ثم اهتزاز الذراعين والساقين","تستمر عادة 1–3 دقائق","بعدها ارتباك ونعاس شديد"]},
+     {t:"النوبة الغيابية", tone:"blue", tag:"أشهر عند الأطفال", items:["تحديق مفاجئ في الفراغ وعدم استجابة","تستمر ثواني فقط، وغالباً أقل من 30 ثانية","لا يسقط، ولا يتذكرها بعد ذلك","كثيراً ما تُفهم خطأً على أنها شرود"]},
+     {t:"النوبة البؤرية (الجزئية)", tone:"amber", tag:"تبدأ من منطقة واحدة في الدماغ", items:["قد يبقى واعياً: رعشة في يد أو جانب واحد، أو إحساس غريب برائحة أو طعم أو خوف","أو يضطرب وعيه: ارتباك وحركات متكررة مثل لعق الشفتين أو شدّ الملابس","قد تتحول إلى نوبة كبرى"]},
+     {t:"تشنج الحمى", tone:"ink", tag:"عند الأطفال الصغار مع ارتفاع الحرارة", items:["يرتبط بارتفاع شديد في حرارة الطفل","غالباً ينتهي خلال دقائق وليس صرعاً","يحتاج تقييماً طبياً، خاصة في المرة الأولى"]}]},
+   {type:"note", tone:"tip", text:"<b>الإسعاف الأساسي واحد مهما كان النوع:</b> ابقَ معه، واحمِه من الأذى، وراقب الوقت."},
+   {type:"list", h:"كيف تبدو النوبة التشنجية الكبرى؟", grid:true, items:["يسقط فجأة ويتصلب جسمه","حركات اهتزازية في الذراعين والساقين","قد يعضّ لسانه أو يخرج زبد من فمه","قد يفقد السيطرة على المثانة","بعد النوبة: تعب شديد وارتباك ونعاس"]},
+   {type:"note", tone:"why", text:"<b>ليه لا نضع شيئاً في فمه؟</b> الاعتقاد بأنه «سيبلع لسانه» خاطئ. وضع ملعقة أو إصبع في فمه قد يكسر أسنانه أو يجرحك أو يسد مجرى الهواء.<br><b>ليه لا نمسكه؟</b> تقييد الحركة لا يوقف النوبة، وقد يسبب كسوراً له أو إصابة لك."},
+   {type:"sort", h:"صح أم خطأ؟", a:"صح", b:"خطأ", items:[["إبعاد الأثاث عن المصاب","a"],["وضع وسادة تحت رأسه","a"],["تثبيت ذراعيه بقوة","b"],["وضع ملعقة في فمه","b"],["حساب مدة النوبة","a"],["دحرجته لجانبه بعد النوبة","a"],["سكب الماء على وجهه","b"]]},
+   {type:"infog", h:"بعد النوبة: وضعية الإفاقة", src:"img/info-recovery.jpg", cap:"وضعية الإفاقة بعد انتهاء النوبة", alt:"إنفوجرافيك وضعية الإفاقة في خمس خطوات."},
+   {type:"call", h:"اتصل بـ 999 إذا", items:["استمرت النوبة أكثر من 5 دقائق","بدأت نوبة ثانية قبل أن يفيق من الأولى","هذه أول نوبة له في حياته","أصيب أثناء النوبة، أو حدثت في الماء","لا يتنفس طبيعياً بعد النوبة","لم يستعد وعيه بعد انتهائها","امرأة حامل أو مريض سكري"]},
+   {type:"list", h:"نصائح لمن تتكرر عنده النوبات", items:["الالتزام بتناول الأدوية الموصوفة بانتظام","تجنّب المحفزات مثل قلة النوم والإجهاد والضوء الساطع","استشر الطبيب إذا كانت النوبات متكررة","يفيد أن يعرّف زملاؤه المقرّبون بحالته وبما يجب فعله"]}
+  ],
+  quiz:[
+   {q:"أثناء نوبة التشنج، ما التصرف الصحيح؟", o:["تثبيت ذراعيه بقوة","إبعاد الأشياء الصلبة عنه وحماية رأسه","وضع ملعقة في فمه","رش الماء عليه"], a:1, w:"نحميه من الأذى، ولا نقيّد حركته، ولا نضع شيئاً في فمه."},
+   {q:"بعد النوبة يوجد قيء في فمه ولا إصابة في الرقبة. ماذا تفعل؟", o:["تجلسه فوراً","تضعه على جانبه في وضعية الإفاقة","تعطيه ماء","تتركه على ظهره"], a:1, w:"وضعية الإفاقة تسمح للسوائل بالخروج وتحمي مجرى الهواء."},
+   {q:"متى تتصل بالإسعاف؟", o:["في كل نوبة مهما كانت قصيرة","إذا استمرت أكثر من 5 دقائق أو كانت أول نوبة","لا نتصل أبداً","بعد ساعة"], a:1, w:"النوبة الطويلة أو المتكررة أو الأولى تحتاج تقييماً طبياً عاجلاً."},
+   {q:"طالب توقف فجأة عن الكلام وحدّق في الفراغ ثوانٍ ثم عاد طبيعياً دون أن يسقط. ما النوع الأرجح؟", o:["النوبة التشنجية الكبرى","النوبة الغيابية","الإغماء بسبب الجوع","ضربة شمس"], a:1, w:"التحديق القصير دون سقوط ولا اهتزاز هو علامة النوبة الغيابية، وكثيراً ما تُظن شروداً."},
+   {q:"لماذا لا نضع شيئاً في فم المتشنج؟", o:["لأنه سيبلعه","لأنه قد يكسر أسنانه أو يسد مجرى الهواء","لأنه لا يهم","لأن الإسعاف سيفعل ذلك"], a:1, w:"فكرة أنه سيبلع لسانه خاطئة، ووضع أي شيء في فمه أخطر من عدم وضعه."}
+  ]},
+
+{ id:"heat", title:"ضربة الشمس والإجهاد الحراري", short:"كيف تفرق بينهما، ولماذا ضربة الشمس حالة طارئة",
+  hook:"العلامة الفارقة هي الارتباك. إذا كان المصاب مرتبكاً في الحر فهذه ضربة شمس حتى يثبت العكس.",
+  blocks:[
+   {type:"def", h:"ما المشكلة؟", html:"الجسم يتخلص من الحرارة بالتعرّق. في الحر الشديد أو المجهود الطويل يفقد الجسم الماء والأملاح فيحدث <b>الإجهاد الحراري</b>. إذا استمر الوضع يفشل نظام التبريد وترتفع حرارة الجسم فوق 40°م، فتحدث <b>ضربة الشمس</b>، وهي حالة طارئة تهدد الحياة."},
+   {type:"compare", h:"إجهاد حراري أم ضربة شمس؟", a:{t:"الإجهاد الحراري", tone:"amber", items:["تعرّق غزير، وجلد بارد ورطب وشاحب","دوخة وصداع وغثيان","تشنجات عضلية","نبض سريع وضعيف","<b>واعٍ ويفهم ما يدور حوله</b>"]}, b:{t:"ضربة الشمس", tone:"red", items:["جلد ساخن جداً، وقد يكون جافاً أو ما زال متعرقاً بعد الرياضة","<b>ارتباك، كلام غير مفهوم، تصرفات غريبة</b>","تدهور سريع في الوعي","قد تحدث تشنجات أو إغماء","حرارة الجسم 40°م أو أكثر"]}},
+   {type:"note", tone:"diff", text:"شرائح المحاضرة تذكر «التعرق» من علامات ضربة الشمس، وهذا صحيح في ضربة الشمس الناتجة عن المجهود، مثل لاعب في الملعب. لكن الأهم للتشخيص هو <b>تغيّر الوعي</b>، وليس وجود العرق أو غيابه."},
+   {type:"steps", h:"إسعاف ضربة الشمس", items:[
+     ["اتصل بـ 999 فوراً","ضربة الشمس حالة طارئة."],
+     ["انقله إلى مكان بارد","ظل أو مكان مكيّف وجيد التهوية."],
+     ["انزع الملابس الزائدة",""],
+     ["ابدأ التبريد السريع","أفضل طريقة: غمر الجسم في ماء بارد حتى الرقبة إن أمكن. وإن لم يكن ممكناً: رش الماء البارد على الجسم كله مع التهوية المستمرة."],
+     ["كمادات ثلج","على الرقبة والإبطين وأعلى الفخذين والظهر."],
+     ["لا تعطه شيئاً ليشربه إذا كان مرتبكاً","قد يختنق. اكتفِ بالتبريد حتى يصل الإسعاف."]]},
+   {type:"note", tone:"why", text:"<b>ليه الرقبة والإبطان وأعلى الفخذين؟</b> لأن فيها أوعية دموية كبيرة قريبة من سطح الجلد، فيبرد الدم بسرعة ثم يدور في كل الجسم."},
+   {type:"hotspot", multi:1, h:"ضع كمادات الثلج", prompt:"اضغط على كل الأماكن الصحيحة (من الأمام):", done:"أحسنت. لا تنسَ الظهر أيضاً.", zones:[[100,76,"عنق",1,""],[62,110,"إبط",1,""],[138,110,"إبط",1,""],[84,262,"فخذ",1,""],[116,262,"فخذ",1,""],[100,30,"",0,"الجبهة ليست من أفضل الأماكن، لأن الأوعية الكبيرة ليست قريبة من السطح هنا."],[100,190,"",0,"البطن ليس من الأماكن الأفضل."],[80,345,"",0,"الركبة ليست من الأماكن الأفضل."]]},
+   {type:"steps", h:"إسعاف الإجهاد الحراري", items:[["انقله إلى مكان بارد ومدّده","وارفع قدميه قليلاً."],["أعطه ماءً أو مشروباً فيه أملاح","رشفات متتالية، لأنه واعٍ."],["برّده بكمادات مبللة ومروحة",""],["راقبه","إذا ارتبك أو ساء وعيه فتعامل معه كضربة شمس واتصل بـ 999."]]},
+   {type:"list", h:"الوقاية في البحرين صيفاً", items:["اشرب الماء باستمرار، حتى قبل أن تعطش","تجنّب الأنشطة الخارجية بين 11 صباحاً و4 عصراً","البس ملابس فاتحة وواسعة، وغطِّ رأسك","خذ فترات راحة في الظل أثناء الرياضة"]}
+  ],
+  quiz:[
+   {q:"ما العلامة التي تفرّق ضربة الشمس عن الإجهاد الحراري؟", o:["العطش","تغيّر الوعي والارتباك","الصداع","التعرّق"], a:1, w:"المصاب بالإجهاد الحراري واعٍ، أما الارتباك فيعني ضربة شمس."},
+   {q:"أين نضع كمادات الثلج في ضربة الشمس؟", o:["على الجبهة فقط","الرقبة والإبطين وأعلى الفخذين والظهر","على القدمين","على البطن فقط"], a:1, w:"أوعية دموية كبيرة قريبة من الجلد، فيبرد الدم بسرعة."},
+   {q:"لاعب مرتبك في الملعب بعد مباراة في الحر. أول خطوة؟", o:["تعطيه مشروب طاقة","تتصل بـ 999 وتنقله للظل وتبدأ التبريد","تغطيه ببطانية","تتركه يرتاح وحده"], a:1, w:"الارتباك في الحر = ضربة شمس، وهي حالة طارئة."},
+   {q:"هل تعطي مصاب ضربة الشمس المرتبك ماء ليشربه؟", o:["نعم، كمية كبيرة","لا، قد يختنق. نكتفي بالتبريد","نعم، ماء مثلج فقط","نعم، مع ملح"], a:1, w:"لا نعطي شيئاً بالفم لمن وعيه غير طبيعي."}
+  ]},
+
+{ id:"poison", title:"التعرّض للمواد السامة", short:"احمِ نفسك أولاً، وتعرّف على طريقة التعرض، ولا تُحدث قيئاً",
+  hook:"وجود أكثر من مصاب في المكان نفسه يعني أن المكان نفسه خطر.",
+  blocks:[
+   {type:"def", h:"ما المادة السامة؟", html:"أي مادة تسبب ضرراً أو وفاة عندما <b>تُبتلع</b>، أو <b>تُستنشق</b>، أو تلامس <b>الجلد</b> أو <b>العين</b>. في الجامعة أكثر الحالات تحدث في المختبرات أو بسبب مواد التنظيف أو الأدوية."},
+   {type:"steps", h:"قبل أن تقترب", items:[
+     ["تأكد أن المكان آمن","رائحة غريبة؟ دخان؟ انسكاب؟ لا تقترب، وأخبر الجميع بالابتعاد."],
+     ["ابحث عن رموز الخطر","على العبوات والجدران، فهي تخبرك بنوع الخطر."],
+     ["أكثر من مصاب؟","ابتعد واطلب الإسعاف، فقد يكون في الهواء غاز سام."],
+     ["احمِ نفسك","قفازات، وابتعد عن الأبخرة."]]},
+   {type:"compare", h:"حسب طريقة التعرض", a:{t:"على الجلد أو العين", tone:"blue", items:["اخلع الملابس والمجوهرات الملوثة","أزل المسحوق الجاف بقفاز أو فرشاة أولاً","اشطف بماء جارٍ كثير <b>20 دقيقة على الأقل</b>","للعين: افتح الجفن واشطف من الأنف إلى الخارج حتى لا تنتقل المادة للعين الأخرى"]}, b:{t:"ابتلاع أو استنشاق", tone:"red", items:["<b>الابتلاع:</b> لا تُحدث قيئاً، ولا تعطه شيئاً بالفم إلا بتعليمات طبية","احتفظ بالعبوة لتُعطيها للمسعفين","<b>الاستنشاق:</b> أخرجه إلى الهواء الطلق إذا كان ذلك آمناً لك","اتصل بـ 999 وراقب التنفس"]}},
+   {type:"note", tone:"why", text:"<b>ليه لا نُحدث قيئاً؟</b> المادة الكاوية تحرق المريء مرة ثانية أثناء خروجها، وقد يدخل القيء إلى الرئتين ويسبب التهاباً خطيراً."},
+   {type:"order", h:"رتّب خطوات إزالة المادة عن الجلد", prompt:"اضغط بالترتيب:", items:["تأكد أن الموقع آمن","اخلع الملابس والمجوهرات الملوثة","أزل المسحوق الجاف بقفاز","اشطف بالماء 20 دقيقة على الأقل"]},
+   {type:"stats", h:"رقم مهم", items:[["20","دقيقة على الأقل","مدة الشطف بالماء الجاري"]]}
+  ],
+  quiz:[
+   {q:"كم دقيقة على الأقل نشطف المنطقة الملوثة بالماء؟", o:["دقيقتان","5 دقائق","20 دقيقة","ساعة"], a:2, w:"20 دقيقة على الأقل، أو حتى يصل شخص متدرّب."},
+   {q:"وجدت أكثر من مصاب في مكان فيه مادة سامة. ماذا تفعل؟", o:["تدخل فوراً لإنقاذهم","تبتعد، وتحذّر الآخرين، وتتصل بالإسعاف","تشم المادة لتعرفها","تبدأ بالأقرب"], a:1, w:"أكثر من مصاب يعني أن المكان نفسه غير آمن."},
+   {q:"زميل ابتلع مادة تنظيف. هل تجعله يتقيأ؟", o:["نعم فوراً","لا، اتصل بـ 999 واحتفظ بالعبوة","نعم، بماء وملح","نعطيه حليباً دائماً"], a:1, w:"القيء قد يحرق المريء مرة ثانية أو يدخل الرئتين."},
+   {q:"كيف تزيل مسحوقاً جافاً سامّاً من الجلد؟", o:["بيدك مباشرة","بقفاز أو فرشاة، ثم شطف بالماء","بالنفخ عليه","نتركه"], a:1, w:"نزيل المسحوق أولاً، لأن بعض المساحيق تتفاعل مع الماء، ثم نشطف."}
+  ]},
+
+{ id:"bleeding", title:"الجروح والنزيف الخارجي", short:"الضغط المباشر، والعاصبة، وعلامات الصدمة",
+  hook:"أهم ما يوقف النزيف هو الضغط المباشر القوي والمستمر. لا تتوقف لتتأكد كل دقيقة.",
+  blocks:[
+   {type:"compare", h:"أنواع الجروح", a:{t:"جروح مغلقة", tone:"blue", items:["الجلد سليم","الضرر تحت الجلد: كدمة، تورم","مثال: ضربة أو سقوط"]}, b:{t:"جروح مفتوحة", tone:"red", items:["قطع أو تمزق في الجلد","يصاحبها نزيف","خطر التلوث والعدوى"]}},
+   {type:"steps", h:"الجروح المغلقة (الكدمات)", items:[
+     ["التبريد","كمادة باردة أو ثلج ملفوف بقماش لمدة 10–20 دقيقة. لا تضع الثلج على الجلد مباشرة."],
+     ["الراحة","وتجنّب تحريك المكان."],
+     ["الرفع","ارفع الطرف المصاب فوق مستوى القلب لتقليل التورم."],
+     ["الضغط الخفيف","بضمادة مرنة غير مشدودة."]]},
+   {type:"steps", h:"الجروح البسيطة المفتوحة", items:[
+     ["اغسل يديك والبس قفازات",""],
+     ["أوقف النزيف بالضغط","بشاش نظيف لبضع دقائق."],
+     ["نظّف الجرح","بماء جارٍ نظيف لمدة 5 دقائق تقريباً لإزالة الأوساخ، ويمكن استعمال مطهّر حول الجرح."],
+     ["جفّف وغطِّ","بلاصق طبي أو شاش معقم."],
+     ["راجع الطبيب إذا","كان الجرح عميقاً أو مفتوح الحواف، أو فيه أوساخ لا تخرج، أو ظهرت علامات التهاب، أو لم تأخذ تطعيم الكزاز (التيتانوس) خلال 10 سنوات."]]},
+   {type:"compare", h:"شرياني أم وريدي؟", a:{t:"نزيف شرياني", tone:"red", items:["لون أحمر فاتح","يندفع على شكل دفعات مع نبض القلب","خطير جداً، فقد يفقد المصاب كمية كبيرة من الدم خلال دقائق"]}, b:{t:"نزيف وريدي", tone:"blue", items:["لون أحمر داكن","يسيل بشكل مستمر وبضغط منخفض","أسهل في الإيقاف بالضغط"]}},
+   {type:"bleed", h:"الفرق بين النزيف الشرياني والوريدي"},
+   {type:"sort", h:"شرياني أم وريدي؟", a:"شرياني", b:"وريدي", items:[["أحمر فاتح","a"],["أحمر داكن","b"],["يندفع على شكل دفعات","a"],["يسيل بضغط منخفض ومستمر","b"],["يتزامن مع ضربات القلب","a"]]},
+   {type:"steps", h:"إسعاف النزيف الشديد", items:[
+     ["احمِ نفسك واتصل بـ 999","قفازات، أو كيس بلاستيك إن لم تجد قفازات."],
+     ["اضغط مباشرة وبقوة","بشاش أو قطعة قماش نظيفة على الجرح نفسه، أو اطلب من المصاب أن يضغط بيده إن استطاع."],
+     ["لا ترفع الضمادة لتتحقق","إذا تشبّعت بالدم ضع أخرى فوقها واضغط أقوى."],
+     ["ثبّت الضماد بلفافة","مشدودة بما يكفي لتضغط، دون أن تقطع الدورة الدموية عن الأصابع."],
+     ["مدّد المصاب وأبقِه دافئاً","لتقليل خطر الصدمة."],
+     ["العاصبة (التورنيكيت)","للنزيف المهدد للحياة في الذراع أو الساق إذا فشل الضغط: ضعها 5–7 سم فوق الجرح، لا فوق مفصل، وشدّها حتى يتوقف النزيف، وسجّل وقت وضعها ولا تفكّها."]]},
+   {type:"note", tone:"diff", text:"شرائح المحاضرة تذكر <b>رفع الطرف فوق مستوى القلب</b> ضمن إسعاف النزيف. الإرشادات الحديثة (الأوروبية 2015 وما بعدها) لم تعد تعتبره خطوة أساسية لأن فائدته غير مثبتة، والأهم دائماً هو <b>الضغط المباشر القوي</b>. لا ضرر من الرفع إذا لم يكن هناك كسر، لكن لا تنشغل به عن الضغط."},
+   {type:"note", tone:"tip", text:"<b>جسم مغروس أو كسر تحت الجرح؟</b> لا تنزع الجسم ولا تضغط عليه. ضع شاشاً حوله من الجانبين، ثم اربط فوق الشاش بضماد دائري حتى يبقى الجسم ثابتاً."},
+   {type:"list", h:"علامات الصدمة (فقدان دم كثير)", grid:true, items:["شحوب وجلد بارد ورطب","نبض سريع وضعيف","تنفس سريع","عطش ودوخة","قلق ثم نعاس وفقدان وعي"]},
+   {type:"dodont", h:"افعل / لا تفعل", do:["اضغط بقوة واستمر","ضع ضمادة فوق الضمادة المبللة","اطلب المساعدة إذا لم يتوقف خلال 10 دقائق أو ظهرت علامات الصدمة"], dont:["لا تلمس الجرح بيد غير محمية","لا تنزع الجسم المغروس","لا تنزع الضمادة المبللة بالدم","لا تفك العاصبة بعد وضعها","لا تعطِ المصاب طعاماً أو شراباً"]}
+  ],
+  quiz:[
+   {q:"دم أحمر فاتح يندفع على شكل دفعات. ما نوع النزيف؟", o:["وريدي","شرياني","شعيري","داخلي"], a:1, w:"الشرياني فاتح اللون ويندفع مع ضربات القلب."},
+   {q:"امتلأت الضمادة بالدم. ماذا تفعل؟", o:["تنزعها وتضع جديدة","تضع ضمادة ثانية فوقها وتضغط أقوى","تترك الجرح مكشوفاً","تغسل الجرح بالماء"], a:1, w:"نزع الضمادة يزيل الجلطة التي بدأت تتكون فيعود النزيف."},
+   {q:"متى نستخدم العاصبة (التورنيكيت)؟", o:["في كل نزيف","لنزيف مهدد للحياة في طرف إذا فشل الضغط المباشر","للجروح الصغيرة","في نزيف الأنف"], a:1, w:"للنزيف الشديد في الذراع أو الساق عندما لا يكفي الضغط."},
+   {q:"جسم مغروس في الذراع. ما التصرف الصحيح؟", o:["تنزعه فوراً","تضغط عليه بقوة","تتركه وتضع شاشاً حوله ثم ضماداً","تغسله وتسحبه"], a:2, w:"الجسم المغروس قد يسد الوعاء الدموي، ونزعه قد يزيد النزيف."},
+   {q:"أي من هذه علامات الصدمة؟", o:["احمرار الوجه وبطء النبض","شحوب وجلد بارد رطب ونبض سريع","ارتفاع الحرارة","الجوع"], a:1, w:"الجسم يحوّل الدم إلى الأعضاء الحيوية، فيبرد الجلد ويشحب ويسرع النبض."}
+  ]},
+
+{ id:"nose", title:"نزيف الأنف والفم", short:"الرأس للأمام، والضغط في المكان الصحيح، والمدة الكافية",
+  hook:"الرأس للأمام وليس للخلف، واضغط على الجزء الليّن من الأنف 10–15 دقيقة دون أن تفلت.",
+  blocks:[
+   {type:"def", h:"نزيف الأنف (الرعاف)", html:"خروج دم من الأنف بسبب تلف أوعية دموية دقيقة، وأغلبها في <b>الجزء الأمامي اللين</b> من الحاجز الأنفي. لهذا يكفي الضغط على الجزء الليّن، لا على العظمة."},
+   {type:"chips", h:"الأسباب", items:["إصابة أو كسر في الأنف","هواء جاف أو تكييف قوي","التمخّط بقوة أو العبث بالأنف","جسم غريب في الأنف","استنشاق مواد كيميائية","بعض الأدوية مثل مسيّلات الدم والأسبرين","ارتفاع ضغط الدم"]},
+   {type:"infog", h:"الإسعافات الأولية لنزيف الأنف", src:"img/info-nose.jpg", cap:"الإسعافات الأولية لنزيف الأنف: خطوات بسيطة تصنع فرقاً", alt:"إنفوجرافيك: أجلسه ودعه يميل للأمام قليلاً، اضغط على الجزء اللين من الأنف 10–15 دقيقة متواصلة، التنفس من الفم وبصق الدم، كمادة باردة على جسر الأنف، إذا استمر بعد 15 دقيقة أعد الضغط 10–15 دقيقة أخرى، وبعد أن يتوقف تجنب التمخط والمشروبات الساخنة والمجهود 24 ساعة."},
+      {type:"note", tone:"diff", text:"شرائح المحاضرة تذكر الضغط <b>5–10 دقائق</b>. المراجع الحديثة (هيئة الصحة البريطانية NHS ومايو كلينك) توصي بـ <b>10–15 دقيقة متواصلة</b>. السبب أن الجلطة تحتاج وقتاً لتتكوّن، والإفلات المبكر يعيد النزيف."},
+   {type:"nose", h:"جرّب وضعية الرأس"},
+   {type:"dodont", h:"افعل / لا تفعل", do:["اجلس واملْ للأمام قليلاً","اضغط على الجزء الليّن","تنفّس من الفم"], dont:["لا ترجع الرأس للخلف، فالدم ينزل للحلق وقد يسبب القيء أو الاختناق","لا تستلقِ","لا تحشُ الأنف بالقطن بعمق","لا تحاول تقويم كسر في الأنف"]},
+   {type:"call", h:"اذهب إلى الطوارئ أو اتصل بـ 999 إذا", items:["استمر النزيف أكثر من 15–20 دقيقة رغم الضغط","كان النزيف غزيراً جداً أو ابتلع كمية كبيرة من الدم","حدث بعد ضربة على الرأس","يشعر بدوخة أو ضعف أو ضيق في التنفس","يتناول أدوية مسيّلة للدم"]},
+   {type:"steps", h:"نزيف الفم", items:[
+     ["البس قفازات",""],
+     ["أجلسه مائلاً للأمام","حتى يسيل الدم للخارج."],
+     ["اضغط على مكان النزيف بشاش","مثلاً بعد خلع ضرس: يعضّ على شاش لمدة 10–20 دقيقة."],
+     ["اتصل بالإسعاف إذا","لم يتوقف النزيف، أو هناك صعوبة في التنفس، أو أسنان مكسورة قد تسد مجرى الهواء."]]},
+   {type:"note", tone:"tip", text:"<b>سن خرج من مكانه بالكامل؟</b> أمسكه من التاج وليس من الجذر، ولا تفركه. ضعه في حليب أو في محلول ملحي، واذهب لطبيب الأسنان خلال ساعة."}
+  ],
+  quiz:[
+   {q:"ما وضعية الرأس الصحيحة في نزيف الأنف؟", o:["للخلف","للأمام قليلاً","بين الركبتين","مستلقٍ"], a:1, w:"للأمام قليلاً حتى لا يتدفق الدم إلى الحلق."},
+   {q:"أين تضغط في نزيف الأنف؟", o:["على عظمة الأنف","على الجزء الليّن تحت العظمة","على الجبهة","على الرقبة"], a:1, w:"أغلب النزيف يأتي من الجزء الأمامي اللين."},
+   {q:"لماذا لا نفلت الضغط كل دقيقة للتحقق؟", o:["لأنه مؤلم","لأن الجلطة تحتاج وقتاً لتتكون، والإفلات يعيد النزيف","لأن اليد تتعب","لا مانع من ذلك"], a:1, w:"اضغط 10–15 دقيقة متواصلة."},
+   {q:"بعد نزيف الأنف، ماذا تتجنب في الـ 24 ساعة التالية؟", o:["شرب الماء","التمخّط والمشروبات الساخنة والمجهود","النوم","الأكل"], a:1, w:"هذه الأشياء قد تفتح الوعاء الدموي من جديد."}
+  ]},
+
+{ id:"fractures", title:"الكسور والالتواءات", short:"ثبّت الإصابة كما هي، واعرف متى لا تحرّك المصاب أبداً",
+  hook:"ثبّت الطرف كما وجدته ولا تحاول إرجاع العظم. ومع إصابة الرقبة أو الظهر لا تحرّك المصاب.",
+  blocks:[
+   {type:"def", h:"ما الكسر؟", html:"شرخ أو كسر في العظم بسبب سقوط أو حادث أو ضربة مباشرة. يكون <b>مغلقاً</b> إذا بقي الجلد سليماً، أو <b>مفتوحاً</b> إذا اخترق العظم الجلد أو وُجد جرح فوق الكسر، والمفتوح أخطر بسبب النزيف والعدوى."},
+   {type:"list", h:"علامات الكسر", grid:true, items:["ألم شديد يزيد مع الحركة","عدم القدرة على تحريك الطرف","تورم وكدمات","تشوه أو تغيّر في شكل الطرف","صوت طقطقة وقت الإصابة","عظم ظاهر أو نزيف في الكسر المفتوح"]},
+   {type:"steps", h:"الخطوات الأساسية", items:[
+     ["هدّئ المصاب ولا تحرّكه","إلا إذا كان المكان خطراً."],
+     ["ثبّت الطرف في الوضع الذي وجدته فيه","بجبيرة، أو مجلة ملفوفة، أو لوح، أو اربط الساق المصابة بالسليمة. يجب أن تشمل الجبيرة المفصل الذي فوق الكسر والذي تحته."],
+     ["لا تحاول إرجاع العظم لمكانه","قد تقطع وعاءً دموياً أو عصباً."],
+     ["افحص الدورة الدموية بعد الربط","الأصابع دافئة ووردية وتتحرك؟ إذا أصبحت زرقاء أو باردة أو تنمّلت فخفّف الربط."],
+     ["الكسر المفتوح","غطِّ الجرح بضماد نظيف، واضغط حول العظم وليس عليه، ولا تلمس العظم."],
+     ["ثلج ملفوف بقماش","20 دقيقة لتخفيف الألم والتورم."],
+     ["لا تعطه طعاماً أو شراباً","فقد يحتاج إلى تخدير وجراحة."]]},
+   {type:"flips", h:"كسور خطيرة (اضغط على البطاقة)", items:[
+     ["كسر الجمجمة أو الوجه","لا تضغط على مكان النزيف، وثبّت الرأس والرقبة، واتصل بـ 999 فوراً. انتبه لخروج سائل شفاف من الأنف أو الأذن."],
+     ["إصابة الرقبة أو الظهر","لا تحرّك المصاب نهائياً. ثبّت رأسه بيديك في الوضع الذي وجدته فيه حتى يصل الإسعاف."],
+     ["كسر الضلوع","اجعله يجلس مائلاً قليلاً ليتنفس بسهولة، ولا تربط الصدر بقوة. ضيق التنفس الشديد يحتاج 999."],
+     ["كسر الحوض أو الفخذ","قد يسبب نزيفاً داخلياً كبيراً. لا تحرّكه، واتصل بـ 999، وراقب علامات الصدمة."]]},
+   {type:"note", tone:"why", text:"<b>متى تشك في إصابة العمود الفقري؟</b> عند السقوط من مكان مرتفع، أو حوادث السيارات، أو الغوص في ماء ضحل، أو إذا اشتكى المصاب من ألم في الرقبة أو الظهر، أو تنميل أو ضعف في الأطراف."},
+   {type:"sort", h:"صح أم خطأ؟", a:"صح", b:"خطأ", items:[["محاولة إعادة العظم لمكانه","b"],["تثبيت الطرف بجبيرة تشمل المفصلين","a"],["ربط الضمادة بقوة شديدة","b"],["لمس العظم المكشوف في الكسر المفتوح","b"],["فحص أصابع الطرف بعد التجبير","a"],["تحريك مصاب العمود الفقري","b"],["جلوس مصاب الضلوع مائلاً قليلاً","a"]]},
+   {type:"mnem", h:"الالتواء: قاعدة RICE", items:[["R","Rest","راحة: أوقف النشاط ولا تحمّل على المكان"],["I","Ice","ثلج ملفوف 20 دقيقة كل 2–3 ساعات في أول يومين"],["C","Compression","ضغط بضمادة مرنة، غير مشدودة"],["E","Elevation","رفع الطرف فوق مستوى القلب"]]},
+   {type:"note", tone:"diff", text:"في شرائح المحاضرة جاء حرف <b>I</b> بمعنى «تثبيت بالضمادة» و<b>C</b> بمعنى «كمادات الثلج». المتعارف عليه عالمياً: <b>I = Ice</b> (ثلج) و<b>C = Compression</b> (ضغط بضمادة). الخطوات نفسها، لكن تأكّد أي صيغة سيعتمدها الأستاذ في الامتحان."},
+   {type:"note", tone:"tip", text:"<b>كيف تفرّق الالتواء عن الكسر؟</b> صعب أحياناً حتى على المختصين. إذا لم يستطع المصاب التحميل على الطرف، أو كان هناك تشوه أو ألم شديد عند الضغط على العظم، فتعامل معه ككسر واذهب للطوارئ."}
+  ],
+  quiz:[
+   {q:"في الكسر، هل نحاول إعادة العظم لمكانه؟", o:["نعم دائماً","لا، نثبّت الطرف كما هو","فقط في الكسر المفتوح","فقط إذا كان واعياً"], a:1, w:"إعادة العظم قد تقطع وعاءً دموياً أو عصباً."},
+   {q:"مشتبه بإصابة في العمود الفقري. ماذا تفعل؟", o:["تجلسه","تنقله بسيارتك","لا تحرّكه، وتثبّت رأسه، وتتصل بـ 999","تمشّيه قليلاً"], a:2, w:"أي حركة قد تسبب شللاً دائماً."},
+   {q:"كسر الضلوع: ما الوضعية الأفضل؟", o:["الاستلقاء على البطن","الجلوس مائلاً قليلاً","الوقوف","رفع القدمين"], a:1, w:"الجلوس مائلاً قليلاً يسهّل التنفس."},
+   {q:"بعد تجبير الساعد أصبحت الأصابع زرقاء وباردة. ماذا تفعل؟", o:["لا شيء","تخفّف الربط","تشد أكثر","تضع ثلجاً على الأصابع"], a:1, w:"الربط مشدود ويقطع الدورة الدموية."},
+   {q:"حرف E في RICE يعني…", o:["الراحة","الثلج","رفع الطرف","التمرين"], a:2, w:"E = Elevation، أي رفع الطرف المصاب."}
+  ]}
+];
+
+
+const SCENARIOS = [
+{ id:"cafeteria", em:"🍔", place:"كافتيريا الجامعة", title:"لقمة وقفت في الزور", unit:"choking",
+  intro:"وقت الغداء، صاحبتك سارة كانت بتضحك وهي بتاكل ساندويتش. فجأة مسكت رقبتها بإيديها الاثنتين، وشها احمرّ، ومش قادرة تتكلم ولا تكح.",
+  steps:[
+   {ask:"إيش أول شيء تسوينه؟", ch:[
+     ["تعطينها ماء تشربه بسرعة",0,"الماء ممكن يزيد الانسداد. هي لا تسعل ولا تتكلم = انسداد كلي."],
+     ["تسألينها «هل أنتِ مختنقة؟» وتبدئين: 5 ضربات على الظهر ثم 5 ضغطات على البطن",1,"صح. لا سعال ولا كلام يعني انسداداً كلياً، ولازم تتدخلي فوراً."],
+     ["تنتظرين شوي يمكن تطلع اللقمة لحالها",0,"الانتظار خطر في الانسداد الكلي — كل ثانية مهمة."]]},
+   {ask:"تذكرتي إن سارة حامل في الشهر السادس. وين تضغطين؟", ch:[
+     ["فوق السرة كالعادة",0,"مع الحمل والبدانة نغيّر مكان الضغط."],
+     ["منتصف الصدر",1,"ممتاز! في الحمل والبدانة الضغط يكون على منتصف الصدر."],
+     ["على ظهرها بس",0,"المحاضرة توضح تغيير مكان الضغط إلى الصدر في الحمل."]]},
+   {ask:"رغم المحاولات، سارة فقدت الوعي. الحين؟", ch:[
+     ["تنزلينها برفق، تتصلين 999 (أو تطلبين من أحد) وتبدئين CPR",1,"بالضبط. فقدان الوعي ← طوارئ + إنعاش."],
+     ["تكملين هايمليك وهي واقفة",0,"فاقدة الوعي ما تقدر توقف — أنزليها وابدئي CPR."],
+     ["ترشين ماء على وجهها",0,"هذا خطأ شائع ولا يفيد."]]}
+  ], outro:"ساعدتِ سارة صح! تذكري: يسعل؟ شجّعه. لا يسعل ولا يتكلم؟ هايمليك."},
+
+{ id:"exam", em:"📝", place:"قاعة الامتحان", title:"دوخة قبل الامتحان", unit:"fainting",
+  intro:"زميلتك نورة سهرت طول الليل وما فطرت. قبل توزيع الأوراق قالت لك: «أحس الدنيا تدور»، وجهها شاحب وعرقها بارد.",
+  steps:[
+   {ask:"هي لسه واعية. إيش تقولين لها؟", ch:[
+     ["قومي نمشي برا بسرعة",0,"القيام المفاجئ من أسباب الإغماء نفسه!"],
+     ["اجلسي وحطي راسك بين ركبتك",1,"صح! هذا يساعد الدم يرجع للمخ قبل ما يغمى عليها."],
+     ["اشربي قهوة",0,"ليس من إسعاف الإغماء."]]},
+   {ask:"للأسف أُغمي عليها. أول تصرف؟", ch:[
+     ["تمددينها على الأرض وترفعين رجليها 20–25 سم",1,"ممتاز — ليعود الدم للأعضاء الحيوية، مع إمالة الرأس للجانب."],
+     ["تجلسينها على الكرسي",0,"المغمى عليه يُمدد ونرفع قدميه."],
+     ["تسقينها عصير",0,"لا نعطي مشروبات لفاقد الوعي أبداً."]]},
+   {ask:"زميلة جابت عطر وقالت «خلّيها تشمه». رأيك؟", ch:[
+     ["فكرة حلوة",0,"العطور والنشادر من الأخطاء الشائعة."],
+     ["لا، نفك الملابس الضيقة ونهوّي المكان ونطمنها",1,"صح! ولا نسمح لها بالجلوس فجأة لما تفوق."],
+     ["نرش عليها ماء",0,"رش الماء خطأ شائع أيضاً."]]}
+  ], outro:"نورة فاقت وهي بخير. لا رش ماء، لا عطر، لا صفع — ارفع القدمين."},
+
+{ id:"field", em:"⚽", place:"الملعب الجامعي", title:"مباراة الظهر", unit:"heat",
+  intro:"في مباراة كرة الساعة 1 الظهر، لاعب يدوخ ويتقيأ، عضلاته تتشنج وقريب يغمى عليه.",
+  steps:[
+   {ask:"أول خطوة؟", ch:[
+     ["ننقله لمكان مظلل أو بارد جيد التهوية",1,"صح — أول خطوة في إسعاف ضربة الشمس."],
+     ["نغطيه ببطانية",0,"يحتاج تبريد مش تدفئة."],
+     ["نخليه يكمل المباراة بعد ما يرتاح دقيقة",0,"هذه أعراض ضربة شمس ولازم يتوقف فوراً."]]},
+   {ask:"بعد ما نقلناه، كيف نبرّده؟", ch:[
+     ["ننزع الملابس الزائدة ونرش عليه رذاذ ماء بارد",1,"ممتاز."],
+     ["نصب ماء ثلج على رأسه فقط",0,"المحاضرة تقول رذاذ ماء بارد وكمادات في أماكن محددة."],
+     ["نعطيه مشروب طاقة",0,"ليس من خطوات الإسعاف."]]},
+   {ask:"معك كمادات ثلج. وين تحطها؟", ch:[
+     ["على القدمين",0,"ليست الأماكن الموصى بها."],
+     ["الإبط والفخذ والعنق والظهر",1,"لأنها غنية بالأوعية الدموية القريبة من الجلد."],
+     ["على البطن",0,"الإبط والفخذ والعنق والظهر هي الأفضل."]]}
+  ], outro:"برّدته بالترتيب الصح: ظل ← ملابس ← رذاذ ← ثلج في الأماكن الصح."},
+
+{ id:"lab", em:"🧪", place:"مختبر الكيمياء", title:"انسكاب في المختبر", unit:"poison",
+  intro:"زميلك انسكب على ذراعه وقميصه مسحوق كيميائي من عبوة مكتوب عليها رمز تحذير.",
+  steps:[
+   {ask:"قبل ما تقرب، إيش تسوي؟", ch:[
+     ["تتأكد إن المكان آمن ولا في تسرب يهددك",1,"صح — الأمان أولاً دائماً."],
+     ["تجري عليه فوراً",0,"ممكن تصير أنت الضحية الثانية."],
+     ["تشم المادة عشان تعرف وش هي",0,"أبداً! الاستنشاق من طرق التسمم."]]},
+   {ask:"المكان آمن. كيف تتعامل مع المسحوق؟", ch:[
+     ["تمسحه بيدك",0,"لازم قفاز."],
+     ["تلبس قفاز وتزيل المسحوق الجاف، وتساعده يخلع القميص الملوث",1,"بالضبط."],
+     ["تحط عليه كريم",0,"ليس من الخطوات."]]},
+   {ask:"كم تشطف المنطقة بالماء؟", ch:[
+     ["دقيقة وحدة",0,"قليل جداً."],
+     ["20 دقيقة على الأقل أو حتى يصل شخص متدرب",1,"صح!"],
+     ["ما نشطف، نغطيه بس",0,"الشطف بكمية كبيرة من الماء أساسي."]]},
+   {ask:"لاحظت إن ثلاثة طلاب ثانيين بدأوا يكحون ويدوخون. القرار؟", ch:[
+     ["تدخل تساعدهم واحد واحد",0,"أكثر من ضحية = المكان نفسه غير آمن."],
+     ["تبتعد عن المنطقة وتحذّر الجميع وتتصل بالطوارئ",1,"قرار ذكي — حماية نفسك وغيرك أولاً."]]}
+  ], outro:"تعاملت مع التسمم بأمان: المكان ← قفاز ← خلع الملوث ← شطف 20 دقيقة."},
+
+{ id:"dorm", em:"🏠", place:"السكن الجامعي", title:"صديقتي مرتبكة فجأة", unit:"diabetes",
+  intro:"صديقتك ريم عندها سكري وتاخذ إنسولين. اليوم أخذت الجرعة وراحت النادي بدون ما تاكل. الحين ترجف، متعرقة، وتتكلم بلخبطة.",
+  steps:[
+   {ask:"هذه علامات إيش غالباً؟", ch:[
+     ["ارتفاع السكر",0,"الارتفاع تكون غيبوبته بطيئة مع ظمأ وتنفس عميق."],
+     ["انخفاض السكر",1,"صح: إنسولين + بدون أكل + نشاط = انخفاض. رعشة، عرق بارد، ارتباك."],
+     ["ضربة شمس",0,"السياق والأعراض تشير للسكر."]]},
+   {ask:"ريم واعية وتقدر تبلع. وش تعطينها؟", ch:[
+     ["بيبسي دايت",0,"الدايت ما فيه سكر!"],
+     ["عصير فواكه أو ملعقة عسل",1,"ممتاز — نرفع السكر بأسرع ما يمكن."],
+     ["ماء فقط",0,"تحتاج سكر سريع."],
+     ["إنسولين زيادة",0,"هذا يزيد الانخفاض — خطير جداً."]]},
+   {ask:"بعد شوي ريم فقدت الوعي. التصرف؟", ch:[
+     ["أحط سكر في فمها",0,"لا شيء بالفم لفاقد الوعي — خطر اختناق."],
+     ["لا شيء بالفم، أتصل 999 وأراقب تنفسها",1,"صح."],
+     ["أسقيها عصير ببطء",0,"لا تعطِ أي شيء لغير القادر على البلع."]]}
+  ], outro:"واعية وتبلع؟ سكر. فاقدة الوعي؟ لا شيء بالفم + إسعاف."},
+
+{ id:"hall", em:"🚶", place:"ممر كلية العلوم", title:"سقط ولا يتحرك", unit:"cpr",
+  intro:"وأنت ماشية في الممر لحالك، شفتِ موظف كبير في السن طاح على الأرض فجأة.",
+  steps:[
+   {ask:"أول شيء؟", ch:[
+     ["أتأكد إن المكان آمن",1,"صح — الأمان قبل أي شيء."],
+     ["أبدأ ضغطات فوراً",0,"قبلها: الأمان ثم الاستجابة ثم التنفس."],
+     ["أصوّره وأرسل للقروب",0,"لا!"]]},
+   {ask:"المكان آمن. بعدين؟", ch:[
+     ["أهزه بلطف وأقول بصوت واضح: هل أنت بخير؟",1,"صح — التحقق من الاستجابة."],
+     ["أرش عليه ماء",0,"خطأ شائع."],
+     ["أرفعه وأجلسه",0,"لا نحرك قبل التقييم."]]},
+   {ask:"ما استجاب. فحصتِ تنفسه 10 ثوانٍ: يطلع شهقات متقطعة بس.", ch:[
+     ["يتنفس، الحمد لله، أنتظر",0,"الشهيق المتقطع ليس تنفساً طبيعياً!"],
+     ["هذا تنفس غير طبيعي ← أحتاج CPR",1,"بالضبط."]]},
+   {ask:"أنتِ لحالك وهو بالغ. الترتيب؟", ch:[
+     ["أبدأ CPR دقيقتين ثم أتصل",0,"هذا للطفل. للبالغ: اتصل أولاً."],
+     ["أتصل 999 أولاً ثم أبدأ CPR",1,"صح للبالغ إذا كنتِ وحدك."]]},
+   {ask:"كيف تكون الضغطات؟", ch:[
+     ["100–120/دقيقة، عمق 5–6 سم، مع رجوع الصدر كاملاً",1,"ممتاز! وبعد كل 30 ضغطة نفَسين إذا كنتِ مدربة."],
+     ["60/دقيقة بهدوء",0,"بطيئة جداً."],
+     ["أسرع ما يمكن بدون توقف للرجوع",0,"لازم يرجع الصدر لوضعه."]]}
+  ], outro:"سلسلة صحيحة: أمان ← استجابة ← تنفس ← اتصال ← ضغطات قوية وسريعة."},
+
+{ id:"kitchen", em:"🍳", place:"مطبخ السكن", title:"زيت حار وغلاية مكسورة", unit:"burns",
+  intro:"وأنتِ تطبخين، طار زيت حار على ظهر يدك وعمل حرق صغير.",
+  steps:[
+   {ask:"إيش تسوين للحرق؟", ch:[
+     ["أحط معجون أسنان",0,"معتقد شائع لكنه ليس من الإسعاف الصحيح."],
+     ["أبرده تحت ماء جارٍ فاتر أو بارد 20 دقيقة",1,"صح، ثم أغطيه بغلاف بلاستيكي أو ضمادة غير لاصقة."],
+     ["أحط زبدة",0,"تحبس الحرارة."]]},
+   {ask:"بعدين؟", ch:[
+     ["أغطيه بقطن",0,"القطن يلتصق بالحرق."],
+     ["أغطيه بغلاف بلاستيكي للطعام أو ضمادة غير لاصقة",1,"ممتاز."]]},
+   {ask:"فجأة صاحبتك لمست الغلاية الكهربائية التالفة وصارت ملتصقة فيها!", ch:[
+     ["أسحبها بيدي",0,"الكهرباء تنتقل منها إليك!"],
+     ["أصب عليها ماء",0,"الماء يوصل الكهرباء."],
+     ["أفصل مصدر الكهرباء أولاً ثم أفحص تنفسها",1,"صح! وCPR إذا احتاجت."]]}
+  ], outro:"برّد وغطِّ للحروق البسيطة… والكهرباء: افصلها قبل اللمس."},
+
+{ id:"library", em:"📚", place:"المكتبة", title:"نوبة بين الرفوف", unit:"seizure",
+  intro:"طالب في المكتبة طاح فجأة وجسمه يرتعش بقوة، والكراسي حوله.",
+  steps:[
+   {ask:"أثناء النوبة، إيش تسوين؟", ch:[
+     ["أمسكه بقوة عشان يوقف",0,"لا نقيّد حركته."],
+     ["أبعد الكراسي والأشياء عنه وأحط شي لين تحت راسه",1,"صح."],
+     ["أحط قلم في فمه",0,"لا نضع أي شيء في الفم."]]},
+   {ask:"توقفت النوبة وفي فمه لعاب وقيء، وما في إصابة رأس أو رقبة.", ch:[
+     ["أدحرجه على جنبه",1,"صح — يحمي مجرى الهواء."],
+     ["أجلسه وأعطيه ماء",0,"ليس الآن."],
+     ["أتركه على ظهره",0,"قد يختنق بالسوائل."]]},
+   {ask:"وبعدين؟", ch:[
+     ["أروح أكمل مذاكرتي",0,"لا تتركه."],
+     ["أبقى معه حتى يصل شخص متدرب",1,"صح."]]}
+  ], outro:"احمِ أثناء النوبة، دحرج للجنب بعدها، وابقَ معه."},
+
+{ id:"lecture", em:"🎓", place:"قاعة المحاضرات", title:"نزيف أنف مفاجئ", unit:"nose",
+  intro:"في منتصف المحاضرة، زميلتك بدأ ينزل من أنفها دم. الجو مكيف وجاف.",
+  steps:[
+   {ask:"كيف تجلسينها؟", ch:[
+     ["راسها لورا",0,"الدم يتدفق للحنجرة — خطأ شائع!"],
+     ["جالسة مستقيمة ومائلة للأمام قليلاً",1,"صح."],
+     ["تتمدد على الأرض",0,"لا نجعلها تستلقي مسطحة."]]},
+   {ask:"وين تضغط وكم؟", ch:[
+     ["على الجزء الليّن من الأنف تحت العظمة 10–15 دقيقة متواصلة",1,"ممتاز، وتتنفس من الفم."],
+     ["على الجبهة دقيقة",0,"الضغط يكون على جانبي الأنف."]]},
+   {ask:"بعد 15 دقيقة ما زال ينزف.", ch:[
+     ["تستمر بالضغط 10–15 دقيقة إضافية",1,"صح. وإذا لم يتوقف بعدها فاذهبوا للطوارئ."],
+     ["تحط قطن عميق في الأنف وتكمل المحاضرة",0,"ليس من الخطوات."]]}
+  ], outro:"للأمام، اضغط، تنفس من الفم — ولا للخلف أبداً."},
+
+{ id:"stairs", em:"🪜", place:"درج المبنى", title:"سقطة على الدرج", unit:"fractures",
+  intro:"زميل طاح من الدرج. ساقه مشوهة الشكل وفي جرح يطلع منه العظم وينزف.",
+  steps:[
+   {ask:"إيش نوع الكسر؟", ch:[
+     ["كسر مغلق",0,"العظم يخترق الجلد = مفتوح."],
+     ["كسر مفتوح",1,"صح."]]},
+   {ask:"كيف تتعامل مع الجرح والعظم؟", ch:[
+     ["أرجّع العظم مكانه",0,"أبداً — لا تحاول إعادة العظم."],
+     ["أغطي الجرح بضمادة نظيفة ولا ألمس العظم وأثبّت بجبيرة",1,"ممتاز."]]},
+   {ask:"زميل ثاني طاح وقال «ما أحس برجولي ورقبتي توجعني».", ch:[
+     ["أساعده يقوم",0,"اشتباه عمود فقري!"],
+     ["لا أحركه نهائياً، أثبّت الرأس والرقبة وأتصل بالإسعاف",1,"صح تماماً."]]}
+  ], outro:"ثبّت ولا ترجع العظم… والعمود الفقري: لا تحريك."},
+
+{ id:"workshop", em:"🔧", place:"ورشة الهندسة", title:"جرح ينزف بقوة", unit:"bleeding",
+  intro:"طالب جرح ساعده بأداة حادة. الدم أحمر فاتح ويندفع مع نبضات القلب.",
+  steps:[
+   {ask:"إيش نوع النزيف؟", ch:[
+     ["وريدي",0,"الوريدي قاتم ومستمر بضغط منخفض."],
+     ["شرياني",1,"صح — أحمر فاتح ومتدفق."]]},
+   {ask:"أول ما تسوي؟", ch:[
+     ["ألبس قفاز وأضغط مباشرة وأرفع الطرف فوق القلب وأتصل بالإسعاف",1,"ممتاز."],
+     ["أغسله بالماء 5 دقائق أول",0,"النزيف القوي يحتاج ضغط فوراً."],
+     ["أعطيه ماء يشرب",0,"لا نعطي طعاماً أو شراباً."]]},
+   {ask:"الضمادة تشبعت بالدم.", ch:[
+     ["أشيلها وأحط جديدة",0,"لا تنزع الأولى."],
+     ["أحط ضمادة ثانية فوقها وأضغط أقوى",1,"صح."]]},
+   {ask:"الضغط فشل والوضع صار مهدد للحياة.", ch:[
+     ["أفكر في العاصبة مع الاستمرار بالضغط",1,"صح — فقط عند فشل كل الطرق."],
+     ["أستسلم وأنتظر",0,"لا!"]]}
+  ], outro:"ضغط مباشر، ضمادة فوق ضمادة، رفع، والعاصبة آخر حل."}
+];
+
+const FACTS = [
+ ["معدل الضغطات","100–120 ضغطة/دقيقة","cpr"],["عمق الضغط للبالغ","5–6 سم","cpr"],["نسبة الإنعاش","30 ضغطة : 2 نفَس","cpr"],["فحص التنفس","10 ثوانٍ كحد أقصى","cpr"],
+ ["طفل وأنت وحدك","CPR دقيقتين ثم اتصل","cpr"],["بالغ وأنت وحدك","اتصل أولاً ثم CPR","cpr"],["ترتيب الأولوية","ABC: مجرى الهواء ← التنفس ← الدورة","basics"],
+ ["يسعل ويتكلم","انسداد جزئي: شجّعه على السعال","choking"],["انسداد كلي عند بالغ واعٍ","5 ضربات على الظهر + 5 ضغطات على البطن","choking"],["هايمليك لحامل/بدين","الضغط على منتصف الصدر","choking"],["رفع القدمين في الإغماء","20–25 سم","fainting"],
+ ["أخطاء الإغماء","رش ماء، عطور/نشادر، صفع، شرب وهو فاقد الوعي","fainting"],["انخفاض السكر","رعشة، عرق بارد، ارتباك، غيبوبة سريعة","diabetes"],["ارتفاع السكر","عطش، كثرة تبول، تنفس عميق، غيبوبة بطيئة","diabetes"],
+ ["سكري فاقد الوعي","لا شيء بالفم","diabetes"],["كمية السكر لمريض واعٍ","15–20 غ: كوب عصير صغير أو 3–4 ملاعق سكر","diabetes"],["نوبة تشنج أطول من","5 دقائق ← اتصل بـ 999","seizure"],["علامة ضربة الشمس","ارتباك أو تغيّر في الوعي","heat"],["الحرق البسيط","ماء جارٍ 20 دقيقة + غلاف أو ضمادة غير لاصقة","burns"],["اشتعال الملابس","توقف، انبطح، تدحرج","burns"],["الصعق الكهربائي","افصل المصدر قبل اللمس، لا ماء","burns"],
+ ["أثناء التشنج","أبعد الأشياء، شيء لين تحت الرأس","seizure"],["ضربة الشمس — الثلج","الإبط، الفخذ، العنق، الظهر","heat"],["شطف المواد السامة","20 دقيقة على الأقل","poison"],
+ ["نزيف شرياني","أحمر فاتح، يندفع مع النبض","bleeding"],["نزيف وريدي","أحمر قاتم، مستمر بضغط منخفض","bleeding"],["تبريد الجرح المغلق","10–15 دقيقة","bleeding"],["ضمادة امتلأت بالدم","ضع ثانية فوقها","bleeding"],["مكان العاصبة","5–7 سم فوق الجرح، وسجّل الوقت","bleeding"],
+ ["نزيف لم يتوقف","خلال 5 دقائق ← اطلب المساعدة","bleeding"],["نزيف الأنف","للأمام + ضغط 10–15 دقيقة متواصلة","nose"],["الأسبرين بعد الرعاف","تجنبه أسبوعاً","nose"],
+ ["العمود الفقري","لا تحرك المصاب نهائياً","fractures"],["كسر الضلوع","جلوس مائل قليلاً","fractures"],["RICE","Rest · Ice · Compression · Elevation","fractures"],["رقم الطوارئ في البحرين","999","basics"]
+];
+
+/* ============================== MEDIA & INTERACTIVES ============================== */
+const IMGS = {
+ basics:[["001-000","التدريب العملي على الإنعاش"],["003-009","تضميد جرح باستخدام حقيبة الإسعافات"],["003-008","فحص إصابة في اليد"]],
+ cpr:[["008-018","التدريب على دمى الإنعاش مع ارتداء القفازات"],["004-013","الضغطات الصدرية في منتصف الصدر"]],
+ choking:[["014-030","علامة الاختناق: اليدان على الرقبة"],["020-047","مع الحامل يكون الضغط على الصدر"],["021-140","الكلام أثناء الأكل من أسباب الشَّرقة"],["017-038","جسم غريب يسد المجرى الهوائي"]],
+ fainting:[["recovery-photo","وضعية الإفاقة: المصاب على جانبه ومجرى الهواء مفتوح"],["025-150","الدوخة من الأعراض التي تسبق الإغماء"],["033-199","عرق غزير بارد"],["023-143","فقدان الوعي"],["028-166","رش الماء على الوجه من الأخطاء الشائعة"]],
+ diabetes:[["031-179","قياس سكر الدم"],["032-187","ضعف ودوخة"],["032-189","تعرّق وإرهاق"],["033-205","ساعده على الجلوس بهدوء"]],
+ burns:[["058-317","طبقات الجلد الثلاث: البشرة، والأدمة، والطبقة الدهنية"],["037-224","حرق في الذراع"]],
+ seizure:[["023-143","بعد النوبة قد يبقى المصاب فاقداً للوعي لفترة"]],
+ heat:[["048-271","التعرض للشمس مدة طويلة"],["049-279","دوخة وإرهاق"],["050-287","أماكن كمادات الثلج: الإبط والفخذ والعنق"]],
+ poison:[["053-298","رموز التحذير على عبوات المواد الخطرة"],["052-293","التعرض لمادة مهيّجة"],["055-307","غسل العين بالماء"],["051-288","ألم في البطن بعد ابتلاع مادة سامة"]],
+ bleeding:[["057-312","جرح مغلق: الجلد سليم"],["060-326","جرح مفتوح"],["061-331","الضغط على الطرف المصاب"],["066-362","الضغط المباشر على الجرح"],["065-357","تضميد الجرح"],["064-349","تثبيت العاصبة"],["062-336","الفرق بين النزيف الشرياني والوريدي والشعيري"]],
+ nose:[["070-382","نزيف الأنف (الرعاف)"],["034-213","المسعف يرتدي القفازات أثناء المساعدة"],["071-387","الجلوس والميل للأمام"],["075-410","الرأس للأمام وليس للخلف"],["072-394","مكان الضغط على الأنف"]],
+ fractures:[["077-418","تثبيت الطرف المصاب قبل وصول الإسعاف"],["085-455","الضمادة والجبيرة"],["085-453","كمادات الثلج"]]
+};
+const YT = (q)=>"https://www.youtube.com/results?search_query="+encodeURIComponent(q);
+const VIDS = {
+ basics:[{id:"ea1RJUOiNfQ",t:"تقييم المصاب خطوة بخطوة",s:"St John Ambulance"},{id:"gn6xt1ca8A0",t:"محتويات حقيبة الإسعافات الأولية",s:"St John Ambulance"}],
+ cpr:[{id:"-qLr0O33gF8",t:"فيديو الإنعاش القلبي الرئوي",s:"YouTube"}],
+ choking:[{id:"PA9hpOnvtCk",t:"ماذا تفعل عندما يختنق شخص",s:"St John Ambulance"}],
+ fainting:[{id:"ddHKwkMwNyI",t:"أسباب الإغماء وإسعافه",s:"St John Ambulance"},{id:"GmqXqwSV3bo",t:"وضعية الإفاقة",s:"St John Ambulance"}],
+ diabetes:[{id:"L06DNMRcy98",t:"طوارئ مريض السكري",s:"St John Ambulance"}],
+ burns:[{id:"EaJmzB8YgS0",t:"إسعاف الحروق",s:"St John Ambulance"}],
+ seizure:[{id:"Ovsw7tdneqE",t:"ماذا تفعل أثناء نوبة التشنج",s:"St John Ambulance"},{id:"GmqXqwSV3bo",t:"وضعية الإفاقة بعد النوبة",s:"St John Ambulance"}],
+ heat:[{id:"jvGC_dQJUtE",t:"علامات ضربة الشمس وإسعافها",s:"St John Ambulance"}],
+ bleeding:[{id:"NxO5LvgqZe0",t:"إسعاف النزيف الشديد",s:"St John Ambulance"}],
+ nose:[{id:"PmmhxW0vVXA",t:"إسعاف نزيف الأنف",s:"St John Ambulance"}],
+ fractures:[{id:"FSNt2j_q9U8",t:"إسعاف الكسور البسيطة",s:"شرح مسعف"}]
+};
+// [after block index, block]
+const EXTRA = {};
+function buildBlocks(u){
+  const ex = EXTRA[u.id]||[], out=[];
+  u.blocks.forEach((b,i)=>{
+    out.push(b);
+    if(i===(u.blocks[0].type==="infog"?1:0) && IMGS[u.id]) out.push({type:"gallery",h:"",items:IMGS[u.id]});
+    ex.filter(e=>e[0]===i).forEach(e=>out.push(e[1]));
+  });
+  if(VIDS[u.id]) out.push({type:"video",h:"فيديوهات للمشاهدة",items:VIDS[u.id]});
+  return out;
+}
+
+
+function figure(preg){
+  return `<svg class="fig" viewBox="0 0 200 420">
+   <circle class="bd" cx="100" cy="40" r="26"/>
+   <rect class="bd" x="90" y="62" width="20" height="22" rx="6"/>
+   <path class="bd" d="M60 94 L40 168 L35 250 L47 252 L56 176 L66 132Z"/><path class="bd" d="M140 94 L160 168 L165 250 L153 252 L144 176 L134 132Z"/>
+   <path class="bd" d="M63 246 L71 410 L95 410 L99 262Z"/><path class="bd" d="M137 246 L129 410 L105 410 L101 262Z"/>
+   <path class="shirt" d="M58 92 Q100 80 142 92 L150 150 L140 250 Q100 262 60 250 L50 150 Z"/>
+   ${preg?`<ellipse class="preg" cx="100" cy="212" rx="46" ry="38"/><text x="100" y="226" text-anchor="middle" font-size="11" fill="#8A6F60">حامل</text>`:``}
+   <path d="M100 100 L100 175" stroke="#AEC0D6" stroke-width="1.5" stroke-dasharray="3 3"/>
+   <circle cx="100" cy="212" r="2.5" fill="#8A6F60"/>
+  </svg>`;
+}
+function renderMedia(b){
+  switch(b.type){
+    case "infog": return `<figure class="infog" data-lb="${b.src}" data-cap="${esc(b.cap)}"><img loading="lazy" src="${b.src}" alt="${esc(b.alt||b.cap)}"><figcaption><span><b>${b.cap}</b></span><span>اضغط على الصورة للتكبير</span></figcaption></figure>`;
+    case "types": return `<div class="types">${b.items.map(x=>`<div class="side tone-${x.tone}"><h4>${x.t}</h4><div class="lay">${x.tag}</div><ul>${x.items.map(i=>`<li>${i}</li>`).join("")}</ul></div>`).join("")}</div>`;
+    case "gallery": return `<div class="gal">${b.items.map(([f,c])=>`<figure data-lb="img/${f}.jpg" data-cap="${esc(c)}"><img loading="lazy" src="img/${f}.jpg" alt="${esc(c)}" onerror="this.closest('figure').remove()"><figcaption>${c}</figcaption></figure>`).join("")}</div>`;
+    case "video": return `<div class="vids">${b.items.map(v=>`<button class="vid" data-yt="${v.id}" data-t="${esc(v.t)}">
+          <div class="th"><img loading="lazy" src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" alt="" onerror="this.remove()"><span class="pl"><svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span><span class="dur">بالإنجليزية</span></div>
+          <b>${v.t}</b><span>${v.s}</span></button>`).join("")}</div>`;
+    case "hotspot": return `<div class="card ix hot"><div class="ixgrid"><svg class="fig" viewBox="0 0 200 420">${figure(b.preg).replace(/^<svg[^>]*>|<\/svg>$/g,"")}${b.zones.map((z,i)=>`<circle class="hz" data-i="${i}" cx="${z[0]}" cy="${z[1]}" r="14"/><text class="hzl" x="${z[0]}" y="${z[1]+4}" data-t="${i}"></text>`).join("")}</svg>
+        <div><div class="prompt">${b.prompt}</div>${b.multi?`<div style="color:var(--muted);font-size:14px">وجدت <b class="cnt">0</b> من ${b.zones.filter(z=>z[3]).length}</div><div class="found"></div>`:""}<div class="msg"></div><button class="btn ghost reset" style="margin-top:8px;padding:8px 16px;font-size:14px">↺ أعد المحاولة</button></div></div></div>`;
+    case "sort": return `<div class="card ix"><div class="sortl">${shuffle(b.items).map(it=>`<div class="srow" data-k="${it[1]}"><span class="t">${it[0]}<span class="why"></span></span><button data-v="a">${b.a}</button><button data-v="b">${b.b}</button></div>`).join("")}</div><div class="msg"></div></div>`;
+    case "order": return `<div class="card ix ord" data-items='${esc(JSON.stringify(b.items))}'><div class="prompt">${b.prompt}</div><div class="pool">${shuffle(b.items).map(t=>`<button>${t}</button>`).join("")}</div><ol></ol><div class="msg"></div></div>`;
+    case "legs": return `<div class="card ix legs"><div class="prompt">${b.prompt}</div>
+        <svg viewBox="0 0 380 190" style="width:100%;max-width:560px;display:block;margin:auto">
+          <line x1="0" y1="176" x2="380" y2="176" stroke="#D8CBC1" stroke-width="3"/>
+          <rect class="cush" x="300" y="176" width="54" height="0" rx="6" fill="#C5A044" opacity=".75"/>
+          <circle cx="44" cy="150" r="19" fill="#E9DFD7" stroke="#A99486" stroke-width="1.5"/>
+          <line x1="68" y1="156" x2="205" y2="156" stroke="#AEC0D6" stroke-width="30" stroke-linecap="round"/>
+          <g class="lg"><line x1="205" y1="160" x2="345" y2="160" stroke="#0D2B52" stroke-width="20" stroke-linecap="round"/><circle cx="348" cy="160" r="9" fill="#E9DFD7" stroke="#A99486"/></g>
+          <text class="hl" x="330" y="40" font-size="14" text-anchor="middle" fill="#6B6266"></text>
+        </svg>
+        <div class="slider-ui"><span>0</span><input type="range" min="0" max="45" value="0"><span>45 سم</span><b class="v">0 سم</b></div><div class="msg"></div></div>`;
+    case "nose": return `<div class="card ix nose"><div class="ixgrid">
+        <svg viewBox="0 0 300 260" style="width:100%;max-width:280px;margin:auto;display:block">
+          <g class="head" style="transition:transform .5s;transform-origin:140px 200px">
+            <rect x="118" y="160" width="44" height="80" rx="18" fill="#E9DFD7" stroke="#A99486"/>
+            <circle cx="140" cy="110" r="62" fill="#E9DFD7" stroke="#A99486" stroke-width="1.5"/>
+            <path d="M198 96 L222 132 L196 136 Z" fill="#E2CDBF" stroke="#B9A091"/>
+            <path d="M188 160 Q198 164 204 156" stroke="#A0614F" stroke-width="3" fill="none"/>
+            <circle cx="176" cy="92" r="4" fill="#3B2E2A"/>
+            <path class="bfwd flow" d="M206 136 Q210 170 214 205" stroke="#C8102E" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <path class="bback flow" d="M200 132 Q170 150 150 175 L142 230" stroke="#C8102E" stroke-width="5" fill="none" stroke-linecap="round" opacity="0"/>
+          </g>
+        </svg>
+        <div><div class="prompt">اختر وضعية الرأس وشوف أين يذهب الدم:</div><div class="seg"><button data-p="f" class="on">⬇️ للأمام قليلاً</button><button data-p="b">⬆️ للخلف</button></div><div class="msg ok">✓ صح: الدم يخرج من الأنف ولا ينزل للحنجرة. اضغط على جانبي الأنف 5–10 دقائق وتنفّس من الفم.</div></div></div></div>`;
+    case "bleed": return `<div class="bleed2">
+        <div><svg viewBox="0 0 200 120"><rect x="10" y="60" width="180" height="22" rx="11" fill="#E8414F" class="pulse-v"/><rect x="96" y="56" width="10" height="8" fill="#fff"/>
+          ${[[-30,-50],[0,-58],[28,-48],[-12,-40],[16,-44]].map((d,i)=>`<circle class="spurt" cx="101" cy="58" r="5" fill="#F0263A" style="--dx:${d[0]}px;--dy:${d[1]}px;animation-delay:${i*.06}s"/>`).join("")}</svg>
+          <b style="color:#C8102E">نزيف شرياني</b><small>أحمر فاتح · يندفع مع كل نبضة</small></div>
+        <div><svg viewBox="0 0 200 120"><rect x="10" y="30" width="180" height="22" rx="11" fill="#7A0F1E"/><rect x="96" y="48" width="10" height="8" fill="#fff"/>
+          ${[0,.8,1.6].map(dl=>`<ellipse class="ooze" cx="101" cy="60" rx="5" ry="7" fill="#7A0F1E" style="animation-delay:${dl}s"/>`).join("")}</svg>
+          <b style="color:#7A0F1E">نزيف وريدي</b><small>أحمر قاتم · مستمر بضغط منخفض</small></div></div>`;
+  }
+}
+function initInteractive(root){
+  // lightbox
+  root.querySelectorAll(".gal figure, .infog").forEach(f=>f.onclick=()=>{ $("#lbimg").src=f.dataset.lb; $("#lbcap").textContent=f.dataset.cap; $("#lb").classList.add("on") });
+  // videos: play inside the page
+  root.querySelectorAll(".vid[data-yt]").forEach(btn=>btn.onclick=()=>openVideo(btn.dataset.yt, btn.dataset.t));
+  // hotspots
+  root.querySelectorAll(".hot").forEach((box)=>{
+    const bi=[...root.querySelectorAll(".hot")].indexOf(box);
+    const blk=box.__blk; const msg=box.querySelector(".msg");
+    const reset=()=>{ box.querySelectorAll(".hz").forEach(c=>c.classList.remove("good","bad")); box.querySelectorAll(".hzl").forEach(t=>t.textContent=""); msg.textContent=""; msg.className="msg"; const f=box.querySelector(".found"); if(f){f.innerHTML=""; box.querySelector(".cnt").textContent=0} };
+    box.querySelector(".reset").onclick=reset;
+    box.querySelectorAll(".hz").forEach(c=>c.onclick=()=>{
+      const z=blk.zones[+c.dataset.i], t=box.querySelector(`[data-t="${c.dataset.i}"]`);
+      if(z[3]){ c.classList.add("good"); t.textContent="✓";
+        if(blk.multi){ const n=box.querySelectorAll(".hz.good").length, need=blk.zones.filter(q=>q[3]).length; box.querySelector(".cnt").textContent=n;
+          const f=box.querySelector(".found"); if(!f.textContent.includes(z[2]+" ")||true){ f.innerHTML=[...box.querySelectorAll(".hz.good")].map(g=>`<span>${blk.zones[+g.dataset.i][2]}</span>`).join("") }
+          msg.className="msg ok"; msg.textContent = n>=need ? blk.done : "صح! كمّل…"; if(n>=need) confetti();
+        } else { msg.className="msg ok"; msg.textContent=z[4]; confetti() }
+      } else { c.classList.add("bad"); t.textContent="✗"; msg.className="msg no"; msg.textContent=z[4]; }
+    });
+  });
+  // sort
+  root.querySelectorAll(".sortl").forEach(list=>{
+    const box=list.parentElement, msg=box.querySelector(".msg"); let right=0,done=0; const total=list.children.length;
+    list.querySelectorAll(".srow").forEach(r=>r.querySelectorAll("button").forEach(btn=>btn.onclick=()=>{
+      const ok=btn.dataset.v===r.dataset.k; r.classList.add(ok?"ok":"no"); done++; if(ok) right++;
+      if(!ok) r.querySelector(".why").textContent="الإجابة الصحيحة: "+r.querySelectorAll("button")[r.dataset.k==="a"?0:1].textContent;
+      if(done===total){ msg.className="msg "+(right===total?"ok":"no"); msg.textContent=`النتيجة: ${right} من ${total}`+(right===total?" — ممتاز! 🎉":""); if(right===total) confetti(); }
+    }));
+  });
+  // order
+  root.querySelectorAll(".ord").forEach(box=>{
+    const items=JSON.parse(box.dataset.items), ol=box.querySelector("ol"), msg=box.querySelector(".msg"); let k=0, miss=0;
+    box.querySelectorAll(".pool button").forEach(btn=>btn.onclick=()=>{
+      if(btn.textContent===items[k]){ const li=document.createElement("li"); li.textContent=btn.textContent; ol.appendChild(li); btn.remove(); k++; msg.textContent="";
+        if(k===items.length){ msg.className="msg ok"; msg.textContent=miss?`تمام! رتبتها مع ${miss} محاولة خاطئة.`:"ترتيب مثالي من أول مرة! 🎉"; if(!miss) confetti(); }
+      } else { miss++; btn.classList.remove("shake"); void btn.offsetWidth; btn.classList.add("shake"); msg.className="msg no"; msg.textContent="ليست هذه الخطوة التالية — فكّر مرة ثانية."; }
+    });
+  });
+  // legs
+  root.querySelectorAll(".legs").forEach(box=>{
+    const r=box.querySelector("input"), lg=box.querySelector(".lg"), cu=box.querySelector(".cush"), v=box.querySelector(".v"), msg=box.querySelector(".msg"), hl=box.querySelector(".hl");
+    const upd=()=>{ const cm=+r.value, th=Math.asin(Math.min(cm/95,1)); lg.setAttribute("transform",`rotate(${-th*180/Math.PI} 205 160)`);
+      const h=Math.max(0,Math.sin(th)*140*.93-10); cu.setAttribute("y",176-h); cu.setAttribute("height",h); v.textContent=cm+" سم"; hl.textContent=cm?cm+" سم":"";
+      if(cm>=20&&cm<=25){ msg.className="msg ok"; msg.textContent="✓ ممتاز! 20–25 سم يساعد الدم يرجع للأعضاء الحيوية. لا تنسَ إمالة الرأس للجانب."; }
+      else if(cm<20){ msg.className="msg"; msg.textContent=cm?"ارفع أكثر شوي…":""; } else { msg.className="msg no"; msg.textContent="أعلى من المطلوب — المحاضرة تقول 20–25 سم."; } };
+    r.oninput=upd; r.onchange=()=>{ if(+r.value>=20&&+r.value<=25) confetti() }; upd();
+  });
+  // sort3
+  root.querySelectorAll(".s3").forEach(list=>{
+    const labels=JSON.parse(list.dataset.labels), box=list.parentElement, msg=box.querySelector(".msg"); let right=0,done=0; const total=list.children.length;
+    list.querySelectorAll(".srow").forEach(r=>r.querySelectorAll("button").forEach(btn=>btn.onclick=()=>{
+      const ok=btn.dataset.v===r.dataset.k; r.classList.add(ok?"ok":"no"); done++; if(ok) right++;
+      if(!ok) r.querySelector(".why").textContent="الإجابة الصحيحة: الدرجة "+labels[+r.dataset.k];
+      if(done===total){ msg.className="msg "+(right===total?"ok":"no"); msg.textContent=`النتيجة: ${right} من ${total}`; }
+    }));
+  });
+  // skin depth
+  root.querySelectorAll(".skinx").forEach(box=>{
+    const burn=box.querySelector(".burn"), ch=box.querySelector(".char"), bl=box.querySelector(".blis"), msg=box.querySelector(".msg");
+    const D={1:[22,"<b>الدرجة الأولى:</b> الحرق في البشرة فقط. احمرار وألم، دون فقاعات، ويلتئم خلال أيام."],2:[60,"<b>الدرجة الثانية:</b> وصل إلى جزء من الأدمة حيث الأوعية والأعصاب، فتتكون فقاعات ويكون الألم شديداً."],3:[140,"<b>الدرجة الثالثة:</b> دمّر كل طبقات الجلد ووصل للدهون. الجلد أبيض أو متفحّم، وقد لا يؤلم لأن الأعصاب احترقت. يحتاج مستشفى."]};
+    const set=d=>{ box.querySelectorAll(".seg button").forEach(x=>x.classList.toggle("on",x.dataset.d==d)); burn.style.transition="height .5s"; burn.setAttribute("height",D[d][0]); bl.setAttribute("opacity",d==2?1:0); ch.setAttribute("opacity",d==3?1:0); msg.innerHTML=D[d][1]; };
+    box.querySelectorAll(".seg button").forEach(x=>x.onclick=()=>set(x.dataset.d)); set(1);
+  });
+  // nose
+  root.querySelectorAll(".nose").forEach(box=>{
+    const head=box.querySelector(".head"), f=box.querySelector(".bfwd"), b=box.querySelector(".bback"), msg=box.querySelector(".msg");
+    const set=p=>{ box.querySelectorAll(".seg button").forEach(x=>x.classList.toggle("on",x.dataset.p===p));
+      head.style.transform=p==="f"?"rotate(14deg)":"rotate(-22deg)"; f.style.opacity=p==="f"?1:0; b.style.opacity=p==="f"?0:1;
+      msg.className="msg "+(p==="f"?"ok":"no");
+      msg.textContent=p==="f"?"✓ صح: الدم يخرج من الأنف ولا ينزل للحنجرة. اضغط على جانبي الأنف 5–10 دقائق وتنفّس من الفم.":"✗ خطأ شائع: الدم يتدفق للحنجرة والبلعوم وقد يسبب الاختناق أو القيء."; };
+    box.querySelectorAll(".seg button").forEach(x=>x.onclick=()=>set(x.dataset.p)); set("f");
+  });
+}
+
+
+/* remove emoji from all content */
+(function(){
+  const EMO=/[\u{1F000}-\u{1FAFF}\u{2600}-\u{26FF}\u{2B05}-\u{2B07}\uFE0F\u200D]/gu;
+  const walk=o=>{ if(Array.isArray(o)) return o.map(walk); if(o&&typeof o==="object"){ for(const k in o) o[k]=walk(o[k]); return o } return typeof o==="string"? o.replace(EMO,"").replace(/\s{2,}/g," ").trim() : o };
+  walk(UNITS); walk(SCENARIOS); walk(FACTS); walk(EXTRA);
+})();
+function openVideo(id,t){
+  const vm=$("#vm"); $("#vmt").textContent=t;
+  $("#vmf").innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&hl=ar&cc_load_policy=1" title="${esc(t)}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+  $("#vmalt").innerHTML=`الفيديو بالإنجليزية، ويمكنك تشغيل الترجمة من زر CC داخل المشغّل.`;
+  vm.classList.add("on"); $("#vmx").focus();
+}
+function closeVideo(){ $("#vm").classList.remove("on"); $("#vmf").innerHTML=""; }
+document.addEventListener("click",e=>{ if(e.target.id==="vmx"||e.target.id==="vm") closeVideo() });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"){ closeVideo(); $("#lb").classList.remove("on") } });
+
+/* ============================== STATE ============================== */
+const store = {
+  get(){ try{ return JSON.parse(localStorage.getItem("cpr-progress")||"{}") }catch(e){ return {} } },
+  set(v){ try{ localStorage.setItem("cpr-progress", JSON.stringify(v)) }catch(e){} }
+};
+let S = Object.assign({units:{}, scen:{}, best:0}, store.get());
+const save = () => store.set(S);
+const $ = (s,el=document) => el.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const app = $("#app");
+const L = ["أ","ب","ج","د"];
+const shuffle = a => { a=[...a]; for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]} return a };
+const unitById = id => UNITS.find(u=>u.id===id);
+
+/* ============================== VIEWS ============================== */
+const COVER={basics:"001-000",cpr:"008-018",choking:"014-030",fainting:"025-150",diabetes:"032-187",burns:"037-224",seizure:"023-143",heat:"048-271",poison:"052-293",bleeding:"061-331",nose:"034-213",fractures:"077-418"};
+const coverOf = id => `img/${COVER[id]}.jpg`;
+
+function home(){
+  const done = Object.keys(S.units).length;
+  const next = UNITS.find(u=>S.units[u.id]==null)||UNITS[0];
+  app.innerHTML = `
+  <section class="hero"><div class="wrap">
+    <div>
+      <h1>دورة الإسعافات الأولية</h1>
+      <div class="sub">نحو حياة جامعية آمنة</div>
+      <p class="lead">محاضرات الدورة مقسّمة إلى 12 درساً قصيراً، ومع كل درس صور من المحاضرة وتمارين تطبيقية ومواقف من الحرم الجامعي تختبر فيها قرارك.</p>
+      <div class="cta">
+        <a class="btn primary" href="#u-${next.id}">${done? "أكمل: "+next.title : "ابدأ الدرس الأول"}</a>
+        <a class="btn ghost" href="#scenarios">جرّب موقفاً</a>
+      </div>
+      <svg class="ecg" viewBox="0 0 600 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 50 H120 L135 50 L145 30 L155 70 L165 50 H220 L235 50 L250 8 L262 86 L276 40 L288 50 H360 L372 50 L382 32 L392 50 H600"/></svg>
+      <div class="facts">
+        <div><b>${UNITS.length}</b><span>درساً</span></div>
+        <div><b>${SCENARIOS.length}</b><span>موقفاً تطبيقياً</span></div>
+        <div><b>${done}</b><span>درساً أنهيته</span></div>
+        <div><b style="color:var(--red)">999</b><span>رقم الطوارئ</span></div>
+      </div>
+    </div>
+    <figure><img src="img/001-000.jpg" alt="متدربون يمارسون الإنعاش القلبي الرئوي على دمى التدريب"><figcaption>التدريب على الإنعاش القلبي الرئوي</figcaption></figure>
+  </div></section>
+
+  <div class="wrap">
+    <section class="sec">
+      <div class="sec-head"><div><h2>قبل أي إسعاف</h2><p>الترتيب نفسه في كل حالة تقريباً</p></div></div>
+      <div class="rule">
+        <div><h4>تأكد من الأمان</h4><p>قيّم المكان دون أن تعرّض نفسك للخطر.</p></div>
+        <div><h4>قيّم المصاب</h4><p>هل يستجيب؟ هل يتنفس؟ ما نوع الإصابة؟</p></div>
+        <div><h4>اطلب المساعدة</h4><p>اتصل بـ 999 عند الحاجة ولا تتركه وحده.</p></div>
+        <div><h4>أسعف حسب الأولوية</h4><p>المجرى الهوائي، ثم التنفس، ثم الدورة الدموية.</p></div>
+      </div>
+    </section>
+    <section class="sec">
+      <div class="sec-head"><div><h2>الدروس</h2><p>كل درس ينتهي بأسئلة قصيرة</p></div>
+        <div class="progress"><span>${done} من ${UNITS.length}</span><span class="bar"><i style="width:${done/UNITS.length*100}%"></i></span></div></div>
+      ${unitGrid()}
+    </section>
+    <section class="sec">
+      <div class="sec-head"><div><h2>مواقف من الحرم الجامعي</h2><p>اقرأ الموقف واختر ما ستفعله في كل خطوة</p></div><a href="#scenarios">كل المواقف</a></div>
+      ${scenGrid(SCENARIOS.slice(0,4))}
+    </section>
+    <div style="height:30px"></div>
+  </div>`;
+  initInteractive(app);
+}
+
+function unitGrid(){
+  return `<div class="units">${UNITS.map((u,i)=>`
+    <a class="ucard" href="#u-${u.id}">
+      <img loading="lazy" src="${coverOf(u.id)}" alt="">
+      <div class="b"><span class="k">الدرس ${i+1}</span><h3>${u.title}</h3><p>${u.short}</p>
+      <span class="st ${S.units[u.id]!=null?"done":""}">${S.units[u.id]!=null?`أنهيته — ${S.units[u.id]} من ${u.quiz.length} في الأسئلة`:`${u.quiz.length} أسئلة في النهاية`}</span></div>
+    </a>`).join("")}</div>`;
+}
+function units(){
+  app.innerHTML = `<div class="wrap"><div class="page-title"><h1>الدروس</h1><p>دورة الإسعافات الأولية مقسّمة إلى ${UNITS.length} درساً. ابدأ بالترتيب أو اختر ما تحتاج مراجعته.</p></div><div class="sec" style="margin-top:24px">${unitGrid()}</div><div style="height:40px"></div></div>`;
+}
+
+const NOTE_LABEL={tip:"ملاحظة",warn:"تنبيه",extra:"معلومة إضافية",why:"ليه؟",diff:"مختلف عن شرائح المحاضرة"};
+function renderBlock(b,i){
+  const id = `b${i}`; let body="";
+  switch(b.type){
+    case "def": body=`<div class="card def">${b.html}</div>`;break;
+    case "pills": body=`<div class="pills">${b.items.map(p=>`<div class="pill"><b>${p[1]}</b><small>${p[2]}</small></div>`).join("")}</div>`;break;
+    case "chips": body=`<div class="chips">${b.items.map(c=>`<span class="chip">${c}</span>`).join("")}</div>`;break;
+    case "list": body= b.grid
+      ? `<div class="chips">${b.items.map(c=>`<span class="chip">${c}</span>`).join("")}</div>`
+      : `<div class="plist"><ul>${b.items.map(c=>`<li>${c}</li>`).join("")}</ul></div>`;break;
+    case "steps": body=`<div class="steps">${b.items.map(s=>`<div class="step"><div class="dot"></div><div class="c"><b>${s[0]}</b>${s[1]?`<span>${s[1]}</span>`:""}</div></div>`).join("")}</div>`;break;
+    case "compare": body=`<div class="compare">${[b.a,b.b].map(s=>`<div class="side tone-${s.tone}"><h4>${s.t}</h4><ul>${s.items.map(x=>`<li>${x}</li>`).join("")}</ul></div>`).join("")}</div>`;break;
+    case "dodont": body=`<div class="dodont"><div class="side do"><h4>افعل</h4><ul>${b.do.map(x=>`<li>${x}</li>`).join("")}</ul></div><div class="side dont"><h4>لا تفعل</h4><ul>${b.dont.map(x=>`<li>${x}</li>`).join("")}</ul></div></div>`;break;
+    case "stats": body=`<div class="stats">${b.items.map(s=>`<div class="stat"><div class="n">${s[0]}</div><div class="u">${s[1]}</div><div class="l">${s[2]}</div></div>`).join("")}</div>`;break;
+    case "note": body=`<div class="note ${b.tone}"><span class="nl">${NOTE_LABEL[b.tone]}</span>${b.text}</div>`;break;
+    case "mnem": body=`<div class="mnem">${b.items.map(m=>`<div class="mn"><div class="k">${m[0]}</div><b>${m[1]}</b><small>${m[2]}</small></div>`).join("")}</div>`;break;
+    case "tri": body=`<div class="tri">${b.items.map(x=>`<div class="side tone-${x.tone}"><h4>${x.t}</h4><div class="lay">يصل إلى: ${x.layer}</div><ul>${x.items.map(i=>`<li>${i}</li>`).join("")}</ul></div>`).join("")}</div>`;break;
+    case "sort3": body=`<div class="ix"><div class="sortl s3" data-labels='${esc(JSON.stringify(b.labels))}'>${shuffle(b.items).map(it=>`<div class="srow" data-k="${it[1]}"><span class="t">${it[0]}<span class="why"></span></span>${b.labels.map((l,j)=>`<button data-v="${j}">${l}</button>`).join("")}</div>`).join("")}</div><div class="msg"></div></div>`;break;
+    case "skin": body=`<div class="ix skinx"><div class="ixgrid" style="grid-template-columns:1fr 1fr">
+      <svg viewBox="0 0 300 200" style="width:100%;max-width:340px;display:block;margin:auto">
+        <rect x="20" y="30" width="260" height="22" fill="#F1D3C2" stroke="#C9A693"/>
+        <rect x="20" y="52" width="260" height="62" fill="#E9A99D" stroke="#C9887C"/>
+        <path d="M40 70 q20 18 40 0 t40 0 t40 0 t40 0 t40 0" stroke="#B03A3A" stroke-width="2" fill="none"/>
+        <path d="M60 100 l10 -30 M150 104 l6 -34 M230 100 l-8 -30" stroke="#6E5A9C" stroke-width="1.6"/>
+        <rect x="20" y="114" width="260" height="56" fill="#F6E7B8" stroke="#D6C38A"/>
+        <g fill="#EAD79E">${[40,80,120,160,200,240].map(x=>`<circle cx="${x}" cy="142" r="11"/>`).join("")}</g>
+        <rect class="burn" x="110" y="30" width="80" height="0" fill="rgba(160,20,20,.55)"/>
+        <rect class="char" x="110" y="26" width="80" height="6" fill="#3A2A22" opacity="0"/>
+        <ellipse class="blis" cx="150" cy="26" rx="30" ry="10" fill="rgba(255,240,220,.9)" stroke="#C9887C" opacity="0"/>
+                <g font-size="12" font-weight="700" fill="#16233A" text-anchor="end" direction="ltr" style="direction:ltr"><text x="274" y="46">البشرة</text><text x="274" y="108">الأدمة</text><text x="274" y="164">الطبقة الدهنية</text></g>
+      </svg>
+      <div><div class="seg" style="margin-bottom:12px"><button data-d="1" class="on">الأولى</button><button data-d="2">الثانية</button><button data-d="3">الثالثة</button></div><div class="msg ok" style="color:var(--ink)"></div></div></div></div>`;break;
+    case "call": body=`<div class="callbox"><h4>${b.h}</h4><ul>${b.items.map(x=>`<li>${x}</li>`).join("")}</ul></div>`;break;
+    case "flips": body=`<div class="flips">${b.items.map(f=>`<div class="flip" tabindex="0" onclick="this.classList.toggle('on')"><div class="in"><div class="f">${f[0]}<small>اضغط لرؤية الإجابة</small></div><div class="b">${f[1]}</div></div></div>`).join("")}</div>`;break;
+  }
+  if(!body) body = renderMedia(b)||"";
+  const isEx = ["hotspot","sort","sort3","order","legs","nose","skin"].includes(b.type);
+  if(b.type==="call"||b.type==="note"&&!b.h) return `<section class="blk" id="${id}">${body}</section>`;
+  return `<section class="blk" id="${id}">${b.h?`<h3>${b.h}${isEx?`<span class="tag">تمرين</span>`:""}</h3>`:""}${body}</section>`;
+}
+
+function unitView(id){
+  const u = unitById(id); if(!u) return units();
+  const idx = UNITS.indexOf(u), prev=UNITS[idx-1], next=UNITS[idx+1];
+  const scen = SCENARIOS.filter(s=>s.unit===u.id);
+  const blocks = buildBlocks(u);
+  app.innerHTML = `
+  <header class="uhead"><div class="wrap">
+    <div>
+      <div class="k">الدرس ${idx+1} من ${UNITS.length}</div>
+      <h1>${u.title}</h1><div class="hook">${u.hook}</div>
+      <div class="meta">${u.quiz.length} أسئلة في نهاية الدرس${scen.length?`، و${scen.length===1?"موقف تطبيقي":scen.length+" مواقف"}`:""}</div>
+    </div>
+    <img src="${coverOf(u.id)}" alt="">
+  </div></header>
+  <div class="wrap ubody">
+    <nav class="toc" aria-label="محتويات الدرس"><div class="t">في هذا الدرس</div>
+      ${blocks.map((b,i)=>b.h&&b.type!=="note"?`<a href="javascript:void(0)" onclick="document.getElementById('b${i}').scrollIntoView({behavior:'smooth'})">${b.h}</a>`:"").join("")}
+      <a class="q" href="javascript:void(0)" onclick="document.getElementById('uq').scrollIntoView({behavior:'smooth'})">اختبر نفسك</a>
+    </nav>
+    <div>
+      ${blocks.map(renderBlock).join("")}
+      <section class="blk" id="uq"><h3>اختبر نفسك</h3><div class="card quiz" id="quizbox"></div></section>
+      ${scen.length?`<section class="blk"><h3>طبّق في موقف</h3>${scenGrid(scen)}</section>`:""}
+      <div class="unav">
+        ${prev?`<a class="btn ghost" href="#u-${prev.id}">السابق: ${prev.title}</a>`:"<span></span>"}
+        ${next?`<a class="btn primary" href="#u-${next.id}">التالي: ${next.title}</a>`:`<a class="btn primary" href="#exam">الاختبار النهائي</a>`}
+      </div>
+    </div>
+  </div>`;
+  app.querySelectorAll(".hot").forEach((h,k)=>h.__blk=blocks.filter(b=>b.type==="hotspot")[k]);
+  initInteractive(app);
+  runQuiz($("#quizbox"), u.quiz.map(q=>({...q,unit:u.id})), (score,total)=>{ S.units[u.id]=score; save(); }, {retry:true});
+}
+
+
+/* quiz engine */
+function runQuiz(box, qs, onDone, opt={}){
+  let i=0, score=0, wrong=[];
+  const draw=()=>{
+    const q=qs[i];
+    const order = shuffle(q.o.map((t,k)=>({t,k})));
+    box.innerHTML = `
+      <div class="qhead"><span>سؤال ${i+1} من ${qs.length}</span><span>✓ ${score}</span></div>
+      <div class="qbar"><i style="width:${i/qs.length*100}%"></i></div>
+      ${opt.showUnit?`<div class="qunit">${unitById(q.unit).title}</div>`:""}
+      <div class="qq">${q.q}</div>
+      <div class="opts">${order.map((o,j)=>`<button class="opt" data-k="${o.k}"><span class="l">${L[j]}</span><span>${o.t}</span></button>`).join("")}</div>
+      <div class="fb"></div>
+      <div class="qnav"></div>`;
+    box.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{
+      const k=+b.dataset.k, ok=k===q.a;
+      box.querySelectorAll(".opt").forEach(x=>{x.disabled=true; if(+x.dataset.k===q.a) x.classList.add("right")});
+      if(!ok){ b.classList.add("wrong"); wrong.push(q) } else score++;
+      const fb=$(".fb",box); fb.className="fb show "+(ok?"ok":"no");
+      fb.innerHTML=`<b>${ok?"إجابة صحيحة. ":"إجابة غير صحيحة. "}</b>${q.w}`;
+      $(".qnav",box).innerHTML=`<button class="btn dark">${i<qs.length-1?"السؤال التالي":"عرض النتيجة"}</button>`;
+      $(".qnav button",box).onclick=()=>{ i++; i<qs.length?draw():end() };
+    });
+  };
+  const end=()=>{
+    const pct=Math.round(score/qs.length*100);
+    const msg = pct===100?"ممتاز، كل الإجابات صحيحة":pct>=70?"شغل حلو! راجع الأخطاء البسيطة":"راجع المحاضرة مرة ثانية وحاول من جديد";
+    box.innerHTML=`<div class="result"><div class="big">${score}/${qs.length}</div><h3 style="margin:6px 0 4px">${msg}</h3><div style="color:var(--muted)">${pct}%</div>
+      ${wrong.length?`<div class="wrong-list"><h4 style="margin-bottom:8px;font-size:17px">راجع هذه الأسئلة</h4>${wrong.map(q=>`<div class="card"><b>${q.q}</b><span>✓ ${q.o[q.a]}</span></div>`).join("")}</div>`:""}
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:20px;flex-wrap:wrap"><button class="btn ghost" id="again">أعد المحاولة</button>${opt.after||""}</div></div>`;
+    $("#again",box).onclick=()=>{ i=0;score=0;wrong=[]; if(opt.reshuffle) qs=shuffle(qs); draw() };
+    onDone && onDone(score,qs.length);
+  };
+  draw();
+}
+
+/* scenarios */
+function scenGrid(list){
+  return `<div class="scgrid">${list.map(s=>`
+    <a class="sc" href="#s-${s.id}">
+      <img loading="lazy" src="${coverOf(s.unit)}" alt="">
+      <div class="b"><div class="place">${s.place}</div><h3>${s.title}</h3>
+      <p>${s.intro.length>90?s.intro.slice(0,s.intro.lastIndexOf(" ",90))+"…":s.intro}</p>
+      <div class="foot">${S.scen[s.id]!=null?`<b>أنهيته</b> — `:""}${s.steps.length} قرارات</div></div>
+    </a>`).join("")}</div>`;
+}
+function scenarios(){
+  app.innerHTML = `<div class="wrap"><div class="page-title"><h1>المواقف</h1><p>مواقف قد تحدث في الكلية أو السكن أو الملعب. اقرأ الموقف، واختر ما ستفعله في كل خطوة، وستعرف مباشرة إن كان قرارك صحيحاً ولماذا.</p></div><div class="sec" style="margin-top:24px">${scenGrid(SCENARIOS)}</div><div style="height:40px"></div></div>`;
+}
+function scenView(id){
+  const s = SCENARIOS.find(x=>x.id===id); if(!s) return scenarios();
+  let i=0, firstTry=0, marks=[];
+  app.innerHTML = `<div class="wrap stage">
+    <div class="card story"><img src="${coverOf(s.unit)}" alt=""><div class="b"><div class="place">${s.place}</div><h1>${s.title}</h1><div class="txt">${s.intro}</div></div></div>
+    <div class="timeline" id="tl">${s.steps.map(()=>"<i></i>").join("")}</div>
+    <div class="card quiz" id="sbox"></div></div>`;
+  const box=$("#sbox");
+  const tl=()=>$("#tl").innerHTML=s.steps.map((_,k)=>`<i class="${k<i?(marks[k]?"done":"miss"):k===i?"cur":""}"></i>`).join("");
+  const draw=()=>{
+    tl(); const st=s.steps[i]; let tried=false;
+    box.innerHTML=`<div class="qhead"><span>القرار ${i+1} من ${s.steps.length}</span></div><div class="ask">${st.ask}</div>
+      <div class="opts">${st.ch.map((c,j)=>`<button class="opt" data-j="${j}"><span class="l">${L[j]}</span><span>${c[0]}</span></button>`).join("")}</div><div class="fb"></div><div class="qnav"></div>`;
+    box.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{
+      const c=st.ch[+b.dataset.j], fb=$(".fb",box);
+      if(c[1]){
+        if(!tried){firstTry++; marks[i]=true} else marks[i]=false;
+        b.classList.add("right"); box.querySelectorAll(".opt").forEach(x=>x.disabled=true);
+        fb.className="fb show ok"; fb.innerHTML=`<b>قرار صحيح. </b>${c[2]}`;
+        $(".qnav",box).innerHTML=`<button class="btn dark">${i<s.steps.length-1?"الخطوة التالية":"عرض النتيجة"}</button>`;
+        $(".qnav button",box).onclick=()=>{i++; i<s.steps.length?draw():end()};
+      } else {
+        tried=true; b.classList.add("wrong"); b.disabled=true;
+        fb.className="fb show no"; fb.innerHTML=`<b>ليس هذا. </b>${c[2]} <br><small>اختر إجابة أخرى.</small>`;
+      }
+    });
+  };
+  const end=()=>{
+    tl();
+    const r=firstTry/s.steps.length, stars=r===1?3:r>=.6?2:1;
+    S.scen[s.id]=Math.max(stars,S.scen[s.id]||0); save(); if(stars===3) confetti();
+    const nxt=SCENARIOS[(SCENARIOS.indexOf(s)+1)%SCENARIOS.length];
+    box.innerHTML=`<div class="scend"><div class="score">${firstTry} / ${s.steps.length}</div>
+      <h3 style="margin:6px 0 10px">قرارات صحيحة من أول محاولة</h3>
+      <p style="color:var(--muted);font-size:17px">${s.outro}</p>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px">
+        <a class="btn ghost" href="#u-${s.unit}">راجع الدرس</a>
+        <button class="btn ghost" onclick="scenView('${s.id}')">أعد الموقف</button>
+        <a class="btn primary" href="#s-${nxt.id}">الموقف التالي</a></div></div>`;
+  };
+  draw();
+}
+
+/* CPR trainer */
+let tState=null; let TT=[]; // TT: extra timers of the trainer
+function tClear(){ if(tState){ clearInterval(tState); clearTimeout(tState); tState=null } TT.forEach(t=>{clearInterval(t);clearTimeout(t)}); TT=[]; window.onkeydown=null; window.onkeyup=null; }
+let tAC=null;
+function tBeep(f=880,d=.06){ const s=$("#snd"); if(s&&!s.checked) return; try{ tAC=tAC||new (window.AudioContext||window.webkitAudioContext)(); const o=tAC.createOscillator(),g=tAC.createGain(); o.frequency.value=f; g.gain.setValueAtTime(.22,tAC.currentTime); g.gain.exponentialRampToValueAtTime(.001,tAC.currentTime+d); o.connect(g).connect(tAC.destination); o.start(); o.stop(tAC.currentTime+d)}catch(e){} }
+const T_STEPS=[["safe","أمان المكان"],["resp","الاستجابة والتنفس"],["air","فتح مجرى الهواء"],["comp","الضغطات الصدرية"],["cycle","30 ضغطة + نفَسان"]];
+let tCur="safe";
+function trainer(){
+  app.innerHTML=`<div class="wrap" style="padding-bottom:60px"><div class="page-title" style="margin-bottom:20px"><h1>مدرّب CPR</h1>
+    <p>تدرّب على خطوات الإنعاش بالترتيب، من لحظة وصولك إلى المكان حتى دورة كاملة من 30 ضغطة ونفَسين.</p></div>
+    <div class="tsteps" role="tablist">${T_STEPS.map((s,i)=>`<button role="tab" data-k="${s[0]}"><span>${i+1}</span>${s[1]}</button>`).join("")}</div>
+    <div id="tp"></div>
+    <div class="note tip" style="margin-top:18px"><span class="nl">تذكير</span>هذه التمارين للمذاكرة وفهم الترتيب، ولا تغني عن التدريب العملي على الدمية مع مدرّب.</div>
+  </div>`;
+  app.querySelectorAll(".tsteps button").forEach(b=>b.onclick=()=>tShow(b.dataset.k));
+  tShow(tCur);
+}
+function tShow(k){
+  tClear(); tCur=k;
+  app.querySelectorAll(".tsteps button").forEach(b=>{ b.classList.toggle("on",b.dataset.k===k); b.setAttribute("aria-selected",b.dataset.k===k) });
+  const i=T_STEPS.findIndex(s=>s[0]===k), next=T_STEPS[i+1];
+  const tp=$("#tp");
+  ({safe:tSafe,resp:tResp,air:tAir,comp:tComp,cycle:tCycle})[k](tp);
+  tp.insertAdjacentHTML("beforeend",`<div class="tnext">${next?`<button class="btn primary" data-n="${next[0]}">التالي: ${next[1]}</button>`:`<a class="btn primary" href="#u-cpr">ارجع لدرس الإنعاش</a>`}</div>`);
+  const nb=tp.querySelector(".tnext button"); if(nb) nb.onclick=()=>{ tShow(nb.dataset.n); $(".tsteps").scrollIntoView({behavior:"smooth",block:"start"}) };
+}
+
+/* ---------- 1. scene safety ---------- */
+function tSafe(tp){
+  const HZ={wire:"سلك كهرباء مكشوف يصدر شرارات: قد يصعقك أنت والمصاب.",water:"ماء على الأرض يصل إلى السلك: الماء يوصل الكهرباء.",glass:"زجاج مكسور بجانب المصاب: قد يجرحك وأنت تجثو بجانبه.",smoke:"دخان يخرج من باب المختبر: قد يكون حريقاً أو غازاً ساماً."};
+  const OK={bag:"حقيبة الطالب لا تشكل خطراً.",bench:"المقعد لا يشكل خطراً.",board:"لوحة الإعلانات لا تشكل خطراً."};
+  tp.innerHTML=`<div class="card tcard"><h2>أمان المكان</h2><p class="lead2">وجدت زميلاً ممدداً على الأرض في ممر المختبرات. قبل أن تقترب: <b>ابحث عن 4 مصادر للخطر</b> في الصورة واضغط عليها.</p>
+   <div class="tgrid"><svg class="scene" viewBox="0 0 720 360" aria-label="ممر فيه مصاب ومصادر خطر">
+     <rect x="0" y="0" width="720" height="250" fill="#EEF1F5"/><rect x="0" y="250" width="720" height="110" fill="#DCD6CD"/>
+     <g class="hz2" data-k="smoke"><rect x="40" y="70" width="110" height="180" fill="#C9D2DE" stroke="#8EA3BE"/><rect x="58" y="88" width="74" height="40" fill="#fff" stroke="#8EA3BE"/><text x="95" y="114" font-size="14" text-anchor="middle" fill="#0D2B52" font-weight="700">مختبر</text>
+       <g fill="#8B8F96" opacity=".75"><circle cx="150" cy="120" r="22"/><circle cx="175" cy="95" r="26"/><circle cx="205" cy="70" r="22"/><circle cx="168" cy="140" r="16"/></g></g>
+     <g class="hz2 safe" data-k="board"><rect x="300" y="50" width="140" height="80" fill="#F6E7B8" stroke="#C5A044"/><line x1="315" y1="72" x2="425" y2="72" stroke="#C5A044"/><line x1="315" y1="90" x2="405" y2="90" stroke="#C5A044"/><line x1="315" y1="108" x2="415" y2="108" stroke="#C5A044"/></g>
+     <g class="hz2" data-k="wire"><rect x="566" y="160" width="26" height="34" rx="4" fill="#fff" stroke="#8EA3BE"/><path d="M579 194 C 585 240, 540 250, 548 300" stroke="#1F2933" stroke-width="5" fill="none"/>
+       <g stroke="#F0B400" stroke-width="3"><line x1="548" y1="300" x2="534" y2="290"/><line x1="548" y1="300" x2="560" y2="286"/><line x1="548" y1="300" x2="540" y2="314"/><line x1="548" y1="300" x2="562" y2="310"/></g></g>
+     <g class="hz2" data-k="water"><ellipse cx="505" cy="318" rx="70" ry="16" fill="#9CC7EA" opacity=".85"/></g>
+     <g class="hz2 safe" data-k="bench"><rect x="600" y="236" width="100" height="14" fill="#8C6A4A"/><rect x="608" y="250" width="8" height="30" fill="#6E5338"/><rect x="684" y="250" width="8" height="30" fill="#6E5338"/></g>
+     <g pointer-events="none"><circle cx="300" cy="292" r="18" fill="#E9DFD7" stroke="#A99486"/><rect x="316" y="280" width="140" height="26" rx="12" fill="#5B7FB0"/><rect x="452" y="284" width="70" height="18" rx="9" fill="#2F3B4C"/></g>
+     <g class="hz2" data-k="glass" fill="#CFE6F2" stroke="#6E9BB5"><polygon points="232,318 246,306 250,322"/><polygon points="256,330 270,322 266,338"/><polygon points="214,334 226,328 228,342"/></g>
+     <g class="hz2 safe" data-k="bag"><rect x="120" y="282" width="46" height="40" rx="8" fill="#0D2B52"/><rect x="132" y="272" width="22" height="12" rx="5" fill="none" stroke="#0D2B52" stroke-width="4"/></g>
+   </svg>
+   <div><div class="found2"><b>مصادر الخطر: <span id="hzc">0</span> من 4</b><ul id="hzl"></ul></div><div class="msg" id="hzm"></div><div id="hzq"></div></div></div></div>`;
+  const found=new Set();
+  tp.querySelectorAll(".hz2").forEach(g=>g.onclick=()=>{
+    const k=g.dataset.k, m=$("#hzm");
+    if(OK[k]){ m.className="msg"; m.textContent=OK[k]; return }
+    if(found.has(k)) return;
+    found.add(k); g.classList.add("got"); $("#hzc").textContent=found.size;
+    $("#hzl").insertAdjacentHTML("beforeend",`<li>${HZ[k]}</li>`); m.textContent="";
+    if(found.size===4) ask();
+  });
+  function ask(){
+    $("#hzq").innerHTML=`<div class="ask" style="margin-top:14px">وجدت كل مصادر الخطر. ماذا تفعل الآن؟</div><div class="opts">
+      <button class="opt" data-v="0"><span class="l">أ</span><span>أقترب فوراً وأبدأ الإنعاش، فكل ثانية مهمة</span></button>
+      <button class="opt" data-v="1"><span class="l">ب</span><span>أسحب المصاب من يده بعيداً عن السلك</span></button>
+      <button class="opt" data-v="2"><span class="l">ج</span><span>أتصل بـ 999، وأفصل الكهرباء من القاطع إن كان ذلك آمناً، وأبعد الناس عن الدخان، وأزيح الزجاج، ثم أقترب</span></button></div><div class="fb" id="hzf"></div>`;
+    const W={0:"إذا أُصبت أنت فلن تستطيع إنقاذ أحد، وسيصبح هناك مصابان بدل واحد.",1:"لمسه والكهرباء ما زالت متصلة قد يصعقك أنت أيضاً.",2:"صحيح. أزل الخطر أولاً أو ابتعد عنه. وإذا لم تستطع جعل المكان آمناً، مثل حريق لا يمكنك السيطرة عليه، فلا تقترب وانتظر فرق الطوارئ."};
+    $("#hzq").querySelectorAll(".opt").forEach(b=>b.onclick=()=>{ const v=+b.dataset.v, ok=v===2; b.classList.add(ok?"right":"wrong"); const f=$("#hzf"); f.className="fb show "+(ok?"ok":"no"); f.textContent=W[v]; });
+  }
+}
+
+/* ---------- 2. response & breathing ---------- */
+function tResp(tp){
+  tp.innerHTML=`<div class="card tcard"><h2>الاستجابة والتنفس</h2><p class="lead2">المكان آمن الآن. كيف تعرف إن كان المصاب يحتاج إلى إنعاش؟</p>
+    <h3 class="sub3">أولاً: تحقّق من الاستجابة</h3><div class="opts" id="r1">
+      <button class="opt" data-v="0"><span class="l">أ</span><span>أرش الماء على وجهه</span></button>
+      <button class="opt" data-v="1"><span class="l">ب</span><span>أربّت على كتفيه بقوة وأنادي بصوت عالٍ: «هل أنت بخير؟»</span></button>
+      <button class="opt" data-v="2"><span class="l">ج</span><span>أهزّ رأسه بقوة</span></button></div><div class="fb" id="r1f"></div>
+    <div id="r2" style="display:none;margin-top:26px"><h3 class="sub3">ثانياً: افحص التنفس لمدة 10 ثوانٍ</h3>
+      <p style="color:var(--muted);margin:0 0 10px">لم يستجب. أمِل رأسه وارفع ذقنه، ثم راقب الصدر: هل يرتفع وينخفض بشكل طبيعي؟</p>
+      <div class="tgrid"><svg viewBox="0 0 360 150" style="width:100%;max-width:380px;display:block;margin:auto">
+        <line x1="10" y1="132" x2="350" y2="132" stroke="#D8CBC1" stroke-width="3"/>
+        <circle cx="48" cy="104" r="20" fill="#E9DFD7" stroke="#A99486"/>
+        <rect x="70" y="100" width="230" height="26" rx="13" fill="#AEC0D6"/>
+        <ellipse id="chest" cx="150" cy="100" rx="56" ry="10" fill="#C6D3E4" style="transform-box:fill-box;transform-origin:bottom;transition:transform .9s ease"/>
+        <text id="gasp" x="60" y="66" font-size="15" fill="#B42318" font-weight="700" opacity="0">شهقة!</text>
+        <text id="cd" x="300" y="40" font-size="30" text-anchor="middle" fill="#0D2B52" font-weight="800"></text></svg>
+      <div><button class="btn primary" id="rgo">ابدأ الفحص (10 ثوانٍ)</button>
+        <div class="opts" id="r2o" style="margin-top:14px;display:none">
+          <button class="opt" data-v="n"><span class="l">أ</span><span>يتنفس طبيعياً</span></button>
+          <button class="opt" data-v="x"><span class="l">ب</span><span>لا يتنفس، أو شهقات متقطعة فقط</span></button></div>
+        <div class="fb" id="r2f"></div><div id="r2n"></div></div></div></div></div>`;
+  $("#r1").querySelectorAll(".opt").forEach(b=>b.onclick=()=>{
+    const v=+b.dataset.v, ok=v===1, f=$("#r1f"); b.classList.add(ok?"right":"wrong"); f.className="fb show "+(ok?"ok":"no");
+    f.textContent=ok?"صحيح. صوت عالٍ ولمسة قوية على الكتفين. لم يستجب، فاطلب من شخص محدد أن يتصل بـ 999 ويحضر جهاز AED.":v===0?"رش الماء لا يفيد ويضيّع الوقت.":"هزّ الرأس قد يؤذي الرقبة إذا كان مصاباً.";
+    if(ok){ $("#r1").querySelectorAll(".opt").forEach(x=>x.disabled=true); $("#r2").style.display="block"; }
+  });
+  let mode;
+  const run=()=>{
+    tClear(); mode=["n","g","x"][Math.floor(Math.random()*3)];
+    $("#r2o").style.display="none"; $("#r2f").className="fb"; $("#r2n").innerHTML=""; $("#r2o").querySelectorAll(".opt").forEach(x=>{x.disabled=false;x.classList.remove("right","wrong")});
+    const ch=$("#chest"), gs=$("#gasp"); let t=10; $("#cd").textContent=t; $("#rgo").disabled=true;
+    const rise=()=>{ ch.style.transform="scaleY(2.2)"; TT.push(setTimeout(()=>ch.style.transform="scaleY(1)",1100)) };
+    if(mode==="n"){ rise(); TT.push(setInterval(rise,3500)) }
+    if(mode==="g"){ [2600,7400].forEach(d=>TT.push(setTimeout(()=>{ ch.style.transition="transform .25s"; ch.style.transform="scaleY(1.7)"; gs.setAttribute("opacity",1); TT.push(setTimeout(()=>{ch.style.transform="scaleY(1)";gs.setAttribute("opacity",0);ch.style.transition="transform .9s ease"},450)) },d))) }
+    TT.push(setInterval(()=>{ t--; $("#cd").textContent=t>0?t:""; if(t<=0){ TT.forEach(x=>{clearInterval(x);clearTimeout(x)}); TT=[]; ch.style.transform="scaleY(1)"; $("#r2o").style.display="grid"; $("#rgo").disabled=false; $("#rgo").textContent="حالة أخرى"; } },1000));
+  };
+  $("#rgo").onclick=run;
+  $("#r2o").querySelectorAll(".opt").forEach(b=>b.onclick=()=>{
+    const v=b.dataset.v, right=mode==="n"?"n":"x", ok=v===right, f=$("#r2f");
+    $("#r2o").querySelectorAll(".opt").forEach(x=>x.disabled=true); b.classList.add(ok?"right":"wrong");
+    const why={n:"كان الصدر يرتفع وينخفض بانتظام. هو يتنفس: ضعه في وضعية الإفاقة، وتأكد من الاتصال بـ 999، واستمر في مراقبة تنفسه.",g:"كانت شهقات متقطعة فقط، وهي ليست تنفساً طبيعياً بل علامة على توقف القلب. ابدأ الإنعاش فوراً.",x:"لم يتحرك الصدر أبداً. لا يتنفس: ابدأ الإنعاش فوراً."}[mode];
+    f.className="fb show "+(ok?"ok":"no"); f.innerHTML=`<b>${ok?"صحيح. ":"ليس صحيحاً. "}</b>${why}`;
+  });
+}
+
+/* ---------- 3. airway ---------- */
+function tAir(tp){
+  tp.innerHTML=`<div class="card tcard"><h2>فتح مجرى الهواء</h2><p class="lead2">عند فاقد الوعي ترتخي العضلات <b>ويسقط اللسان للخلف فيسد مجرى الهواء</b>. افتحه قبل نفَسَي الإنقاذ.</p>
+    <div class="seg" id="aw" style="margin-bottom:14px"><button data-m="n" class="on">شخص عادي</button><button data-m="s">اشتباه إصابة في الرقبة</button></div>
+    <div class="tgrid"><svg viewBox="0 0 320 260" style="width:100%;max-width:330px;display:block;margin:auto" aria-label="رأس من الجانب ومجرى الهواء">
+      <line x1="0" y1="246" x2="320" y2="246" stroke="#D8CBC1" stroke-width="3"/>
+      <g id="hd" style="transform-origin:150px 200px;transition:transform .5s">
+        <rect x="120" y="170" width="60" height="76" rx="20" fill="#E9DFD7" stroke="#A99486"/>
+        <circle cx="140" cy="118" r="70" fill="#E9DFD7" stroke="#A99486" stroke-width="1.5"/>
+        <path d="M205 100 L228 136 L202 140 Z" fill="#E2CDBF" stroke="#A99486"/>
+        <g id="jaw" style="transition:transform .5s"><path d="M150 186 Q200 192 214 160" stroke="#A99486" stroke-width="2" fill="none"/><path d="M196 162 Q205 166 212 158" stroke="#A0614F" stroke-width="3" fill="none"/></g>
+        <path id="tube" d="M212 150 Q170 150 160 175 L156 246" stroke="#C8102E" stroke-width="12" fill="none" stroke-linecap="round" opacity=".35"/>
+        <path id="flow" class="flow" d="M214 150 Q170 150 160 175 L156 246" stroke="#17795A" stroke-width="3" fill="none" opacity="0"/>
+        <ellipse id="tongue" cx="168" cy="168" rx="16" ry="11" fill="#D9837A" style="transition:transform .5s"/>
+        <circle cx="180" cy="98" r="4" fill="#3B2E2A"/>
+      </g>
+      <g id="hand" opacity="0" style="transition:opacity .3s"><rect x="210" y="174" width="44" height="14" rx="7" fill="#C9A58F"/><text x="316" y="216" font-size="12" fill="#5B6678" text-anchor="end" style="direction:ltr">إصبعان تحت الذقن</text></g>
+      <g id="jt" opacity="0" style="transition:opacity .3s"><circle cx="160" cy="180" r="9" fill="#C9A58F"/><text x="316" y="28" font-size="12" fill="#5B6678" text-anchor="end" style="direction:ltr">الأصابع خلف زاوية الفك</text></g>
+    </svg>
+    <div><div class="ctl"><label>إمالة الرأس للخلف <b id="tv">0°</b><input type="range" id="tilt" min="0" max="30" value="0"></label>
+      <button class="btn ghost" id="chin">رفع الذقن</button> <button class="btn ghost" id="jthr">دفع الفك للأمام</button> <button class="btn ghost" id="arst">إعادة</button></div>
+      <div class="astat" id="ast"></div><div class="msg" id="am"></div></div></div>
+    <div class="compare" style="margin-top:16px"><div class="side tone-blue"><h4>شخص عادي: إمالة الرأس ورفع الذقن</h4><ul><li>ضع كفّك على جبهته وأمِل رأسه للخلف</li><li>ضع إصبعين تحت عظمة الذقن وارفعها</li><li>لا تضغط على الجزء الليّن تحت الذقن</li></ul></div>
+      <div class="side tone-red"><h4>إصابة محتملة في الرقبة: دفع الفك</h4><ul><li>اجلس عند رأس المصاب، وثبّت رأسه في مكانه دون أن تميله</li><li>ضع أصابعك خلف زاويتي الفك من الجانبين</li><li>ادفع الفك للأمام وللأعلى</li><li>إن لم ينفتح مجرى الهواء فأمِل الرأس قليلاً، لأن التنفس أولوية</li></ul></div></div>
+    <div class="note why" style="margin-top:14px"><span class="nl">متى تشك في إصابة الرقبة؟</span>سقوط من مكان مرتفع، أو حادث سيارة، أو غوص في ماء ضحل، أو ضربة قوية على الرأس.</div></div>`;
+  let m="n", tilt=0, chin=false, jaw=false;
+  const upd=()=>{
+    $("#tv").textContent=tilt+"°"; $("#hd").style.transform=`rotate(${-tilt}deg)`;
+    $("#jaw").style.transform= chin||jaw ? "translate(4px,-4px)":"none";
+    $("#hand").setAttribute("opacity",chin?1:0); $("#jt").setAttribute("opacity",jaw?1:0);
+    const open = m==="n" ? (tilt>=15&&chin) : (jaw || (tilt>=15&&chin));
+    const part = tilt>=15 || chin || jaw;
+    $("#tongue").style.transform = open?"translate(16px,10px) scale(.8)": part?"translate(7px,4px)":"none";
+    $("#flow").setAttribute("opacity",open?1:0); $("#tube").setAttribute("opacity",open?.15:.35);
+    $("#ast").innerHTML = open?`<span class="ok">مجرى الهواء مفتوح</span>`:`<span class="no">مجرى الهواء مسدود باللسان</span>`;
+    const am=$("#am");
+    if(m==="s" && tilt>5 && !jaw){ am.className="msg no"; am.textContent="انتبه: إمالة الرقبة مع اشتباه إصابتها قد تزيد الضرر. جرّب دفع الفك أولاً." }
+    else if(m==="s" && jaw && tilt===0){ am.className="msg ok"; am.textContent="ممتاز: فتحت مجرى الهواء بدفع الفك دون أن تحرّك الرقبة." }
+    else if(m==="n" && open){ am.className="msg ok"; am.textContent="ممتاز: إمالة الرأس مع رفع الذقن تسحب اللسان للأمام وتفتح مجرى الهواء." }
+    else if(m==="n" && jaw){ am.className="msg"; am.textContent="دفع الفك يفتح المجرى أيضاً، لكن مع الشخص العادي الطريقة الأسهل هي إمالة الرأس ورفع الذقن." }
+    else { am.className="msg"; am.textContent= m==="n"?"أمِل الرأس للخلف وارفع الذقن.":"ثبّت الرأس كما هو وادفع الفك للأمام." }
+  };
+  $("#tilt").oninput=e=>{ tilt=+e.target.value; upd() };
+  $("#chin").onclick=()=>{ chin=!chin; $("#chin").classList.toggle("on",chin); upd() };
+  $("#jthr").onclick=()=>{ jaw=!jaw; $("#jthr").classList.toggle("on",jaw); upd() };
+  const reset=()=>{ tilt=0; chin=false; jaw=false; $("#tilt").value=0; $("#chin").classList.remove("on"); $("#jthr").classList.remove("on"); upd() };
+  $("#arst").onclick=reset;
+  $("#aw").querySelectorAll("button").forEach(b=>b.onclick=()=>{ m=b.dataset.m; $("#aw").querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b)); reset() });
+  upd();
+}
+
+/* ---------- 4. compressions (original trainer) ---------- */
+function tComp(tp){
+  tp.innerHTML=`<div class="card tcard"><h2>الضغطات الصدرية</h2><p class="lead2">اضبط إيقاعك على 100–120 ضغطة في الدقيقة، ثم قِس سرعتك.</p>
+    <div class="trainer">
+      <div class="tpanel">
+        <h3>اتبع الإيقاع</h3>
+        ${cprFig("cprfig")}
+        <div class="heart" id="heart" style="width:110px;height:110px"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.8 8.3 2.9 4.5 6.6 4.5c2.1 0 3.6 1.2 4.4 2.5.8-1.3 2.3-2.5 4.4-2.5 3.7 0 5.8 3.8 4.2 7.3C19.5 16.4 12 21 12 21z"/></svg></div>
+        <div class="count" id="cnt">0<small> / 30</small></div>
+        <div class="phase" id="phase">اضغط «ابدأ» واضغط مع كل نبضة</div>
+        <div class="bpm"><span>السرعة</span><input type="range" id="bpm" min="100" max="120" value="110"><b id="bpmv">110</b><span>/دقيقة</span></div>
+        <div style="display:flex;gap:10px;justify-content:center"><button class="btn primary" id="go">ابدأ</button><label style="display:flex;align-items:center;gap:6px;font-size:14px;color:var(--muted)"><input type="checkbox" id="snd" checked> صوت</label></div>
+        <div style="margin-top:12px;color:var(--muted);font-size:14px">الدورات المكتملة: <b id="cyc">0</b></div>
+      </div>
+      <div class="tpanel">
+        <h3>قِس سرعتك</h3>
+        <p style="color:var(--muted);font-size:15px;margin:6px 0 0">اضغط الزر (أو مسطرة المسافة) بإيقاع ثابت لمدة 10 ثوانٍ.</p>
+        <div class="tap" id="tap">اضغط هنا</div>
+        <div class="count" id="rate" style="font-size:42px">—</div>
+        <div style="color:var(--muted);font-size:14px">ضغطة/دقيقة</div>
+        <div class="gauge"><i id="needle" style="left:50%"></i></div>
+        <div class="glbl"><span>70</span><span>100</span><span>120</span><span>150</span></div>
+        <div class="phase" id="tapmsg" style="margin-top:12px"></div>
+      </div>
+    </div>
+    <div class="note tip" style="margin-top:12px"><span class="nl">تذكير</span>العمق 5–6 سم، واترك الصدر يرجع كاملاً بين كل ضغطة. إذا لم تكن مدرّباً على تنفس الإنقاذ: استمر بالضغطات فقط.</div></div>`;
+  const bpm=$("#bpm"); bpm.oninput=()=>{$("#bpmv").textContent=bpm.value; if(tState){stop();start()}};
+  let n=0,cyc=0;
+  const tick=()=>{
+    n++; $("#cnt").innerHTML=`${n}<small> / 30</small>`; const h=$("#heart"), cf=$("#cprfig"); if(!h) return; h.classList.add("beat"); cf.classList.add("push"); setTimeout(()=>{h.classList.remove("beat");cf.classList.remove("push")},110);
+    tBeep(n===30?1200:880);
+    $("#phase").textContent = n<=10?"اضغط بقوة واترك الصدر يرجع":n<=20?"حافظ على الإيقاع":"اقتربت: بقي "+(30-n);
+    if(n>=30){ clearInterval(tState); $("#phase").innerHTML="<span style='color:var(--blue)'>نفَسا إنقاذ: إمالة الرأس ورفع الذقن</span>";
+      tState=setTimeout(()=>{ n=0; cyc++; $("#cyc").textContent=cyc; if(tState){ tState=setInterval(tick,60000/bpm.value) } },4000); }
+  };
+  const start=()=>{ n=0; $("#go").textContent="إيقاف"; tState=setInterval(tick,60000/bpm.value) };
+  const stop=()=>{ clearInterval(tState); clearTimeout(tState); tState=null; $("#go").textContent="ابدأ"; };
+  $("#go").onclick=()=> tState?stop():start();
+  let taps=[],timer=null;
+  const hit=()=>{
+    const t=performance.now(); const tpb=$("#tap"); tpb.classList.add("hit"); setTimeout(()=>tpb.classList.remove("hit"),70); tBeep(660,.04);
+    if(!timer){ taps=[]; let left=10; $("#tapmsg").textContent="10…"; timer=setInterval(()=>{ left--; const el=$("#tapmsg"); if(!el){clearInterval(timer);return} el.textContent=left>0?left+"…":""; if(left<=0){ clearInterval(timer); timer=null; finish() } },1000); TT.push(timer) }
+    taps.push(t); if(taps.length>2){ show(Math.round(60000*(taps.length-1)/(taps[taps.length-1]-taps[0]))) }
+  };
+  const show=r=>{ $("#rate").textContent=r; const p=Math.max(0,Math.min(100,(r-70)/80*100)); $("#needle").style.left=p+"%" };
+  const finish=()=>{ if(taps.length<3){$("#tapmsg").textContent="ضغطات قليلة، حاول مرة أخرى";return}
+    const r=Math.round(60000*(taps.length-1)/(taps[taps.length-1]-taps[0])); show(r);
+    $("#tapmsg").innerHTML = r<100?"<span style='color:var(--bad)'>أبطأ من المطلوب، أسرع قليلاً</span>":r>120?"<span style='color:var(--bad)'>أسرع من المطلوب، خفّف قليلاً</span>":"<span style='color:var(--ok)'>ممتاز: إيقاعك في النطاق الصحيح</span>"; };
+  $("#tap").addEventListener("pointerdown",e=>{e.preventDefault();hit()});
+  window.onkeydown=e=>{ if(e.code==="Space"){ e.preventDefault(); hit() } };
+}
+function cprFig(id){ return `<svg class="cprfig" id="${id}" viewBox="0 0 300 150" style="width:100%;max-width:320px;display:block;margin:6px auto 0">
+  <line x1="10" y1="140" x2="290" y2="140" stroke="#D8CBC1" stroke-width="3"/>
+  <circle cx="40" cy="116" r="18" fill="#E9DFD7" stroke="#A99486"/>
+  <rect x="60" y="112" width="200" height="22" rx="11" fill="#AEC0D6"/>
+  <rect class="chest" x="104" y="96" width="70" height="20" rx="8" fill="#B8C7DA"/>
+  <g class="hands"><path d="M139 4 L132 72 M139 4 L146 72" stroke="#C8102E" stroke-width="10" stroke-linecap="round"/><rect x="122" y="70" width="34" height="16" rx="7" fill="#E9DFD7" stroke="#A99486"/><rect x="124" y="80" width="30" height="14" rx="6" fill="#E2CDBF" stroke="#B9A091"/></g>
+  <path d="M196 80 V112" stroke="#6B6266" stroke-width="1.5" marker-end="url(#ar)" marker-start="url(#ar)"/><text x="204" y="100" font-size="12" fill="#6B6266">5–6 سم</text>
+  <defs><marker id="ar" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" fill="#6B6266"/></marker></defs></svg>`; }
+
+/* ---------- 5. full cycle 30:2 ---------- */
+function tCycle(tp){
+  tp.innerHTML=`<div class="card tcard"><h2>30 ضغطة + نفَسان</h2><p class="lead2">نفّذ دورة كاملة: <b>30 ضغطة</b> بالسرعة الصحيحة، ثم <b>افتح مجرى الهواء</b>، ثم <b>نفَسين</b> مدة كل واحد ثانية تقريباً، ثم ارجع للضغطات بسرعة. التوقف بين آخر ضغطة وأول ضغطة بعد النفَسين يجب أن يكون <b>أقل من 10 ثوانٍ</b>.</p>
+    <div class="trainer">
+      <div class="tpanel">
+        ${cprFig("cf2")}
+        <svg viewBox="0 0 120 40" style="width:120px;display:block;margin:4px auto"><ellipse id="lung" cx="60" cy="26" rx="40" ry="8" fill="#C6D3E4" style="transform-box:fill-box;transform-origin:bottom;transition:transform .4s"/><text x="60" y="12" font-size="10" text-anchor="middle" fill="#5B6678">ارتفاع الصدر</text></svg>
+        <div class="count" id="c2">0<small> / 30</small></div>
+        <div class="phase" id="ph2">اضغط زر «ضغطة» أو مسطرة المسافة للبدء</div>
+        <label style="display:inline-flex;align-items:center;gap:6px;font-size:14px;color:var(--muted)"><input type="checkbox" id="snd" checked> صوت</label>
+      </div>
+      <div class="tpanel">
+        <div class="cyc-btns">
+          <button class="tap" id="cpush" style="width:150px;height:150px">ضغطة</button>
+          <div style="display:flex;flex-direction:column;gap:10px;justify-content:center">
+            <button class="btn ghost" id="cair" disabled>فتح مجرى الهواء</button>
+            <button class="btn primary" id="cblow" disabled>اضغط مطوّلاً للنفخ</button>
+          </div>
+        </div>
+        <div class="stats2"><div><b id="s-rate">—</b><span>ضغطة/دقيقة</span></div><div><b id="s-br">0 / 2</b><span>أنفاس</span></div><div><b id="s-pause">—</b><span>ثوانٍ توقف</span></div><div><b id="s-cyc">0</b><span>دورات</span></div></div>
+        <div class="msg" id="cmsg"></div>
+        <ul class="clog" id="clog"></ul>
+      </div>
+    </div></div>`;
+  let phase="comp", n=0, taps=[], br=0, airOpen=false, pauseStart=0, cyc=0, holdT=0, brNotes=[];
+  const ph=$("#ph2"), msg=$("#cmsg"), cf=$("#cf2"), lung=$("#lung");
+  const push=()=>{
+    if(phase==="air"){ if(br===0){ msg.className="msg no"; msg.textContent="انتهت الضغطات الثلاثون: افتح مجرى الهواء وأعطِ نفَسين." ; return } }
+    const t=performance.now();
+    if(phase!=="comp"){ // resuming
+      const p=((t-pauseStart)/1000); $("#s-pause").textContent=p.toFixed(1);
+      cyc++; $("#s-cyc").textContent=cyc;
+      const good=p<10;
+      $("#clog").insertAdjacentHTML("afterbegin",`<li><b>الدورة ${cyc}:</b> ${$("#s-rate").textContent} ضغطة/دقيقة، ${brNotes.join("، ")}، توقف ${p.toFixed(1)} ث ${good?"✓":"(أطول من 10 ثوانٍ)"}</li>`);
+      msg.className="msg "+(good?"ok":"no"); msg.textContent= good?"رجعت للضغطات بسرعة. ممتاز.":"التوقف كان أطول من 10 ثوانٍ؛ حاول أن تعطي النفَسين بسرعة وترجع للضغط.";
+      if(cyc===5){ msg.className="msg ok"; msg.textContent="أنهيت 5 دورات (حوالي دقيقتين): هذا وقت تبديل المسعف إذا كان معك أحد، وتقييم جهاز AED إن وصل."; }
+      phase="comp"; n=0; taps=[]; br=0; airOpen=false; brNotes=[]; ph.textContent="30 ضغطة جديدة"; $("#s-br").textContent="0 / 2"; $("#cair").disabled=true; $("#cblow").disabled=true; $("#cair").classList.remove("on");
+    }
+    n++; taps.push(t); $("#c2").innerHTML=`${n}<small> / 30</small>`;
+    cf.classList.add("push"); setTimeout(()=>cf.classList.remove("push"),110); tBeep(n===30?1200:880,.05);
+    if(taps.length>4){ const r=Math.round(60000*(taps.length-1)/(taps[taps.length-1]-taps[0])); $("#s-rate").textContent=r; ph.textContent= r<100?"أسرع قليلاً":r>120?"خفّف قليلاً":"إيقاع ممتاز"; }
+    if(n>=30){ phase="air"; pauseStart=t; $("#cair").disabled=false; $("#cblow").disabled=false; ph.innerHTML="<span style='color:var(--blue)'>افتح مجرى الهواء ثم أعطِ نفَسين</span>"; msg.textContent=""; }
+  };
+  $("#cpush").addEventListener("pointerdown",e=>{e.preventDefault();push()});
+  window.onkeydown=e=>{ if(e.code==="Space"&&!e.repeat){ e.preventDefault(); push() } };
+  $("#cair").onclick=()=>{ airOpen=true; $("#cair").classList.add("on"); msg.className="msg ok"; msg.textContent="فتحت مجرى الهواء: إمالة الرأس ورفع الذقن. أغلق الأنف وانفخ."; };
+  const bd=e=>{ e.preventDefault(); if(phase!=="air"||br>=2) return; holdT=performance.now(); lung.style.transition="transform 1s linear"; lung.style.transform= airOpen?"scaleY(2.6)":"scaleY(1.05)"; };
+  const bu=e=>{ if(!holdT) return; const d=(performance.now()-holdT)/1000; holdT=0; lung.style.transition="transform .4s"; lung.style.transform="scaleY(1)";
+    if(!airOpen){ msg.className="msg no"; msg.textContent="الصدر لم يرتفع: مجرى الهواء مسدود. افتحه أولاً ثم انفخ."; return }
+    br++; $("#s-br").textContent=br+" / 2";
+    let note= d<0.6?"قصير جداً":d>1.6?"طويل":"مدة مناسبة";
+    brNotes.push(`نفَس ${br}: ${d.toFixed(1)} ث`);
+    msg.className="msg "+(note==="مدة مناسبة"?"ok":"no");
+    msg.textContent= note==="مدة مناسبة"?`نفَس ${br}: حوالي ثانية والصدر ارتفع. ممتاز.`: note==="طويل"?`نفَس ${br}: أطول من اللازم؛ النفَس يكون ثانية واحدة فقط، فالنفخ الزائد يدخل المعدة.`:`نفَس ${br}: قصير جداً؛ انفخ ثانية كاملة حتى يرتفع الصدر.`;
+    if(br>=2){ $("#cblow").disabled=true; ph.innerHTML="<span style='color:var(--red)'>ارجع للضغطات فوراً</span>"; }
+  };
+  const b=$("#cblow"); b.addEventListener("pointerdown",bd); b.addEventListener("pointerup",bu); b.addEventListener("pointerleave",bu);
+}
+
+/* quick review */
+function review(){
+  let filter="all";
+  const draw=()=>{
+    const list = FACTS.filter(f=>filter==="all"||f[2]===filter);
+    app.innerHTML=`<div class="wrap" style="padding-bottom:60px"><div class="page-title"><h1>مراجعة سريعة</h1>
+      <p>أهم الأرقام والقواعد في بطاقات. اضغط على البطاقة لترى الإجابة.</p></div>
+      <div class="filters"><button data-f="all" class="${filter==="all"?"on":""}">الكل</button>${UNITS.filter(u=>FACTS.some(f=>f[2]===u.id)).map(u=>`<button data-f="${u.id}" class="${filter===u.id?"on":""}">${u.title}</button>`).join("")}</div>
+      <div class="flips">${list.map(f=>`<div class="flip" onclick="this.classList.toggle('on')"><div class="in"><div class="f">${f[0]}<small>${unitById(f[2]).title}</small></div><div class="b" style="font-family:'Almarai';font-size:18px;font-weight:700">${f[1]}</div></div></div>`).join("")}</div></div>`;
+    app.querySelectorAll(".filters button").forEach(b=>b.onclick=()=>{filter=b.dataset.f;draw()});
+  };
+  draw();
+}
+
+/* final exam */
+function exam(){
+  const pool = shuffle(UNITS.flatMap(u=>u.quiz.map(q=>({...q,unit:u.id})))).slice(0,15);
+  app.innerHTML=`<div class="wrap center"><div class="page-title" style="margin-bottom:22px"><h1>الاختبار النهائي</h1><p>15 سؤالاً مختارة عشوائياً من كل الدروس. في كل مرة تبدأ فيها تظهر أسئلة مختلفة.</p></div>
+    <div class="card quiz" id="ebox"></div></div>`;
+  runQuiz($("#ebox"), pool, (sc,t)=>{ const p=Math.round(sc/t*100); if(p>(S.best||0)){S.best=p;save()} if(p>=80) confetti(); },
+    {showUnit:true, after:`<a class="btn primary" href="#exam" onclick="setTimeout(exam,0)">أسئلة جديدة</a>`});
+}
+
+function confetti(){}
+
+/* router */
+function route(){
+  const h=(location.hash||"#home").slice(1);
+  tClear();
+  let nav=h;
+  if(h.startsWith("u-")){ unitView(h.slice(2)); nav="units" }
+  else if(h.startsWith("s-")){ scenView(h.slice(2)); nav="scenarios" }
+  else ({home,units,scenarios,trainer,review,exam}[h]||home)();
+  document.querySelectorAll("#links a").forEach(a=>a.classList.toggle("on",a.dataset.v===nav));
+  const names={units:"المحاضرات",scenarios:"المواقف",trainer:"مدرّب CPR",review:"مراجعة سريعة",exam:"الاختبار"};
+  let cr=[];
+  if(h.startsWith("u-")){ const u=unitById(h.slice(2)); cr=[`<a href="#units">الدروس</a>`, u?u.title:""] }
+  else if(h.startsWith("s-")){ const sc=SCENARIOS.find(x=>x.id===h.slice(2)); cr=[`<a href="#scenarios">المواقف</a>`, sc?sc.title:""] }
+  else if(names[h]) cr=[names[h]];
+  $("#crumb").innerHTML = cr.length?`<div class="wrap"><a href="#home">الرئيسية</a> » ${cr.join(" » ")}</div>`:"";
+  window.scrollTo(0,0);
+}
+addEventListener("hashchange",route); route();
+</script>
+</body>
+</html>
